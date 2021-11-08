@@ -31,7 +31,7 @@ jobs:
         cmd: install
     - run: npm run build
     - name: Upload to S3
-      uses: hannut91/aws-cli@v1.18.178
+      uses: hannut91/aws-cli@1.18.43
       with:
         args: s3 sync build/ s3://staging.quasardao.finance --acl public-read
       env:
