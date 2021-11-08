@@ -10,9 +10,9 @@ import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
 export const mim = new StableBond({
-    name: "mim",
-    displayName: "MIM",
-    bondToken: "MIM",
+    name: "dai",
+    displayName: "DAI",
+    bondToken: "DAI",
     bondIconSvg: MimIcon,
     bondContractABI: StableBondContract,
     reserveContractAbi: StableReserveContract,
@@ -71,4 +71,4 @@ export const avaxTime = new CustomLPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export default [mim, wavax, mimTime, avaxTime];
+export default [mim];
