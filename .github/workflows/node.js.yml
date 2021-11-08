@@ -33,7 +33,7 @@ jobs:
     - name: Upload to S3
       uses: hannut91/aws-cli@1.18.43
       with:
-        args: s3 sync build/ s3://staging.quasardao.finance --acl public-read
+        args: s3 sync build/ s3://testnet.quasardao.finance --acl public-read
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
