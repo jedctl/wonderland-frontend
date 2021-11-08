@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: 'yarn'
     - run: mkdir ./node_modules
     - name: GitHub Action for Yarn
       uses: Borales/actions-yarn@v2.3.0
