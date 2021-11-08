@@ -11,7 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    environment: aws-credentials
 
     strategy:
       matrix:
@@ -31,9 +30,11 @@ jobs:
       with:
         cmd: install
     - run: npm run build
-    - name: install-aws-cli
-      uses: unfor19/install-aws-cli-action@v1
+    - name: Upload to S3
+      uses: hannut91/aws-cli@v1.18.43
       with:
-        version: 2
-        verbose: true
-    - run: aws s3 sync build/ s3://staging.quasardao.finance --acl public-read
+        args: s3 sync build/ s3://staging.quasardao.finance --acl public-read
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: eu-central-1
