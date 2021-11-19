@@ -18,8 +18,8 @@ export const mim = new StableBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.AVAX]: {
-            bondAddress: "0xc771E19a776543b0E85A63CD858CDE573B1fF9a4",
-            reserveAddress: "0x5704b5f1dacd466eE1Ecde9A8862306E912c3635",
+            bondAddress: "0xA6C71034CB63f0de437CBae8bedE23f828d86944",
+            reserveAddress: "0x3C7d80e5e2d7a4966aF9D642bD17C0481f645E5c",
         },
     },
 });
@@ -41,15 +41,15 @@ export const wavax = new CustomBond({
 
 export const mimTime = new LPBond({
     name: "mim_time_lp",
-    displayName: "TIME-MIM LP",
+    displayName: "QUAS-DAI LP",
     bondToken: "MIM",
     bondIconSvg: MimTimeIcon,
     bondContractABI: LpBondContract,
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.AVAX]: {
-            bondAddress: "0xA184AE1A71EcAD20E822cB965b99c287590c4FFe",
-            reserveAddress: "0x113f413371fc4cc4c9d6416cf1de9dfd7bf747df",
+            bondAddress: "0x392306B954F2535f04b4914eE388c723F59Ae93E",
+            reserveAddress: "0x848cdad00ed5cc41cdf5fc1d1c4b52ec508a0e5e",
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
@@ -71,4 +71,4 @@ export const avaxTime = new CustomLPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export default [mim];
+export default [mim, mimTime];
