@@ -48,7 +48,7 @@ export const mimTime = new LPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.AVAX]: {
-            bondAddress: "0x9d06360CE50c5b5C23F4d27fa079DA6eAfEc1C61",
+            bondAddress: "0xD3161E1b8b96306446BaA9237Bee6a1A4a2f5bCA",
             reserveAddress: "0x65cd51f2d279a56947febcf21beec80b12753696",
         },
     },
