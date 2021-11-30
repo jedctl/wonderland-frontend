@@ -18,8 +18,8 @@ export const mim = new StableBond({
     reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.AVAX]: {
-            bondAddress: "0xA6C71034CB63f0de437CBae8bedE23f828d86944",
-            reserveAddress: "0x3C7d80e5e2d7a4966aF9D642bD17C0481f645E5c",
+            bondAddress: "0xD05BD5bF3CCF69731ABf68e04E0C17D958BF8b7c",
+            reserveAddress: "0x519330FD00B3A2a5883474D864a1B8AC12587CCf",
         },
     },
 });
@@ -48,8 +48,8 @@ export const mimTime = new LPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.AVAX]: {
-            bondAddress: "0x392306B954F2535f04b4914eE388c723F59Ae93E",
-            reserveAddress: "0x848cdad00ed5cc41cdf5fc1d1c4b52ec508a0e5e",
+            bondAddress: "0x9d06360CE50c5b5C23F4d27fa079DA6eAfEc1C61",
+            reserveAddress: "0x65cd51f2d279a56947febcf21beec80b12753696",
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
