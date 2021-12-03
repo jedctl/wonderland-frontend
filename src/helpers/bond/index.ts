@@ -9,7 +9,7 @@ import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
 
 import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
 
-export const mim = new StableBond({
+export const dai = new StableBond({
     name: "dai",
     displayName: "DAI",
     bondToken: "DAI",
@@ -22,6 +22,22 @@ export const mim = new StableBond({
             reserveAddress: "0x519330FD00B3A2a5883474D864a1B8AC12587CCf",
         },
     },
+});
+
+export const daiQuas = new LPBond({
+    name: "mim_time_lp",
+    displayName: "QUAS-DAI LP",
+    bondToken: "MIM",
+    bondIconSvg: MimTimeIcon,
+    bondContractABI: LpBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.POLYGON]: {
+            bondAddress: "0xD3161E1b8b96306446BaA9237Bee6a1A4a2f5bCA",
+            reserveAddress: "0x65cd51f2d279a56947febcf21beec80b12753696",
+        },
+    },
+    lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
 export const wavax = new CustomBond({
@@ -37,22 +53,6 @@ export const wavax = new CustomBond({
             reserveAddress: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
         },
     },
-});
-
-export const mimTime = new LPBond({
-    name: "mim_time_lp",
-    displayName: "QUAS-DAI LP",
-    bondToken: "MIM",
-    bondIconSvg: MimTimeIcon,
-    bondContractABI: LpBondContract,
-    reserveContractAbi: LpReserveContract,
-    networkAddrs: {
-        [Networks.POLYGON]: {
-            bondAddress: "0xD3161E1b8b96306446BaA9237Bee6a1A4a2f5bCA",
-            reserveAddress: "0x65cd51f2d279a56947febcf21beec80b12753696",
-        },
-    },
-    lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
 export const avaxTime = new CustomLPBond({
@@ -71,4 +71,4 @@ export const avaxTime = new CustomLPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export default [mim, mimTime];
+export default [dai, daiQuas];
