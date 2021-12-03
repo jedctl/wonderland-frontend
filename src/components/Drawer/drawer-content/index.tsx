@@ -28,7 +28,7 @@ function NavContent() {
         if (currentPath.indexOf("stake") >= 0 && page === "stake") {
             return true;
         }
-        if (currentPath.indexOf("mints") >= 0 && page === "mints") {
+        if (currentPath.indexOf("bonds") >= 0 && page === "bonds") {
             return true;
         }
         return false;
@@ -83,22 +83,22 @@ function NavContent() {
                     <Link
                         component={NavLink}
                         id="bond-nav"
-                        to="/mints"
+                        to="/bonds"
                         isActive={(match: any, location: any) => {
-                            return checkPage(location, "mints");
+                            return checkPage(location, "bonds");
                         }}
                         className={classnames("button-dapp-menu", { active: isActive })}
                     >
                         <div className="dapp-menu-item">
                             <img alt="" src={BondIcon} />
-                            <p>Mint</p>
+                            <p>Bonds</p>
                         </div>
                     </Link>
 
                     <div className="bond-discounts">
-                        <p>Mint discounts</p>
+                        <p>Bond discounts</p>
                         {bonds.map((bond, i) => (
-                            <Link component={NavLink} to={`/mints/${bond.name}`} key={i} className={"bond"}>
+                            <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
                                 {!bond.bondDiscount ? (
                                     <Skeleton variant="text" width={"150px"} />
                                 ) : (

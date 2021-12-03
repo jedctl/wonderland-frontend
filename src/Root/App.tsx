@@ -119,10 +119,10 @@ function App() {
                     <Stake />
                 </Route>
 
-                <Route path="/mints">
+                <Route path="/bonds">
                     {bonds.map(bond => {
                         return (
-                            <Route exact key={bond.name} path={`/mints/${bond.name}`}>
+                            <Route exact key={bond.name} path={`/bonds/${bond.name}`}>
                                 <Bond bond={bond} />
                             </Route>
                         );

@@ -31,12 +31,12 @@ function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange
 
     useEscape(() => {
         if (open) handleClose;
-        else history.push("/mints");
+        else history.push("/bonds");
     });
 
     return (
         <div className="bond-header">
-            <Link component={NavLink} to="/mints" className="cancel-bond">
+            <Link component={NavLink} to="/bonds" className="cancel-bond">
                 <SvgIcon color="primary" component={XIcon} />
             </Link>
 
