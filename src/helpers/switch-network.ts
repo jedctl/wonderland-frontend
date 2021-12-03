@@ -12,13 +12,13 @@ const addChainRequest = () => {
         method: "wallet_addEthereumChain",
         params: [
             {
-                chainId: "0xa86a",
-                chainName: "Avalanche Mainnet",
-                rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
-                blockExplorerUrls: ["https://cchain.explorer.avax.network/"],
+                chainId: "80001",
+                chainName: "Polygon Mumbai TestNet",
+                rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
+                blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
                 nativeCurrency: {
-                    name: "AVAX",
-                    symbol: "AVAX",
+                    name: "MATIC",
+                    symbol: "MATIC",
                     decimals: 18,
                 },
             },
