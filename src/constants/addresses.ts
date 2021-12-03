@@ -13,7 +13,7 @@ const AVAX_MAINNET = {
 };
 
 export const getAddresses = (networkID: number) => {
-    if (networkID === Networks.AVAX) return AVAX_MAINNET;
+    if (networkID === Networks.POLYGON) return AVAX_MAINNET;
 
     throw Error("Network don't support");
 };
