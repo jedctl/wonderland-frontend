@@ -40,6 +40,22 @@ export const daiQuas = new LPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
+export const fraxDai = new LPBond({
+    name: "frax_dai_lp",
+    displayName: "FRAX-DAI LP",
+    bondToken: "MIM",
+    bondIconSvg: MimTimeIcon,
+    bondContractABI: LpBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.POLYGON]: {
+            bondAddress: "0x9D56Ea7546C6d814A246bAb73Da16A687F4a163B",
+            reserveAddress: "0x380572d318ca43771656e74aa1ccb5243331ec9b",
+        },
+    },
+    lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
+});
+
 export const wavax = new CustomBond({
     name: "wavax",
     displayName: "wAVAX",
@@ -71,4 +87,4 @@ export const avaxTime = new CustomLPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export default [dai, daiQuas];
+export default [dai, daiQuas, fraxDai];
