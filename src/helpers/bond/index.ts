@@ -56,7 +56,7 @@ export const fraxDai = new LPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export const idoDai = new LPBond({
+export const idoDai = new StableBond({
     name: "ido_dai",
     displayName: "IDO DAI",
     bondToken: "MIM",
@@ -69,7 +69,6 @@ export const idoDai = new LPBond({
             reserveAddress: "0x519330FD00B3A2a5883474D864a1B8AC12587CCf",
         },
     },
-    lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
 export const wavax = new CustomBond({
