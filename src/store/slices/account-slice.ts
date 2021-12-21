@@ -103,6 +103,10 @@ export interface IUserBondDetails {
     interestDue: number;
     bondMaturationBlock: number;
     pendingPayout: number; //Payout formatted in gwei.
+    lockedRewards: number;
+    lockedStakingRewards: number;
+    lockedTotal: number;
+    claimedRewards: number;
 }
 
 export const calculateUserBondDetails = createAsyncThunk("account/calculateUserBondDetails", async ({ address, bond, networkID, provider }: ICalcUserBondDetails) => {
@@ -119,6 +123,10 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
                 bondMaturationBlock: 0,
                 pendingPayout: "",
                 avaxBalance: 0,
+                lockedRewards: 0,
+                lockedStakingRewards: 0,
+                lockedTotal: 0,
+                claimedRewards: 0,
             });
         });
     }
@@ -126,12 +134,28 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     const bondContract = bond.getContractForBond(networkID, provider);
     const reserveContract = bond.getContractForReserve(networkID, provider);
 
+    const bondDetails = await bondContract.bondInfo(address);
+
+    var lockedRewards = 0;
+    var lockedStakingRewards = 0;
+    var claimedRewards = 0;
+    var lockedTotal = 0;
+    if (bond.isIDO) {
+        claimedRewards = bondDetails.redeemedAmount / Math.pow(10, 9);
+        if (!bondDetails.redeemed && bondDetails.lastTime != 0) {
+            lockedRewards = bondDetails.payout / Math.pow(10, 9);
+            lockedTotal = await bondContract.vaultBalance(address);
+            lockedTotal = lockedTotal / Math.pow(10, 9);
+            lockedStakingRewards = lockedTotal - lockedRewards;
+        }
+    }
+
     let interestDue, pendingPayout, bondMaturationBlock;
 
-    const bondDetails = await bondContract.bondInfo(address);
     interestDue = bondDetails.payout / Math.pow(10, 9);
     bondMaturationBlock = Number(bondDetails.vesting) + Number(bondDetails.lastTime);
     pendingPayout = await bondContract.pendingPayoutFor(address);
+    const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
 
     let allowance,
         balance = "0";
@@ -142,8 +166,6 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
 
     const avaxBalance = await provider.getSigner().getBalance();
     const avaxVal = ethers.utils.formatEther(avaxBalance);
-
-    const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
 
     return {
         bond: bond.name,
@@ -156,6 +178,10 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
         interestDue,
         bondMaturationBlock,
         pendingPayout: Number(pendingPayoutVal),
+        lockedRewards,
+        lockedStakingRewards,
+        lockedTotal,
+        claimedRewards,
     };
 });
 

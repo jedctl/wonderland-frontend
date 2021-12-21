@@ -32,7 +32,7 @@ function BondPurchase({ bond, slippage, recipientAddress }: IBondPurchaseProps) 
     });
 
     const vestingPeriod = () => {
-        return prettifySeconds(bond.vestingTerm, "day");
+        return prettifySeconds(bond.vestingTerm);
     };
 
     async function onBond() {
@@ -195,10 +195,12 @@ function BondPurchase({ bond, slippage, recipientAddress }: IBondPurchaseProps) 
                         <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.maxBondPrice, 4)} QUAS`}</p>
                     </div>
 
-                    <div className="data-row">
-                        <p className="bond-balance-title">ROI</p>
-                        <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
-                    </div>
+                    {!bond.isIDO && (
+                        <div className="data-row">
+                            <p className="bond-balance-title">ROI</p>
+                            <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.bondDiscount * 100, 2)}%`}</p>
+                        </div>
+                    )}
 
                     <div className="data-row">
                         <p className="bond-balance-title">Vesting Term</p>

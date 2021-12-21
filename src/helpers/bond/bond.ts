@@ -24,10 +24,12 @@ export abstract class Bond {
     public readonly bondToken: string;
     public readonly lpUrl?: string;
 
-    // The following two fields will differ on how they are set depending on bond type
+    // The following fields will differ on how they are set depending on bond type
     public abstract isLP: boolean;
     protected abstract reserveContractAbi: ContractInterface; // Token ABI
     public abstract displayUnits: string;
+
+    public abstract isIDO: boolean;
 
     // Async method that returns a Promise
     public abstract getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider): Promise<number>;

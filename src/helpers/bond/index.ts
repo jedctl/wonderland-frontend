@@ -1,13 +1,29 @@
 import { Networks } from "../../constants/blockchain";
 import { LPBond, CustomLPBond } from "./lp-bond";
 import { StableBond, CustomBond } from "./stable-bond";
+import { IDOBond } from "./ido-bond";
 
 import MimIcon from "../../assets/tokens/MIM.svg";
 import AvaxIcon from "../../assets/tokens/AVAX.svg";
 import MimTimeIcon from "../../assets/tokens/TIME-MIM.svg";
 import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
 
-import { StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
+import { IdoBondContract, StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
+
+export const ido = new IDOBond({
+    name: "ido_dai",
+    displayName: "DAI",
+    bondToken: "MIM",
+    bondIconSvg: MimTimeIcon,
+    bondContractABI: IdoBondContract,
+    reserveContractAbi: LpReserveContract,
+    networkAddrs: {
+        [Networks.POLYGON]: {
+            bondAddress: "0x1D91Ec083678452293cd2FaBBfDAab7C0566B123",
+            reserveAddress: "0x4d5Fb365f774fe0113D8b93B13569edc3d600719",
+        },
+    },
+});
 
 export const dai = new StableBond({
     name: "dai",
@@ -33,8 +49,8 @@ export const daiQuas = new LPBond({
     reserveContractAbi: LpReserveContract,
     networkAddrs: {
         [Networks.POLYGON]: {
-            bondAddress: "0xD3161E1b8b96306446BaA9237Bee6a1A4a2f5bCA",
-            reserveAddress: "0x65cd51f2d279a56947febcf21beec80b12753696",
+            bondAddress: "0xf26E4EFB874912850cE7f384C691C6b5D8DCBDa0",
+            reserveAddress: "0x4d5Fb365f774fe0113D8b93B13569edc3d600719",
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
@@ -54,21 +70,6 @@ export const fraxDai = new LPBond({
         },
     },
     lpUrl: "https://www.traderjoexyz.com/#/pool/0x130966628846BFd36ff31a822705796e8cb8C18D/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
-});
-
-export const idoDai = new StableBond({
-    name: "ido_dai",
-    displayName: "IDO DAI",
-    bondToken: "MIM",
-    bondIconSvg: MimTimeIcon,
-    bondContractABI: LpBondContract,
-    reserveContractAbi: LpReserveContract,
-    networkAddrs: {
-        [Networks.POLYGON]: {
-            bondAddress: "0x57b987E8CF615701e301cE95b72A6241d4699cF0",
-            reserveAddress: "0x519330FD00B3A2a5883474D864a1B8AC12587CCf",
-        },
-    },
 });
 
 export const wavax = new CustomBond({
@@ -102,4 +103,4 @@ export const avaxTime = new CustomLPBond({
     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 });
 
-export default [idoDai, dai, daiQuas, fraxDai];
+export default [ido];

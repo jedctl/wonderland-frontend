@@ -22,7 +22,7 @@ function useBonds() {
         let bondDetails: IAllBondData[];
         bondDetails = allBonds
             .flatMap(bond => {
-                if (bondState[bond.name] && bondState[bond.name].bondDiscount) {
+                if (bondState[bond.name]) {
                     return Object.assign(bond, bondState[bond.name]); // Keeps the object type
                 }
                 return bond;

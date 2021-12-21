@@ -14,6 +14,7 @@ export interface LPBondOpts extends BondOpts {
 
 export class LPBond extends Bond {
     readonly isLP = true;
+    readonly isIDO = false;
     readonly lpUrl: string;
     readonly reserveContractAbi: ContractInterface;
     readonly displayUnits: string;

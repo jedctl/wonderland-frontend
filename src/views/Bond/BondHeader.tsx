@@ -40,26 +40,30 @@ function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange
                 <SvgIcon color="primary" component={XIcon} />
             </Link>
 
-            <div className="bond-header-logo">
-                <BondLogo bond={bond} />
-                <div className="bond-header-name">
-                    <p>{bond.displayName}</p>
+            {!bond.isIDO && (
+                <div className="bond-header-logo">
+                    <BondLogo bond={bond} />
+                    <div className="bond-header-name">
+                        <p>{bond.displayName}</p>
+                    </div>
                 </div>
-            </div>
+            )}
 
-            <div className="bond-settings">
-                <IconButton onClick={handleOpen}>
-                    <SvgIcon color="primary" component={SettingsIcon} />
-                </IconButton>
-                <AdvancedSettings
-                    open={open}
-                    handleClose={handleClose}
-                    slippage={slippage}
-                    recipientAddress={recipientAddress}
-                    onRecipientAddressChange={onRecipientAddressChange}
-                    onSlippageChange={onSlippageChange}
-                />
-            </div>
+            {!bond.isIDO && (
+                <div className="bond-settings">
+                    <IconButton onClick={handleOpen}>
+                        <SvgIcon color="primary" component={SettingsIcon} />
+                    </IconButton>
+                    <AdvancedSettings
+                        open={open}
+                        handleClose={handleClose}
+                        slippage={slippage}
+                        recipientAddress={recipientAddress}
+                        onRecipientAddressChange={onRecipientAddressChange}
+                        onSlippageChange={onSlippageChange}
+                    />
+                </div>
+            )}
         </div>
     );
 }

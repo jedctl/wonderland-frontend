@@ -5,22 +5,22 @@ import { Networks } from "../../constants/blockchain";
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { getAddresses } from "../../constants/addresses";
 
-export interface StableBondOpts extends BondOpts {
+export interface IDOBondOpts extends BondOpts {
     readonly reserveContractAbi: ContractInterface;
 }
 
-export class StableBond extends Bond {
+export class IDOBond extends Bond {
     readonly isLP = false;
-    readonly isIDO = false;
+    readonly isIDO = true;
     readonly reserveContractAbi: ContractInterface;
     readonly displayUnits: string;
 
-    constructor(stableBondOpts: StableBondOpts) {
-        super(BondType.StableAsset, stableBondOpts);
+    constructor(idoBondOpts: IDOBondOpts) {
+        super(BondType.IDO, idoBondOpts);
 
         // For stable bonds the display units are the same as the actual token
-        this.displayUnits = stableBondOpts.displayName;
-        this.reserveContractAbi = stableBondOpts.reserveContractAbi;
+        this.displayUnits = idoBondOpts.displayName;
+        this.reserveContractAbi = idoBondOpts.reserveContractAbi;
     }
 
     public async getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider) {
@@ -36,21 +36,5 @@ export class StableBond extends Bond {
 
     public getTimeAmount(networkID: Networks, provider: StaticJsonRpcProvider) {
         return new Promise<number>(reserve => reserve(0));
-    }
-}
-
-// These are special bonds that have different valuation methods
-export interface CustomBondOpts extends StableBondOpts {}
-
-export class CustomBond extends StableBond {
-    constructor(customBondOpts: CustomBondOpts) {
-        super(customBondOpts);
-
-        this.getTreasuryBalance = async (networkID: Networks, provider: StaticJsonRpcProvider) => {
-            const tokenAmount = await super.getTreasuryBalance(networkID, provider);
-            const tokenPrice = this.getTokenPrice();
-
-            return tokenAmount * tokenPrice;
-        };
     }
 }

@@ -96,19 +96,34 @@ function NavContent() {
                     </Link>
 
                     <div className="bond-discounts">
-                        <p>Bond discounts</p>
-                        {bonds.map((bond, i) => (
-                            <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                                {!bond.bondDiscount ? (
-                                    <Skeleton variant="text" width={"150px"} />
-                                ) : (
+                        {bonds
+                            .filter(bond => bond.isIDO)
+                            .map((bond, i) => (
+                                <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
                                     <p>
                                         {bond.displayName}
-                                        <span className="bond-pair-roi">{bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%</span>
+                                        <span className="bond-pair-roi">1 QUAS = {bond.bondPrice}$</span>
                                     </p>
-                                )}
-                            </Link>
-                        ))}
+                                </Link>
+                            ))}
+                    </div>
+
+                    <div className="bond-discounts">
+                        <p>Bond discounts</p>
+                        {bonds
+                            .filter(bond => !bond.isIDO)
+                            .map((bond, i) => (
+                                <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
+                                    {!bond.bondDiscount ? (
+                                        <Skeleton variant="text" width={"150px"} />
+                                    ) : (
+                                        <p>
+                                            {bond.displayName}
+                                            <span className="bond-pair-roi">{bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%</span>
+                                        </p>
+                                    )}
+                                </Link>
+                            ))}
                     </div>
                 </div>
             </div>

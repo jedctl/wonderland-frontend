@@ -109,7 +109,18 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const bondCalcContract = getBondCalculator(networkID, provider);
 
     const terms = await bondContract.terms();
-    const maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
+
+    var maxBondPrice = 0;
+    if (bond.isIDO) {
+        try {
+            const address = await provider.getSigner().getAddress();
+            maxBondPrice = (await bondContract.maxPayout(address)) / Math.pow(10, 9);
+        } catch (e) {
+            console.log("error getting max payout", e);
+        }
+    } else {
+        maxBondPrice = (await bondContract.maxPayout()) / Math.pow(10, 9);
+    }
 
     // let marketPrice = await getMarketPrice(networkID, provider);
     let marketPrice = 150000000000;
@@ -212,7 +223,9 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
     try {
         const gasPrice = await getGasPrice(provider);
 
-        if (useAvax) {
+        if (bond.isIDO) {
+            bondTx = await bondContract.deposit(valueInWei, depositorAddress, { gasPrice });
+        } else if (useAvax) {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { value: valueInWei, gasPrice });
         } else {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, { gasPrice });
