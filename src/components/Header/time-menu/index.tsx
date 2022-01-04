@@ -40,8 +40,8 @@ function TimeMenu() {
 
     const addresses = getAddresses(networkID);
 
-    const MEMO_ADDRESS = addresses.MEMO_ADDRESS;
-    const TIME_ADDRESS = addresses.TIME_ADDRESS;
+    const MEMO_ADDRESS = addresses.SQUAS_ADDRESS;
+    const TIME_ADDRESS = addresses.QUAS_ADDRESS;
 
     const handleClick = (event: any) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
