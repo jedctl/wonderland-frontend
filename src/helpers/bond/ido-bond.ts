@@ -25,7 +25,7 @@ export class IDOBond extends Bond {
 
     public async getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider) {
         const addresses = getAddresses(networkID);
-        const token = this.getContractForReserve(networkID, provider);
+        const token = this.getPrincipalContract(networkID, provider);
         const tokenAmount = await token.balanceOf(addresses.TREASURY_ADDRESS);
         return tokenAmount / Math.pow(10, 18);
     }

@@ -30,8 +30,8 @@ export class LPBond extends Bond {
     async getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider) {
         const addresses = getAddresses(networkID);
 
-        const token = this.getContractForReserve(networkID, provider);
-        const tokenAddress = this.getAddressForReserve(networkID);
+        const token = this.getPrincipalContract(networkID, provider);
+        const tokenAddress = this.getPrincipalAddress(networkID);
         const bondCalculator = getBondCalculator(networkID, provider);
         const tokenAmount = await token.balanceOf(addresses.TREASURY_ADDRESS);
         const valuation = await bondCalculator.valuation(tokenAddress, tokenAmount);
@@ -52,7 +52,7 @@ export class LPBond extends Bond {
     private async getReserves(networkID: Networks, provider: StaticJsonRpcProvider, isToken: boolean): Promise<number> {
         const addresses = getAddresses(networkID);
 
-        const token = this.getContractForReserve(networkID, provider);
+        const token = this.getPrincipalContract(networkID, provider);
 
         let [reserve0, reserve1] = await token.getReserves();
         const token1: string = await token.token1();

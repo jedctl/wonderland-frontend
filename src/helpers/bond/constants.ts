@@ -7,6 +7,7 @@ export enum BondType {
 }
 
 export interface BondAddresses {
+    principal: string;
     reserveAddress: string;
     bondAddress: string;
 }

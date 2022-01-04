@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { StakingContract, MemoTokenContract, TimeTokenContract } from "../../abi";
+import { StakingContract, SQuasTokenContract, QuasTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { JsonRpcProvider } from "@ethersproject/providers";
@@ -20,17 +20,13 @@ export const loadAppDetails = createAsyncThunk(
         const mimPrice = getTokenPrice("MIM");
         const addresses = getAddresses(networkID);
 
-        const ohmPrice = getTokenPrice("OHM");
-        const ohmAmount = 1512.12854088 * ohmPrice;
-
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
         const currentBlock = await provider.getBlockNumber();
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
-        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, MemoTokenContract, provider);
-        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, TimeTokenContract, provider);
+        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
+        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
 
-        // const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
-        const marketPrice = 150;
+        const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
 
         const totalSupply = (await timeContract.totalSupply()) / Math.pow(10, 9);
         const circSupply = (await memoContract.circulatingSupply()) / Math.pow(10, 9);
@@ -40,11 +36,11 @@ export const loadAppDetails = createAsyncThunk(
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, ohmAmount);
+        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
-        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, ohmAmount);
+        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1);
 
         const timeBondsAmountsPromises = allBonds.map(bond => bond.getTimeAmount(networkID, provider));
         const timeBondsAmounts = await Promise.all(timeBondsAmountsPromises);
@@ -61,7 +57,7 @@ export const loadAppDetails = createAsyncThunk(
         const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
 
         const currentIndex = await stakingContract.index();
-        const nextRebase = epoch.endTime;
+        const nextRebase = epoch.end;
 
         const treasuryRunway = rfvTreasury / circSupply;
         const runway = Math.log(treasuryRunway) / Math.log(1 + stakingRebase) / 3;

@@ -30,7 +30,7 @@ const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async ()
     }
 };
 
-function TimeMenu() {
+function QuasMenu() {
     const [anchorEl, setAnchorEl] = useState(null);
     const isEthereumAPIAvailable = window.ethereum;
 
@@ -40,8 +40,8 @@ function TimeMenu() {
 
     const addresses = getAddresses(networkID);
 
-    const MEMO_ADDRESS = addresses.SQUAS_ADDRESS;
-    const TIME_ADDRESS = addresses.QUAS_ADDRESS;
+    const SQUAS_ADDRESS = addresses.SQUAS_ADDRESS;
+    const QUAS_ADDRESS = addresses.QUAS_ADDRESS;
 
     const handleClick = (event: any) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -59,7 +59,7 @@ function TimeMenu() {
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
-                            <Link className="tooltip-item" href={`https://app.sushi.com/swap?inputCurrency=&outputCurrency=${TIME_ADDRESS}`} target="_blank">
+                            <Link className="tooltip-item" href={`https://app.sushi.com/swap?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
                                 <p>Buy on SushiSwap</p>
                             </Link>
 
@@ -68,10 +68,10 @@ function TimeMenu() {
                                     <div className="divider" />
                                     <p className="add-tokens-title">ADD TOKEN TO WALLET</p>
                                     <div className="divider" />
-                                    <div className="tooltip-item" onClick={addTokenToWallet("QUAS", TIME_ADDRESS)}>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("QUAS", QUAS_ADDRESS)}>
                                         <p>QUAS</p>
                                     </div>
-                                    <div className="tooltip-item" onClick={addTokenToWallet("sQUAS", MEMO_ADDRESS)}>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("sQUAS", SQUAS_ADDRESS)}>
                                         <p>sQUAS</p>
                                     </div>
                                 </div>
@@ -84,4 +84,4 @@ function TimeMenu() {
     );
 }
 
-export default TimeMenu;
+export default QuasMenu;

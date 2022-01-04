@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getAddresses } from "../../constants";
-import { TimeTokenContract, MemoTokenContract, MimTokenContract } from "../../abi";
+import { QuasTokenContract, SQuasTokenContract, MimTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
 
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
@@ -27,9 +27,9 @@ interface IAccountBalances {
 export const getBalances = createAsyncThunk("account/getBalances", async ({ address, networkID, provider }: IGetBalances): Promise<IAccountBalances> => {
     const addresses = getAddresses(networkID);
 
-    const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, MemoTokenContract, provider);
+    const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
     const memoBalance = await memoContract.balanceOf(address);
-    const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, TimeTokenContract, provider);
+    const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
     const timeBalance = await timeContract.balanceOf(address);
 
     return {
@@ -66,13 +66,13 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     const addresses = getAddresses(networkID);
 
     if (addresses.QUAS_ADDRESS) {
-        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, TimeTokenContract, provider);
+        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
         timeBalance = await timeContract.balanceOf(address);
-        stakeAllowance = await timeContract.allowance(address, addresses.STAKING_HELPER_ADDRESS);
+        stakeAllowance = await timeContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     if (addresses.SQUAS_ADDRESS) {
-        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, MemoTokenContract, provider);
+        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
         memoBalance = await memoContract.balanceOf(address);
         unstakeAllowance = await memoContract.allowance(address, addresses.STAKING_ADDRESS);
     }
@@ -131,8 +131,8 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
         });
     }
 
-    const bondContract = bond.getContractForBond(networkID, provider);
-    const reserveContract = bond.getContractForReserve(networkID, provider);
+    const bondContract = bond.getBondContract(networkID, provider);
+    const reserveContract = bond.getPrincipalContract(networkID, provider);
 
     const bondDetails = await bondContract.bondInfo(address);
 
@@ -160,7 +160,7 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     let allowance,
         balance = "0";
 
-    allowance = await reserveContract.allowance(address, bond.getAddressForBond(networkID));
+    allowance = await reserveContract.allowance(address, bond.getBondAddress(networkID));
     balance = await reserveContract.balanceOf(address);
     const balanceVal = ethers.utils.formatEther(balance);
 

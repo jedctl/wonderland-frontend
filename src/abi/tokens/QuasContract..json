@@ -3,9 +3,9 @@
         {
             "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "chainId_",
-                    "type": "uint256"
+                    "internalType": "address",
+                    "name": "_authority",
+                    "type": "address"
                 }
             ],
             "stateMutability": "nonpayable",
@@ -17,19 +17,19 @@
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "src",
+                    "name": "owner",
                     "type": "address"
                 },
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "guy",
+                    "name": "spender",
                     "type": "address"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "value",
                     "type": "uint256"
                 }
             ],
@@ -37,40 +37,16 @@
             "type": "event"
         },
         {
-            "anonymous": true,
+            "anonymous": false,
             "inputs": [
                 {
                     "indexed": true,
-                    "internalType": "bytes4",
-                    "name": "sig",
-                    "type": "bytes4"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "usr",
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "authority",
                     "type": "address"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "bytes32",
-                    "name": "arg1",
-                    "type": "bytes32"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "bytes32",
-                    "name": "arg2",
-                    "type": "bytes32"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "bytes",
-                    "name": "data",
-                    "type": "bytes"
                 }
             ],
-            "name": "LogNote",
+            "name": "AuthorityUpdated",
             "type": "event"
         },
         {
@@ -79,19 +55,19 @@
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "src",
+                    "name": "from",
                     "type": "address"
                 },
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "to",
                     "type": "address"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "value",
                     "type": "uint256"
                 }
             ],
@@ -112,54 +88,15 @@
             "type": "function"
         },
         {
-            "inputs": [],
-            "name": "PERMIT_TYPEHASH",
-            "outputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "",
-                    "type": "bytes32"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                }
-            ],
-            "name": "addAuth",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "_limit",
-                    "type": "uint256"
-                }
-            ],
-            "name": "adjustDailyDAILimit",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "account_",
+                    "name": "owner",
                     "type": "address"
                 },
                 {
                     "internalType": "address",
-                    "name": "sender_",
+                    "name": "spender",
                     "type": "address"
                 }
             ],
@@ -178,12 +115,12 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "usr_",
+                    "name": "spender",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad_",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -199,10 +136,23 @@
             "type": "function"
         },
         {
+            "inputs": [],
+            "name": "authority",
+            "outputs": [
+                {
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "",
+                    "name": "account",
                     "type": "address"
                 }
             ],
@@ -220,13 +170,8 @@
         {
             "inputs": [
                 {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -239,32 +184,18 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "",
+                    "name": "account_",
                     "type": "address"
-                }
-            ],
-            "name": "daiMintedToday",
-            "outputs": [
+                },
                 {
                     "internalType": "uint256",
-                    "name": "",
+                    "name": "amount_",
                     "type": "uint256"
                 }
             ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "dailyDAILimit",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
+            "name": "burnFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -284,12 +215,23 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "guy",
+                    "name": "spender",
                     "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "subtractedValue",
+                    "type": "uint256"
                 }
             ],
-            "name": "deny",
-            "outputs": [],
+            "name": "decreaseAllowance",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
             "stateMutability": "nonpayable",
             "type": "function"
         },
@@ -297,58 +239,40 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "",
+                    "name": "spender",
                     "type": "address"
-                }
-            ],
-            "name": "lastMintRestart",
-            "outputs": [
+                },
                 {
                     "internalType": "uint256",
-                    "name": "",
+                    "name": "addedValue",
                     "type": "uint256"
                 }
             ],
-            "stateMutability": "view",
+            "name": "increaseAllowance",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "usr",
+                    "name": "account_",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount_",
                     "type": "uint256"
                 }
             ],
             "name": "mint",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "src",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "dst",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "move",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -370,7 +294,7 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "",
+                    "name": "owner",
                     "type": "address"
                 }
             ],
@@ -389,7 +313,7 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "holder",
+                    "name": "owner",
                     "type": "address"
                 },
                 {
@@ -399,18 +323,13 @@
                 },
                 {
                     "internalType": "uint256",
-                    "name": "nonce",
+                    "name": "value",
                     "type": "uint256"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "expiry",
+                    "name": "deadline",
                     "type": "uint256"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "allowed",
-                    "type": "bool"
                 },
                 {
                     "internalType": "uint8",
@@ -436,48 +355,12 @@
         {
             "inputs": [
                 {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "pull",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "push",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "guy",
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "_newAuthority",
                     "type": "address"
                 }
             ],
-            "name": "rely",
+            "name": "setAuthority",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -512,12 +395,12 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "recipient",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -536,17 +419,17 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "src",
+                    "name": "sender",
                     "type": "address"
                 },
                 {
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "recipient",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -559,38 +442,6 @@
                 }
             ],
             "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "version",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "wards",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
             "type": "function"
         }
     ]

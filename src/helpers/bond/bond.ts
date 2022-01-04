@@ -6,6 +6,7 @@ import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
 import { getTokenPrice } from "../token-price";
 
 export interface BondOpts {
+    readonly bid: number;
     readonly name: string; // Internal name used for references
     readonly displayName: string; // Displayname on UI
     readonly bondIconSvg: string; //  SVG path for icons
@@ -15,6 +16,7 @@ export interface BondOpts {
 }
 
 export abstract class Bond {
+    public readonly bid: number;
     public readonly name: string;
     public readonly displayName: string;
     public readonly type: BondType;
@@ -37,6 +39,7 @@ export abstract class Bond {
     public abstract getTimeAmount(networkID: Networks, provider: StaticJsonRpcProvider): Promise<number>;
 
     constructor(type: BondType, bondOpts: BondOpts) {
+        this.bid = bondOpts.bid;
         this.name = bondOpts.name;
         this.displayName = bondOpts.displayName;
         this.type = type;
@@ -46,21 +49,21 @@ export abstract class Bond {
         this.bondToken = bondOpts.bondToken;
     }
 
-    public getAddressForBond(networkID: Networks) {
+    public getBondAddress(networkID: Networks) {
         return this.networkAddrs[networkID].bondAddress;
     }
 
-    public getContractForBond(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
-        const bondAddress = this.getAddressForBond(networkID);
+    public getBondContract(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
+        const bondAddress = this.getBondAddress(networkID);
         return new Contract(bondAddress, this.bondContractABI, provider);
     }
 
-    public getAddressForReserve(networkID: Networks) {
+    public getPrincipalAddress(networkID: Networks) {
         return this.networkAddrs[networkID].reserveAddress;
     }
 
-    public getContractForReserve(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
-        const reserveAddress = this.getAddressForReserve(networkID);
+    public getPrincipalContract(networkID: Networks, provider: StaticJsonRpcProvider | JsonRpcSigner) {
+        const reserveAddress = this.getPrincipalAddress(networkID);
         return new Contract(reserveAddress, this.reserveContractAbi, provider);
     }
 
