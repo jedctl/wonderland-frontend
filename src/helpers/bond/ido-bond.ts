@@ -34,7 +34,7 @@ export class IDOBond extends Bond {
         return this.getTreasuryBalance(networkID, provider);
     }
 
-    public getTimeAmount(networkID: Networks, provider: StaticJsonRpcProvider) {
+    public getQuasAmount(networkID: Networks, provider: StaticJsonRpcProvider) {
         return new Promise<number>(reserve => reserve(0));
     }
 }

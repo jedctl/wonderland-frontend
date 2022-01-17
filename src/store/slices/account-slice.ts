@@ -66,9 +66,9 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     const addresses = getAddresses(networkID);
 
     if (addresses.QUAS_ADDRESS) {
-        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
-        timeBalance = await timeContract.balanceOf(address);
-        stakeAllowance = await timeContract.allowance(address, addresses.STAKING_ADDRESS);
+        const quasContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
+        timeBalance = await quasContract.balanceOf(address);
+        stakeAllowance = await quasContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     if (addresses.SQUAS_ADDRESS) {
@@ -103,6 +103,8 @@ export interface IUserBondDetails {
     interestDue: number;
     bondMaturationBlock: number;
     pendingPayout: number; //Payout formatted in gwei.
+    pendingStakingRewards: number;
+    pendingTotal: number;
     lockedRewards: number;
     lockedStakingRewards: number;
     lockedTotal: number;
@@ -121,7 +123,9 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
                 balance: 0,
                 interestDue: 0,
                 bondMaturationBlock: 0,
-                pendingPayout: "",
+                pendingPayout: 0,
+                pendingStakingRewards: 0,
+                pendingTotal: 0,
                 avaxBalance: 0,
                 lockedRewards: 0,
                 lockedStakingRewards: 0,
@@ -132,30 +136,31 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     }
 
     const bondContract = bond.getBondContract(networkID, provider);
+    const bondTeller = bond.getTellerContract(networkID, provider);
     const reserveContract = bond.getPrincipalContract(networkID, provider);
 
-    const bondDetails = await bondContract.bondInfo(address);
+    const bondDetails = await bondTeller.bonderInfo(address, bond.bid);
 
-    var lockedRewards = 0;
-    var lockedStakingRewards = 0;
-    var claimedRewards = 0;
-    var lockedTotal = 0;
-    if (bond.isIDO) {
-        claimedRewards = bondDetails.redeemedAmount / Math.pow(10, 9);
-        if (!bondDetails.redeemed && bondDetails.lastTime != 0) {
-            lockedRewards = bondDetails.payout / Math.pow(10, 9);
-            lockedTotal = await bondContract.vaultBalance(address);
-            lockedTotal = lockedTotal / Math.pow(10, 9);
-            lockedStakingRewards = lockedTotal - lockedRewards;
-        }
-    }
+    // var lockedRewards = 0;
+    // var claimedRewards = 0;
+    // var lockedTotal = 0;
+    // if (bond.isIDO) {
+    //     claimedRewards = bondDetails.redeemedAmount / Math.pow(10, 9);
+    //     if (!bondDetails.redeemed && bondDetails.lastTime != 0) {
+    //         lockedRewards = bondDetails.payout / Math.pow(10, 9);
+    //         lockedTotal = await bondContract.vaultBalance(address);
+    //         lockedTotal = lockedTotal / Math.pow(10, 9);
+    //         lockedStakingRewards = lockedTotal - lockedRewards;
+    //     }
+    // }
 
-    let interestDue, pendingPayout, bondMaturationBlock;
+    const bondMaturationTimestamp = Number(bondDetails.vested);
 
-    interestDue = bondDetails.payout / Math.pow(10, 9);
-    bondMaturationBlock = Number(bondDetails.vesting) + Number(bondDetails.lastTime);
-    pendingPayout = await bondContract.pendingPayoutFor(address);
-    const pendingPayoutVal = ethers.utils.formatUnits(pendingPayout, "gwei");
+    const payoutInfo = await bondTeller.payoutInfo(address, bond.bid);
+    const lockedPayout = Number(ethers.utils.formatUnits(payoutInfo.lockedPayout, "gwei"));
+    const lockedStakingRewards = Number(ethers.utils.formatUnits(payoutInfo.lockedStakingRewards, "gwei"));
+    const pendingPayout = Number(ethers.utils.formatUnits(payoutInfo.pendingPayout, "gwei"));
+    const pendingStakingRewards = Number(ethers.utils.formatUnits(payoutInfo.pendingStakingRewards, "gwei"));
 
     let allowance,
         balance = "0";
@@ -175,13 +180,15 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
         allowance: Number(allowance),
         balance: Number(balanceVal),
         avaxBalance: Number(avaxVal),
-        interestDue,
-        bondMaturationBlock,
-        pendingPayout: Number(pendingPayoutVal),
-        lockedRewards,
-        lockedStakingRewards,
-        lockedTotal,
-        claimedRewards,
+        interestDue: pendingPayout,
+        bondMaturationBlock: bondMaturationTimestamp,
+        pendingPayout: pendingPayout,
+        pendingStakingRewards: pendingStakingRewards,
+        pendingTotal: pendingPayout + pendingStakingRewards,
+        lockedRewards: lockedPayout,
+        lockedStakingRewards: lockedStakingRewards,
+        lockedTotal: lockedPayout + lockedStakingRewards,
+        claimedRewards: 0,
     };
 });
 

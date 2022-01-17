@@ -8,7 +8,8 @@ import AvaxIcon from "../../assets/tokens/AVAX.svg";
 import MimTimeIcon from "../../assets/tokens/TIME-MIM.svg";
 import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
 
-import { IdoBondContract, StableBondContract, LpBondContract, WavaxBondContract, StableReserveContract, LpReserveContract } from "../../abi";
+import bondSlice from "src/store/slices/bond-slice";
+import { Bond } from "./bond";
 
 export const dai = new StableBond({
     bid: 0,
@@ -16,13 +17,9 @@ export const dai = new StableBond({
     displayName: "DAI",
     bondToken: "DAI",
     bondIconSvg: MimIcon,
-    bondContractABI: StableBondContract,
-    reserveContractAbi: StableReserveContract,
     networkAddrs: {
         [Networks.POLYGON]: {
-            principal: "0x59b670e9fA9D0A427751Af201D676719a970857b",
-            bondAddress: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
-            reserveAddress: "0x59b670e9fA9D0A427751Af201D676719a970857b",
+            principal: "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49",
         },
     },
 });
@@ -105,4 +102,5 @@ export const dai = new StableBond({
 //     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 // });
 
-export default [dai];
+const bonds: Bond[] = [dai];
+export default bonds;

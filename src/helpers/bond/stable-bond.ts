@@ -4,6 +4,7 @@ import { BondType } from "./constants";
 import { Networks } from "../../constants/blockchain";
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
 import { getAddresses } from "../../constants/addresses";
+import { StableReserveContract } from "../../abi";
 
 export interface StableBondOpts extends BondOpts {
     readonly reserveContractAbi: ContractInterface;
@@ -12,15 +13,14 @@ export interface StableBondOpts extends BondOpts {
 export class StableBond extends Bond {
     readonly isLP = false;
     readonly isIDO = false;
-    readonly reserveContractAbi: ContractInterface;
+    readonly reserveContractAbi: ContractInterface = StableReserveContract;
     readonly displayUnits: string;
 
-    constructor(stableBondOpts: StableBondOpts) {
+    constructor(stableBondOpts: BondOpts) {
         super(BondType.StableAsset, stableBondOpts);
 
         // For stable bonds the display units are the same as the actual token
         this.displayUnits = stableBondOpts.displayName;
-        this.reserveContractAbi = stableBondOpts.reserveContractAbi;
     }
 
     public async getTreasuryBalance(networkID: Networks, provider: StaticJsonRpcProvider) {
@@ -34,7 +34,7 @@ export class StableBond extends Bond {
         return this.getTreasuryBalance(networkID, provider);
     }
 
-    public getTimeAmount(networkID: Networks, provider: StaticJsonRpcProvider) {
+    public getQuasAmount(networkID: Networks, provider: StaticJsonRpcProvider) {
         return new Promise<number>(reserve => reserve(0));
     }
 }

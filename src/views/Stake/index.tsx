@@ -93,8 +93,31 @@ function Stake() {
 
     const trimmedMemoBalance = trim(Number(memoBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
-    const stakingRebasePercentage = trim(stakingRebase * 100, 4);
-    const nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedMemoBalance), 6);
+
+    let apy: string;
+    if (isNaN(stakingAPY) || stakingAPY === 0) {
+        apy = "No data";
+    } else {
+        apy = new Intl.NumberFormat("en-US").format(Number(trim(stakingAPY * 100, 1))) + "%";
+    }
+
+    let stakingRebasePercentage = trim(stakingRebase * 100, 4);
+
+    let nextRewardValue: string;
+    if (stakingRebase === 0) {
+        nextRewardValue = "No data";
+        stakingRebasePercentage = "No data";
+    } else {
+        nextRewardValue = trim((Number(stakingRebasePercentage) / 100) * Number(trimmedMemoBalance), 6) + " sQUAS";
+        stakingRebasePercentage += "%";
+    }
+
+    let fiveDayRateValue: string;
+    if (fiveDayRate === 0) {
+        fiveDayRateValue = "No data";
+    } else {
+        fiveDayRateValue = trim(Number(fiveDayRate) * 100, 4) + "%";
+    }
 
     return (
         <div className="stake-view">
@@ -114,9 +137,7 @@ function Stake() {
                                     <Grid item xs={12} sm={4} md={4} lg={4}>
                                         <div className="stake-card-apy">
                                             <p className="stake-card-metrics-title">APY</p>
-                                            <p className="stake-card-metrics-value">
-                                                {stakingAPY ? <>{new Intl.NumberFormat("en-US").format(Number(trimmedStakingAPY))}%</> : <Skeleton width="150px" />}
-                                            </p>
+                                            <p className="stake-card-metrics-value">{apy}</p>
                                         </div>
                                     </Grid>
 
@@ -124,16 +145,12 @@ function Stake() {
                                         <div className="stake-card-tvl">
                                             <p className="stake-card-metrics-title">TVL</p>
                                             <p className="stake-card-metrics-value">
-                                                {stakingTVL ? (
-                                                    new Intl.NumberFormat("en-US", {
-                                                        style: "currency",
-                                                        currency: "USD",
-                                                        maximumFractionDigits: 0,
-                                                        minimumFractionDigits: 0,
-                                                    }).format(stakingTVL)
-                                                ) : (
-                                                    <Skeleton width="150px" />
-                                                )}
+                                                {new Intl.NumberFormat("en-US", {
+                                                    style: "currency",
+                                                    currency: "USD",
+                                                    maximumFractionDigits: 0,
+                                                    minimumFractionDigits: 0,
+                                                }).format(stakingTVL)}
                                             </p>
                                         </div>
                                     </Grid>
@@ -141,7 +158,7 @@ function Stake() {
                                     <Grid item xs={6} sm={4} md={4} lg={4}>
                                         <div className="stake-card-index">
                                             <p className="stake-card-metrics-title">Current Index</p>
-                                            <p className="stake-card-metrics-value">{currentIndex ? <>{trim(Number(currentIndex), 2)} QUAS</> : <Skeleton width="150px" />}</p>
+                                            <p className="stake-card-metrics-value">{currentIndex ? <>{trim(Number(currentIndex), 2)}</> : <Skeleton width="150px" />}</p>
                                         </div>
                                     </Grid>
                                 </Grid>
@@ -262,17 +279,17 @@ function Stake() {
 
                                         <div className="data-row">
                                             <p className="data-row-name">Next Reward Amount</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue} sQUAS</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{nextRewardValue}</>}</p>
                                         </div>
 
                                         <div className="data-row">
                                             <p className="data-row-name">Next Reward Yield</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{stakingRebasePercentage}%</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{stakingRebasePercentage}</>}</p>
                                         </div>
 
                                         <div className="data-row">
                                             <p className="data-row-name">ROI (5-Day Rate)</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(fiveDayRate) * 100, 4)}%</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{fiveDayRateValue}</>}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -21,6 +21,13 @@ function ChooseBond() {
         return state.app.treasuryBalance;
     });
 
+    let marketPriceValue: string;
+    if (marketPrice === 0) {
+        marketPriceValue = "No data";
+    } else {
+        marketPriceValue = trim(marketPrice, 2) + "$";
+    }
+
     return (
         <div className="choose-bond-view">
             <Zoom in={true}>
@@ -50,8 +57,8 @@ function ChooseBond() {
 
                         <Grid item xs={12} sm={6}>
                             <Box textAlign="center">
-                                <p className="choose-bond-view-card-metrics-title">TIME Price</p>
-                                <p className="choose-bond-view-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trim(marketPrice, 2)}`}</p>
+                                <p className="choose-bond-view-card-metrics-title">QUAS Price</p>
+                                <p className="choose-bond-view-card-metrics-value">{isAppLoading ? <Skeleton width="100px" /> : `${marketPriceValue}`}</p>
                             </Box>
                         </Grid>
                     </Grid>

@@ -1,0 +1,358 @@
+{
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_depository",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_staking",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_treasury",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_quas",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_sQUAS",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_authority",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "authority",
+                    "type": "address"
+                }
+            ],
+            "name": "AuthorityUpdated",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "bonder",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "payout",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "expires",
+                    "type": "uint256"
+                }
+            ],
+            "name": "BondCreated",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "bonder",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "payout",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Redeemed",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "FERs",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "authority",
+            "outputs": [
+                {
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "bonderInfo",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "principal",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "principalPaid",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "payout",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "bonded",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "vested",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "created",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "redeemed",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "feReward",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getReward",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_bid",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_bonder",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_principal",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_principalPaid",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_payout",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_expires",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_feo",
+                    "type": "address"
+                }
+            ],
+            "name": "newBond",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_bonder",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_bid",
+                    "type": "uint256"
+                }
+            ],
+            "name": "payoutInfo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "lockedPayout",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "lockedStakingRewards",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "pendingPayout",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "pendingStakingRewards",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_bonder",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_bid",
+                    "type": "uint256"
+                }
+            ],
+            "name": "percentVestedFor",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "percentVested_",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_bonder",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_bid",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "_unstake",
+                    "type": "bool"
+                }
+            ],
+            "name": "redeem",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "contract IQuasarAuthority",
+                    "name": "_newAuthority",
+                    "type": "address"
+                }
+            ],
+            "name": "setAuthority",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "reward",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setFEReward",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ]
+}

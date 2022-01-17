@@ -1,35 +1,24 @@
 {
     "abi": [
         {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "chainId_",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "nonpayable",
-            "type": "constructor"
-        },
-        {
             "anonymous": false,
             "inputs": [
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "src",
+                    "name": "owner",
                     "type": "address"
                 },
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "guy",
+                    "name": "spender",
                     "type": "address"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "value",
                     "type": "uint256"
                 }
             ],
@@ -37,61 +26,24 @@
             "type": "event"
         },
         {
-            "anonymous": true,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "internalType": "bytes4",
-                    "name": "sig",
-                    "type": "bytes4"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "bytes32",
-                    "name": "arg1",
-                    "type": "bytes32"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "bytes32",
-                    "name": "arg2",
-                    "type": "bytes32"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "bytes",
-                    "name": "data",
-                    "type": "bytes"
-                }
-            ],
-            "name": "LogNote",
-            "type": "event"
-        },
-        {
             "anonymous": false,
             "inputs": [
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "src",
+                    "name": "from",
                     "type": "address"
                 },
                 {
                     "indexed": true,
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "to",
                     "type": "address"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "value",
                     "type": "uint256"
                 }
             ],
@@ -99,67 +51,15 @@
             "type": "event"
         },
         {
-            "inputs": [],
-            "name": "DOMAIN_SEPARATOR",
-            "outputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "",
-                    "type": "bytes32"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "PERMIT_TYPEHASH",
-            "outputs": [
-                {
-                    "internalType": "bytes32",
-                    "name": "",
-                    "type": "bytes32"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                }
-            ],
-            "name": "addAuth",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "_limit",
-                    "type": "uint256"
-                }
-            ],
-            "name": "adjustDailyDAILimit",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "account_",
+                    "name": "owner",
                     "type": "address"
                 },
                 {
                     "internalType": "address",
-                    "name": "sender_",
+                    "name": "spender",
                     "type": "address"
                 }
             ],
@@ -178,12 +78,12 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "usr_",
+                    "name": "spender",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad_",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -202,7 +102,7 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "",
+                    "name": "account",
                     "type": "address"
                 }
             ],
@@ -212,284 +112,6 @@
                     "internalType": "uint256",
                     "name": "",
                     "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "burn",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "daiMintedToday",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "dailyDAILimit",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "decimals",
-            "outputs": [
-                {
-                    "internalType": "uint8",
-                    "name": "",
-                    "type": "uint8"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "guy",
-                    "type": "address"
-                }
-            ],
-            "name": "deny",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "lastMintRestart",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "mint",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "src",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "dst",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "move",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "name",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "nonces",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "holder",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "spender",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "nonce",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "expiry",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "allowed",
-                    "type": "bool"
-                },
-                {
-                    "internalType": "uint8",
-                    "name": "v",
-                    "type": "uint8"
-                },
-                {
-                    "internalType": "bytes32",
-                    "name": "r",
-                    "type": "bytes32"
-                },
-                {
-                    "internalType": "bytes32",
-                    "name": "s",
-                    "type": "bytes32"
-                }
-            ],
-            "name": "permit",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "pull",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "usr",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "wad",
-                    "type": "uint256"
-                }
-            ],
-            "name": "push",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "guy",
-                    "type": "address"
-                }
-            ],
-            "name": "rely",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "symbol",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
                 }
             ],
             "stateMutability": "view",
@@ -512,12 +134,12 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "recipient",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -536,17 +158,17 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "src",
+                    "name": "sender",
                     "type": "address"
                 },
                 {
                     "internalType": "address",
-                    "name": "dst",
+                    "name": "recipient",
                     "type": "address"
                 },
                 {
                     "internalType": "uint256",
-                    "name": "wad",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -559,38 +181,6 @@
                 }
             ],
             "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "version",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "wards",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
             "type": "function"
         }
     ]

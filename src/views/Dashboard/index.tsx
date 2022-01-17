@@ -10,7 +10,26 @@ function Dashboard() {
     const isAppLoading = useSelector<IReduxState, boolean>(state => state.app.loading);
     const app = useSelector<IReduxState, IAppSlice>(state => state.app);
 
-    const trimmedStakingAPY = trim(app.stakingAPY * 100, 1);
+    let apy: string;
+    if (isNaN(app.stakingAPY) || app.stakingAPY === 0) {
+        apy = "No data";
+    } else {
+        apy = new Intl.NumberFormat("en-US").format(Number(trim(app.stakingAPY * 100, 1))) + "%";
+    }
+
+    let quasPrice: string;
+    if (isNaN(app.marketPrice) || app.marketPrice === 0) {
+        quasPrice = "No data";
+    } else {
+        quasPrice = trim(app.marketPrice, 2);
+    }
+
+    // let runway: string;
+    // if (isNaN(app.runway)) {
+    //     runway = "No data";
+    // } else {
+    //     runway = trim(Number(app.runway), 1) + " Days";
+    // }
 
     return (
         <div className="dashboard-view">
@@ -20,7 +39,7 @@ function Dashboard() {
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">QUAS Price</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="100px" /> : `$${trim(app.marketPrice, 2)}`}</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="100px" /> : `${quasPrice}`}</p>
                             </div>
                         </Grid>
 
@@ -84,14 +103,14 @@ function Dashboard() {
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">APY</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${new Intl.NumberFormat("en-US").format(Number(trimmedStakingAPY))}%`}</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${apy}`}</p>
                             </div>
                         </Grid>
 
                         <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">Current Index</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)} TIME`}</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.currentIndex), 2)}`}</p>
                             </div>
                         </Grid>
 
@@ -131,12 +150,12 @@ function Dashboard() {
                             </div>
                         </Grid>
 
-                        <Grid item lg={6} md={6} sm={6} xs={12}>
+                        {/* <Grid item lg={6} md={6} sm={6} xs={12}>
                             <div className="dashboard-card">
                                 <p className="card-title">Runway</p>
-                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${trim(Number(app.runway), 1)} Days`}</p>
+                                <p className="card-value">{isAppLoading ? <Skeleton width="250px" /> : `${runway}`}</p>
                             </div>
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                 </Zoom>
             </div>

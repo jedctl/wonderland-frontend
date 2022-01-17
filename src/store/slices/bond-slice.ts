@@ -146,7 +146,7 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
         const maxBondQuote = await bondContract.payoutFor(maxValuation, bond.bid);
         maxBondPriceToken = maxBondPrice / (maxBondQuote * Math.pow(10, -9));
     } else {
-        bondQuote = await bondContract.payoutFor(amountInWei);
+        bondQuote = await bondContract.payoutFor(amountInWei, bond.bid);
         bondQuote = bondQuote / Math.pow(10, 18);
 
         const maxBondQuote = await bondContract.payoutFor(maxBodValue, bond.bid);
@@ -200,7 +200,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
     const signer = provider.getSigner();
     const bondContract = bond.getBondContract(networkID, signer);
 
-    const calculatePremium = await bondContract.bondPrice();
+    const calculatePremium = await bondContract.bondPrice(bond.bid);
     const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
 
     const addresses = getAddresses(networkID);
@@ -254,14 +254,14 @@ export const redeemBond = createAsyncThunk("bonding/redeemBond", async ({ addres
     }
 
     const signer = provider.getSigner();
-    //TODO: migration to v2
-    const bondContract = bond.getBondContract(networkID, signer);
+    const tellerContract = bond.getTellerContract(networkID, signer);
 
     let redeemTx;
     try {
         const gasPrice = await getGasPrice(provider);
 
-        redeemTx = await bondContract.redeem(address, autostake === true, { gasPrice });
+        //TODO: autostake
+        redeemTx = await tellerContract.redeem(address, bond.bid, !autostake, { gasPrice });
         const pendingTxnType = "redeem_bond_" + bond.name + (autostake === true ? "_autostake" : "");
         dispatch(
             fetchPendingTxns({

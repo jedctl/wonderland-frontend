@@ -84,37 +84,24 @@ function BondRedeem({ bond }: IBondRedeem) {
 
             <Slide direction="right" in={true} mountOnEnter unmountOnExit {...{ timeout: 533 }}>
                 <Box className="bond-data">
-                    {!bond.isIDO && (
-                        <div className="data-row">
-                            <p className="bond-balance-title">Pending Rewards</p>
-                            <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.interestDue, 4)} QUAS`}</p>
-                        </div>
-                    )}
-
-                    {bond.isIDO && (
-                        <div className="data-row">
-                            <p className="bond-balance-title">Locked payout</p>
-                            <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedRewards, 4)} QUAS`}</p>
-                        </div>
-                    )}
-
-                    {bond.isIDO && (
-                        <div className="data-row">
-                            <p className="bond-balance-title">Locked staking rewards</p>
-                            <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedStakingRewards, 4)} QUAS`}</p>
-                        </div>
-                    )}
-
-                    {bond.isIDO && (
-                        <div className="data-row">
-                            <p className="bond-balance-title">Locked total</p>
-                            <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedTotal, 4)} QUAS`}</p>
-                        </div>
-                    )}
+                    <div className="data-row">
+                        <p className="bond-balance-title">Claimable</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.pendingTotal, 4)} QUAS`}</p>
+                    </div>
 
                     <div className="data-row">
-                        <p className="bond-balance-title">Claimable Rewards</p>
-                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.pendingPayout, 4)} QUAS`}</p>
+                        <p className="bond-balance-title">Locked payout</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedRewards, 4)} QUAS`}</p>
+                    </div>
+
+                    <div className="data-row">
+                        <p className="bond-balance-title">Locked staking rewards</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedStakingRewards, 4)} QUAS`}</p>
+                    </div>
+
+                    <div className="data-row">
+                        <p className="bond-balance-title">Locked total</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.lockedTotal, 4)} QUAS`}</p>
                     </div>
 
                     {bond.isIDO && (
@@ -123,11 +110,6 @@ function BondRedeem({ bond }: IBondRedeem) {
                             <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${trim(bond.claimedRewards, 4)} QUAS`}</p>
                         </div>
                     )}
-
-                    <div className="data-row">
-                        <p className="bond-balance-title">Time until {bond.isIDO ? "unlock" : "fully vested"}</p>
-                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingTime()}</p>
-                    </div>
 
                     {!bond.isIDO && (
                         <div className="data-row">
@@ -141,6 +123,11 @@ function BondRedeem({ bond }: IBondRedeem) {
                             <p className="bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingPeriod()}</p>
                         </div>
                     )}
+
+                    <div className="data-row">
+                        <p className="bond-balance-title">Time until {bond.isIDO ? "unlock" : "fully vested"}</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : vestingTime()}</p>
+                    </div>
                 </Box>
             </Slide>
         </Box>

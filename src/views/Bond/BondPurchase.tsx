@@ -111,6 +111,8 @@ function BondPurchase({ bond, slippage, recipientAddress }: IBondPurchaseProps) 
 
     const displayUnits = useAvax ? "AVAX" : bond.displayUnits;
 
+    const quantityOrZero = quantity ? quantity : 0;
+
     return (
         <Box display="flex" flexDirection="column">
             <Box display="flex" justifyContent="space-around" flexWrap="wrap">
@@ -183,6 +185,11 @@ function BondPurchase({ bond, slippage, recipientAddress }: IBondPurchaseProps) 
                                 </>
                             )}
                         </p>
+                    </div>
+
+                    <div className="data-row">
+                        <p className="bond-balance-title">You Pay</p>
+                        <p className="price-data bond-balance-title">{isBondLoading ? <Skeleton width="100px" /> : `${quantityOrZero} ${bond.bondToken}`}</p>
                     </div>
 
                     <div className="data-row">

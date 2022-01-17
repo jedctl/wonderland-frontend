@@ -23,36 +23,47 @@ export const loadAppDetails = createAsyncThunk(
         const stakingContract = new ethers.Contract(addresses.STAKING_ADDRESS, StakingContract, provider);
         const currentBlock = await provider.getBlockNumber();
         const currentBlockTime = (await provider.getBlock(currentBlock)).timestamp;
-        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
-        const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
+        const squasContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
+        const quasContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
 
         const marketPrice = ((await getMarketPrice(networkID, provider)) / Math.pow(10, 9)) * mimPrice;
 
-        const totalSupply = (await timeContract.totalSupply()) / Math.pow(10, 9);
-        const circSupply = (await memoContract.circulatingSupply()) / Math.pow(10, 9);
+        const totalSupply = (await quasContract.totalSupply()) / Math.pow(10, 9);
+        const circSupply = (await squasContract.circulatingSupply()) / Math.pow(10, 9);
 
         const stakingTVL = circSupply * marketPrice;
         const marketCap = totalSupply * marketPrice;
 
         const tokenBalPromises = allBonds.map(bond => bond.getTreasuryBalance(networkID, provider));
         const tokenBalances = await Promise.all(tokenBalPromises);
-        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1);
+        const treasuryBalance = tokenBalances.reduce((tokenBalance0, tokenBalance1) => tokenBalance0 + tokenBalance1, 0);
 
         const tokenAmountsPromises = allBonds.map(bond => bond.getTokenAmount(networkID, provider));
         const tokenAmounts = await Promise.all(tokenAmountsPromises);
-        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1);
+        const rfvTreasury = tokenAmounts.reduce((tokenAmount0, tokenAmount1) => tokenAmount0 + tokenAmount1, 0);
 
-        const timeBondsAmountsPromises = allBonds.map(bond => bond.getTimeAmount(networkID, provider));
-        const timeBondsAmounts = await Promise.all(timeBondsAmountsPromises);
-        const timeAmount = timeBondsAmounts.reduce((timeAmount0, timeAmount1) => timeAmount0 + timeAmount1, 0);
-        const timeSupply = totalSupply - timeAmount;
+        const quasBondsAmountsPromises = allBonds.map(bond => bond.getQuasAmount(networkID, provider));
+        const quasBondsAmounts = await Promise.all(quasBondsAmountsPromises);
+        const quasAmount = quasBondsAmounts.reduce((quasAmount0, quasAmount1) => quasAmount0 + quasAmount1, 0);
+        const timeSupply = totalSupply - quasAmount;
 
-        const rfv = rfvTreasury / timeSupply;
+        let rfv: number;
+        if (timeSupply === 0) {
+            rfv = 0;
+        } else {
+            rfv = rfvTreasury / timeSupply;
+        }
 
         const epoch = await stakingContract.epoch();
         const stakingReward = epoch.distribute;
-        const circ = await memoContract.circulatingSupply();
-        const stakingRebase = stakingReward / circ;
+        const circ = await squasContract.circulatingSupply();
+
+        let stakingRebase: number;
+        if (circ.isZero()) {
+            stakingRebase = 0;
+        } else {
+            stakingRebase = stakingReward / circ;
+        }
         const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;
         const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
 
@@ -63,7 +74,7 @@ export const loadAppDetails = createAsyncThunk(
         const runway = Math.log(treasuryRunway) / Math.log(1 + stakingRebase) / 3;
 
         return {
-            currentIndex: Number(ethers.utils.formatUnits(currentIndex, "gwei")) / 4.5,
+            currentIndex: Number(ethers.utils.formatUnits(currentIndex, "gwei")),
             totalSupply,
             marketCap,
             currentBlock,
