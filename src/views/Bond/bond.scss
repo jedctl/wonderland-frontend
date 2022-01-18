@@ -6,9 +6,8 @@
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .MuiBackdrop-root {
-      background: rgba(100, 100, 100, 0.1) !important;
-      backdrop-filter: blur(33px) !important;
-      -webkit-backdrop-filter: blur(33px) !important;
+      padding: 20px 100px;
+      background-color: inherit;
     }
   }
 
@@ -20,27 +19,34 @@
   }
 
   .bond-card {
-    max-width: 803px;
-    min-height: 605px;
-    background: #181B1C;
-    backdrop-filter: blur(100px);
-    border-radius: 10px;
+    max-width: 660px;
+    height: 100%; 
+    overflow: auto;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
     padding: 20px;
     width: 100%;
+    max-height: 670px;
   }
 
   .bond-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    .bond-settings path{
+      fill: #E988EB;
+    }
     .bond-header-logo {
       justify-content: center;
       align-items: center;
       text-align: center;
       display: flex;
       flex-direction: row;
-
+      position: relative;
+      top: 24px;
+      .MuiBox-root{
+        height: 32px;
+      }
       .ohm-logo-bg {
         height: 40px !important;
         width: 40px !important;
@@ -51,35 +57,49 @@
       .bond-header-name {
         text-align: center;
         margin-left: 10px;
-
         font-family: Montserrat SemiBold;
         font-style: normal;
         font-weight: 600;
-        font-size: 18px;
-        color: #FFFFFF;
+        font-size: 1.5rem;
+      }
+    }
+    .cancel-bond{
+      position: relative;
+      width: 15px;
+      height: 15px;
+      &::after,  &::before{
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 2px;
+        top: 0;
+        left: 0;
+      }
+      &::after{
+        transform: rotate(45deg);
+      }
+      &::before{
+        transform: rotate(-45deg);
       }
     }
   }
 
   .bond-data {
-    margin: 10px 0 0 0;
+    margin: 20px 0 0 100px;
   }
 
   .bond-price-data {
     .bond-price-data-title {
       font-family: Montserrat Medium;
       font-weight: 500;
-      font-size: 20px;
-      line-height: 24px;
-      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.125rem;
     }
 
     .bond-price-data-value {
       font-family: Montserrat Bold;
       font-weight: bold;
-      font-size: 24px;
-      line-height: 29px;
-      color: #FFFFFF;
+      font-size: 1.125rem;
     }
   }
 
@@ -87,7 +107,7 @@
     display: flex;
     justify-content: space-around;
     text-align: center;
-    margin: 23px;
+    margin:80px 23px 23px 23px;
 
     h4 {
       margin-bottom: 0;
@@ -126,10 +146,8 @@
 
 
   .transaction-button {
-    min-width: 185px !important;
     max-width: 408px;
     width: 100%;
-    margin: 5px !important;
   }
 
 
@@ -137,9 +155,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    margin: 40px 0 0 0;
     .bond-one-table-btn{
-      margin: 0 20px;
+      position: relative;
+      margin: 0 50px;
       cursor: pointer;
       transition: all .4s ease;
 
@@ -147,42 +166,45 @@
         font-family: Montserrat SemiBold;
         font-style: normal;
         font-weight: 600;
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.875rem;
+        color: #9A9A9A;
       }
     }
 
-    .bond-one-table-btn.active{
-      border-bottom: 1px solid #FFFFFF;
-
-      p{
-        color: #FFFFFF;
-      }
+    .bond-one-table-btn.active::before{
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 2px;
+      left: -20%;
+      bottom: -4px;
     }
   }
-
+  .block-input-but{
+    flex-direction: column;
+    align-items: center;
+  }
   .bond-input-wrap{
     min-width: 50%;
-    max-width: 408px;
+    max-width: 95%;
   }
-
+  
   .bond-input {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: none;
     border-radius: 10px;
     outline: none;
-    margin-bottom: 20px;
-
+    margin-bottom: 20px;box-shadow: inset 6px 6px 4px #0D0D0D, inset -6px -6px 4px #222222;
+    margin-top: 10px;
     .MuiOutlinedInput-input {
       font-family: Montserrat Medium;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
-      color: rgba(255, 255, 255, 0.6);
+      color: #E988EB;
     }
 
     .MuiOutlinedInput-notchedOutline {
-      border-color: rgba(255, 255, 255, 0.2) !important;
+      border:none;
     }
 
     .stake-input-btn {
@@ -192,27 +214,25 @@
         font-family: Montserrat SemiBold;
         font-weight: 600;
         font-size: 18px;
-        color: #FFFFFF;
+        color: #E988EB;
       }
     }
   }
 
   .bond-approve-btn {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
     border-radius: 10px;
-    
-    height: 58px;
+    width: 142px;
+    height: 37px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transition: 0.3s ease;
     p {
       font-family: Montserrat SemiBold;
       font-weight: 600;
-      font-size: 18px;
-      color: #FFFFFF;
+      font-size: 0.875rem;
+      color: #E988EB;
       text-align: center;
     }
   }
@@ -222,10 +242,11 @@
 
     .help-text-desc {
       font-family: Montserrat Light;
+      max-width: 420px;
       font-weight: 300;
-      font-size: 14px;
+      font-size: 0.75rem;
       text-align: center;
-      color: rgba(255, 255, 255, 0.6);
+      color: #969696;
     }
   }
 
@@ -271,13 +292,102 @@
     }
   }
 }
-
-@media screen and (max-width: 417px) {
-  .bond-price-data-title {
-    font-size: 17px !important;
+.bond-card {
+  .redeem-claims{
+    flex-direction: column;
+    align-items: center;
+    margin: 16px 0 0 0;
+    .bond-approve-btn{
+      width: auto;
+      padding: 10px 40px;
+      margin: 10px 0;
+      border: none;
+    }
   }
-
-  .bond-price-data-value {
-    font-size: 19px !important;
+}
+@media(max-width: 1240px){
+  .bond-view .bond-header .bond-header-logo .bond-header-name{
+    font-size: 1.2rem;
+  }
+  .bond-view .bond-price-data .bond-price-data-title {
+    font-size: 1rem;
+  }
+  .bond-view .bond-price-data .bond-price-data-value{
+    font-size: 1rem;
+  }
+}
+@media (max-width: 780px){
+  .bond-view .bond-header .bond-header-logo{
+    top: 0;
+  }
+  .bond-view .bond-price-data-row{
+    flex-direction: column;
+    margin: 48px 23px 23px 40px;
+  }
+  .bond-view .bond-price-data-row .bond-price-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    margin: 10px 0 0 0;
+  }
+  .bond-view .bond-price-data .bond-price-data-value {
+    margin: 0 0 0 20px;
+  }
+}
+@media(max-width:750px){
+  .bond-view .bond-data {
+    margin: 20px 0 0 50px;
+  }
+  .bond-view .bond-input{
+    margin-top: 0;
+  }
+  .bond-view .bond-input .MuiOutlinedInput-input{
+    padding: 13px 12px;
+    font-size: 0.875rem;
+  }
+  .bond-view .bond-input .stake-input-btn p{
+    font-size: 0.875rem;
+  }
+}
+@media(max-width: 650px){
+  .bond-view .bond-header .bond-header-logo .bond-header-name{
+    font-size: 1rem;
+  }
+  .bond-view .bond-price-data .bond-price-data-title {
+    font-size: 0.875rem;
+  }
+  .bond-view .bond-price-data .bond-price-data-value{
+    font-size: 0.875rem;
+  }
+  .bond-view .bond-approve-btn p{
+    font-size: 0.75rem;
+  }
+  .bond-view .price-data, .bond-view .bond-balance-title:last-child{
+    margin: 0 0 0 50px;
+  }
+}
+@media(max-width:600px){
+  .bond-view .bond-data {
+    margin: 20px 0 0 0;
+  }
+}
+@media(max-width:420px){
+  .bond-view .bond-price-data-row {
+    flex-direction: column;
+    margin: 48px 20px 23px 20px;
+  }
+}
+@media(max-width:400px){
+  .bond-view .bond-card{
+    padding: 16px;
+  }
+  .bond-view .bond-one-table .bond-one-table-btn {
+    margin: 0 30px;
+  }
+  .bond-view .help-text .help-text-desc{
+    line-height: 14px;
+  }
+  .bond-view .price-data, .bond-view .bond-balance-title:last-child{
+    margin: 0 0 0 10px;
   }
 }

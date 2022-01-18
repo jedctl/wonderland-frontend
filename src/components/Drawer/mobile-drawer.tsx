@@ -27,7 +27,7 @@ function NavDrawer({ mobileOpen, handleDrawerToggle }: INavDrawer) {
     return (
         <Drawer
             variant="temporary"
-            anchor="left"
+            anchor="right"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             onClick={handleDrawerToggle}

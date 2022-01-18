@@ -115,7 +115,7 @@ function BondPurchase({ bond, slippage, recipientAddress }: IBondPurchaseProps) 
 
     return (
         <Box display="flex" flexDirection="column">
-            <Box display="flex" justifyContent="space-around" flexWrap="wrap">
+            <Box className="block-input-but" display="flex" justifyContent="space-around" flexWrap="wrap">
                 {bond.name === "wavax" && (
                     <FormControl className="ohm-input" variant="outlined" color="primary" fullWidth>
                         <div className="avax-checkbox">

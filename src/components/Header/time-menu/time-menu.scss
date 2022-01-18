@@ -1,27 +1,37 @@
 .time-menu-root{
+  margin-right: 90px;
+  position: relative;
   .time-menu-btn{
-    padding: 9px 20px;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+    padding: 10px 40px;
+    border: 1px solid #3B223C;
+    box-sizing: border-box;
     border-radius: 10px;
     cursor: pointer;
-    margin-right: 20px;
-
+    transition: 0.3s ease;
     p{
       font-family: Montserrat SemiBold;
       font-weight: 600;
-      font-size: 18px;
-      color: #FFFFFF;
+      font-size: 1rem;
+      color: #E988EB;
+    }
+    .img-token{
+      display: none;
     }
   }
 }
 
 .time-menu-popper{
   margin-top: 10px;
-
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  display: block;
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(100px);
+    background: rgba(28, 28, 28, 0.9);
+    border: 1px solid rgba(233, 136, 235, 0.25);
+    box-shadow: 4px 4px 4px #090909, -4px -4px 4px #2C2C2C;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
   }
 
   /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
@@ -36,24 +46,25 @@
   .tooltip{
     display: flex;
     flex-direction: column;
-
+    transition: 0.3s ease !important;
+    width: 420px;
+    padding: 20px;
     .tooltip-item{
       text-decoration: none;
       padding: 13px 20px;
       cursor: pointer;
 
-      &:hover{
-          background: rgba(255,255,255,0.1);
+      &:hover p{
+        color: #E988EB;
       }
 
       p{
-          font-family: Montserrat SemiBold;
+          font-family: Roboto;
           font-style: normal;
           font-weight: 600;
-          font-size: 16px;
+          font-size: 1.125rem;
           line-height: 20px;
-          color: #FFFFFF;
-          text-align: center;
+          transition: 0.4s ease;
       }
     }
 
@@ -74,9 +85,47 @@
     }
 
     .divider{
-      height: 1px;
+      width: 90%;
+      height: 3px;
+      position: relative;
+      left: 5%;
       background: #FFFFFF;
       border: none;
+      box-shadow: inset 2px 2px 2px #dbdbdb;
+    }
+  }
+}
+
+
+@media(max-width:1350px){
+  .time-menu-popper .tooltip{
+    width: 350px;
+  }
+  .time-menu-root{
+    margin-right: 50px;
+  }
+}
+@media(max-width:1240px){
+  .time-menu-popper .tooltip .tooltip-item p{
+    font-size: 1rem;
+  }
+}
+@media(max-width:780px){
+  .time-menu-popper .tooltip .tooltip-item {
+    padding: 8px 20px;
+  }
+  .time-menu-popper .tooltip .tooltip-item p{
+    font-size: 0.875rem;
+  }
+  .time-menu-popper .tooltip{
+    width: 300px;
+  }
+  .time-menu-root{
+    margin-right: 0px;
+    margin-left: 50px;
+    order: 1;
+    .time-menu-btn{
+      padding: 4px 10px;
     }
   }
 }

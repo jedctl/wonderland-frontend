@@ -126,7 +126,7 @@ function Stake() {
                     <Grid className="stake-card-grid" container direction="column" spacing={2}>
                         <Grid item>
                             <div className="stake-card-header">
-                                <p className="stake-card-header-title">Staking (3,3)</p>
+                                <p className="stake-card-header-title">$QUAS staking</p>
                                 <RebaseTimer />
                             </div>
                         </Grid>
@@ -168,20 +168,20 @@ function Stake() {
                         <div className="stake-card-area">
                             {!address && (
                                 <div className="stake-card-wallet-notification">
+                                    <p className="stake-card-wallet-desc-text">Connect yout wallet to stake QUAS tokens</p>
                                     <div className="stake-card-wallet-connect-btn" onClick={connect}>
-                                        <p>Connect Wallet</p>
+                                        Connect Wallet
                                     </div>
-                                    <p className="stake-card-wallet-desc-text">Connect your wallet to stake QUAS tokens!</p>
                                 </div>
                             )}
                             {address && (
                                 <div>
                                     <div className="stake-card-action-area">
                                         <div className="stake-card-action-stage-btns-wrap">
-                                            <div onClick={changeView(0)} className={classnames("stake-card-action-stage-btn", { active: !view })}>
+                                            <div onClick={changeView(0)} className={classnames("stake-card-action-stage-btn stakeDD", { active: !view })}>
                                                 <p>Stake</p>
                                             </div>
-                                            <div onClick={changeView(1)} className={classnames("stake-card-action-stage-btn", { active: view })}>
+                                            <div onClick={changeView(1)} className={classnames("stake-card-action-stage-btn unStakeDD", { active: view })}>
                                                 <p>Unstake</p>
                                             </div>
                                         </div>

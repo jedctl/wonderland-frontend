@@ -61,7 +61,7 @@ function BondRedeem({ bond }: IBondRedeem) {
 
     return (
         <Box display="flex" flexDirection="column">
-            <Box display="flex" justifyContent="space-around" flexWrap="wrap">
+            <Box className="redeem-claims" display="flex" justifyContent="space-around" flexWrap="wrap">
                 <div
                     className="transaction-button bond-approve-btn"
                     onClick={() => {

@@ -5,10 +5,10 @@ import { Link, Fade, Popper } from "@material-ui/core";
 import "./time-menu.scss";
 import { IReduxState } from "../../../store/slices/state.interface";
 import { getTokenUrl } from "../../../helpers";
+import { ReactComponent as TokenMob } from "../../../assets/tokens/token-by-mobile.svg";
 
 const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async () => {
-    // const tokenImage = getTokenUrl(tokenSymbol.toLowerCase());
-    // TODO: fixup image
+    const tokenImage = getTokenUrl(tokenSymbol.toLowerCase());
 
     if (window.ethereum) {
         try {
@@ -20,7 +20,7 @@ const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async ()
                         address: tokenAddress,
                         symbol: tokenSymbol,
                         decimals: TOKEN_DECIMALS,
-                        // image: tokenImage,
+                        image: tokenImage,
                     },
                 },
             });
@@ -30,7 +30,7 @@ const addTokenToWallet = (tokenSymbol: string, tokenAddress: string) => async ()
     }
 };
 
-function QuasMenu() {
+function TimeMenu() {
     const [anchorEl, setAnchorEl] = useState(null);
     const isEthereumAPIAvailable = window.ethereum;
 
@@ -52,27 +52,32 @@ function QuasMenu() {
     return (
         <div className="time-menu-root" onMouseEnter={e => handleClick(e)} onMouseLeave={e => handleClick(e)}>
             <div className="time-menu-btn">
-                <p>QUAS</p>
+                <p>Buy $QUAS</p>
+                <TokenMob className="img-token" />
             </div>
 
             <Popper className="time-menu-popper" open={open} anchorEl={anchorEl} transition>
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
-                            <Link className="tooltip-item" href={`https://app.sushi.com/swap?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
-                                <p>Buy on SushiSwap</p>
+                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
+                                <p>Buy QUAS on Uniswap</p>
+                            </Link>
+                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
+                                <p>Buy QUAS on Sushiswap</p>
+                            </Link>
+                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
+                                <p>Wrap sQUAS</p>
                             </Link>
 
                             {isEthereumAPIAvailable && (
                                 <div className="add-tokens">
                                     <div className="divider" />
-                                    <p className="add-tokens-title">ADD TOKEN TO WALLET</p>
-                                    <div className="divider" />
-                                    <div className="tooltip-item" onClick={addTokenToWallet("QUAS", QUAS_ADDRESS)}>
-                                        <p>QUAS</p>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("TIME", QUAS_ADDRESS)}>
+                                        <p>TIME</p>
                                     </div>
-                                    <div className="tooltip-item" onClick={addTokenToWallet("sQUAS", SQUAS_ADDRESS)}>
-                                        <p>sQUAS</p>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("MEMO", SQUAS_ADDRESS)}>
+                                        <p>MEMO</p>
                                     </div>
                                 </div>
                             )}
@@ -84,4 +89,4 @@ function QuasMenu() {
     );
 }
 
-export default QuasMenu;
+export default TimeMenu;

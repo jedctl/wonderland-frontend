@@ -1,32 +1,38 @@
+
+.makeStyles-content-2{
+  overflow: hidden !important;
+}
 .dashboard-view {
+  margin-left: 230px;
+  padding: 8 !important;
+  border-radius: 10px;
+  margin-top: 42px;
+  transition: 0.3s ease;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-
-  width: 89%;
-  max-width: 833px;
-  margin: auto;
-
+  
   .dashboard-infos-wrap{
+    .MuiGrid-container{
+      justify-content: center;
+      padding: 60px;
+    }
+    .MuiGrid-item{
+      max-width: 350px;
+    }
     .dashboard-card{
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-
       position: relative;
       z-index: 2;
-      
-      @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-        background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(100px);
-      }
-    
       /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
       @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-        background: #181B1C;
+        background: #141616;
       }
 
       border-radius: 10px;
@@ -35,8 +41,7 @@
       .card-title {
         font-family: Montserrat Medium;
         font-weight: 500;
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.125rem;
       }
   
       .card-value {
@@ -44,8 +49,64 @@
         font-weight: bold;
         font-size: 24px;
         font-weight: bold;
-        color: #FFFFFF;
+        color: #92EADA;
       }
     }
+  }
+}
+
+@media(max-width:1240px){
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-title{
+    font-size: 1rem;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    font-size: 1.2rem;
+  }
+}
+@media(max-width:959px){
+  .dashboard-view{
+    margin-left: 0 ;
+    margin-top: 25px;
+  }
+}
+@media(max-width:780px){
+  .dashboard-view{
+    display: block;
+  }
+  .MuiGrid-container{
+    flex-direction: column;
+  }
+  .dashboard-view .dashboard-infos-wrap .MuiGrid-container{
+    padding: 24px 36px 30px 36px;
+  }
+  .dashboard-view .dashboard-infos-wrap .MuiGrid-item{
+    width: 100%;
+    max-width: 100%;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media(max-width:650px){
+  .MuiGrid-spacing-xs-4 > .MuiGrid-item{
+    padding: 0 !important;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-title{
+    font-size: 0.875rem;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    font-size: 0.875rem;
+    margin: 0 0 0 50px;
+  }
+}
+@media(max-width:420px){
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    margin: 0 0 0 30px;
+  }
+}
+@media(max-width:350px){
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    margin: 0 0 0 12px;
   }
 }

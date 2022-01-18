@@ -1,32 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+:root {
+  --montserrat: 'Montserrat', sans-serif;
+}
+
+.makeStyles-topBar-5{
+  margin-left:0 !important;
+}
+.makeStyles-appBar-4{
+  padding: 20px 20px 30px 20px !important;
+}
+.container{
+  width: 100%;
+  margin: 0 auto;
+}
 .dapp-topbar {
-  width: 89%;
-  max-width: 833px;
+  width: 100%;
   align-items: center;
   margin: auto;
-
-  .dapp-topbar-slider-btn{
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
-    border-radius: 10px;
-    padding: 10px;
+  position: relative;
+  .container{
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-right: 16px;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1920px;
+    padding: 40px 0px;
+    .logo{
+      .logo-mobile{
+        display: none;
+      }
+    }
   }
-
+  .left-block-menu{
+    display: flex;
+    align-items: center;
+  }
+  .wallet-and-token{
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    .wallet-cs{
+      display: flex;
+      align-items: center;
+      
+      .wallet-cs-score{
+        font-size: 1rem;
+        margin: 0 0 0 10px;
+        font-family: var(--montserrat);
+      }
+    }
+    .token-cs{
+      display: flex;
+      align-items: center;
+      margin-left: 80px;
+      .token-cs-rate{
+        font-size: 1rem;
+        margin: 0 0 0 10px;
+        font-family: var(--montserrat);
+      }
+    }
+  }
   .dapp-topbar-btns-wrap{
     display: flex;
     align-items: center;
     margin-left: auto;
   }
 }
+.dapp-topbar::after{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 200%;
+  left: -50%;
+  height: 5px;
+  transform: rotate(360deg);
+  transition: .3s ease;
+}
+.dapp-topbar-slider-btn{
+  display: none;
+}
+.burger{
+  width: 40px;
+  height: 25px;
+  position: relative;
+  display: none;
+  .burger-center-line{
+    position: absolute;
+    display: inline-block;
+    top: 40%;
+    width: 100%;
+    height: 5px;
+    transition: 0.2s ease;
+  }
+}
+.burger::before{
+  top: 0;
+}
+.burger::after{
+  bottom: 0;
+}
+.burger::after, .burger::before{
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 96%;
+  height: 3px;
+  transition: 0.3s ease;
+}
+.burger.active{
+  .burger-center-line{
+    top: 13%;
+    width: 95%;
+    z-index: 1;
+    transform: rotate(-45deg);
+    border: none;
+    box-shadow: none;
+    height: 2px;
+  }
+}
+.burger.active::before{
+  transform: rotate(-45deg);
+}
+.burger.active::after{
+  transform: rotate(45deg);
+  bottom: 80%;
+}
 
-@media screen and (min-width: 960px) {
+
+
+@media screen and (max-width: 1350px) {
+  .dapp-topbar .wallet-and-token .token-cs{
+    margin-left: 50px;
+  }
+}
+@media(max-width:1180px){
+  .dapp-topbar .wallet-and-token{
+    display: none;
+  }
+}
+@media screen and (max-width: 959px) {
+  #root.active{
+    overflow: hidden;
+  }
+  .dapp-topbar .container{
+    padding: 24px 0;
+  }
+  .dapp-topbar-slider-btn{
+    display: block;
+  }
+  .burger{
+    display: block;
+  }
+  .burger.active{
+    z-index: 1301;
+  }
   .dapp-topbar{
-    .dapp-topbar-slider-btn{
-      display: none;
+    .container{
+      .logo{
+        svg{
+          display: none;
+        }
+        .logo-mobile{
+          display: block;
+        }
+      }
     }
+  }
+}
+@media screen and (max-width: 780px) {
+  .dapp-topbar .container{
+    padding: 18px 0;
+  }
+  .time-menu-root .time-menu-btn p{
+    display: none;
+  }
+  .time-menu-root .time-menu-btn .img-token{
+    display: block;
   }
 }

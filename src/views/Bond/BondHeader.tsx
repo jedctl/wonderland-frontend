@@ -36,9 +36,12 @@ function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange
 
     return (
         <div className="bond-header">
-            <Link component={NavLink} to="/bonds" className="cancel-bond">
-                <SvgIcon color="primary" component={XIcon} />
-            </Link>
+            <div className="bond-settings">
+                <IconButton onClick={handleOpen}>
+                    <SvgIcon color="primary" component={SettingsIcon} />
+                </IconButton>
+                <AdvancedSettings open={open} handleClose={handleClose} slippage={slippage} onSlippageChange={onSlippageChange} />
+            </div>
 
             {!bond.isIDO && (
                 <div className="bond-header-logo">

@@ -26,14 +26,11 @@ function AdvancedSettings({ open, handleClose, slippage, recipientAddress, onRec
     return (
         <Modal id="hades" open={open} onClose={handleClose} hideBackdrop>
             <Paper className="ohm-card ohm-popover">
-                <div className="cross-wrap">
-                    <IconButton onClick={handleClose}>
-                        <SvgIcon color="primary" component={XIcon} />
-                    </IconButton>
+                <div className="header-setting">
+                    <div></div>
+                    <p className="hades-title">Settings</p>
+                    <div onClick={handleClose} className="cross-wrap"></div>
                 </div>
-
-                <p className="hades-title">Settings</p>
-
                 <Box className="card-content">
                     <InputLabel htmlFor="slippage">
                         <p className="input-lable">Slippage</p>
@@ -56,12 +53,13 @@ function AdvancedSettings({ open, handleClose, slippage, recipientAddress, onRec
                             <p className="text-bond-desc">Transaction may revert if price changes by more than slippage %</p>
                         </div>
                     </FormControl>
-
-                    <InputLabel htmlFor="recipient">
+                </Box>
+                <Box className="card-content">
+                    <InputLabel htmlFor="Recipient">
                         <p className="input-lable">Recipient Address</p>
                     </InputLabel>
                     <FormControl variant="outlined" color="primary" fullWidth>
-                        <OutlinedInput className="bond-input" id="recipient" value={recipientAddress} onChange={onRecipientAddressChange} type="text" />
+                        <OutlinedInput fullWidth className="bond-input" id="slippage" value={recipientAddress} onChange={onRecipientAddressChange} />
                         <div className="help-text">
                             <p className="text-bond-desc">Choose recipient address. By default, this is your currently connected address</p>
                         </div>

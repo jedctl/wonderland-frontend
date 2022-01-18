@@ -9,24 +9,43 @@ import { IAllBondData } from "../../hooks/bonds";
 interface IBondProps {
     bond: IAllBondData;
 }
+function sdf() {
+    let accordion = document.querySelectorAll(".choose-bond-view .choose-bond-view-card-container .bond-data-card");
+    accordion.forEach(buttonItem => {
+        buttonItem.addEventListener("click", function (e) {
+            buttonItem.classList.add("active");
+            const elementD = e.currentTarget as HTMLTextAreaElement;
+            const butElem = elementD?.querySelector(".close-block-bond");
+            butElem?.addEventListener("click", function (event) {
+                buttonItem.classList.remove("active");
+                event.stopPropagation();
+            });
+        });
+    });
+}
 
 export function BondDataCard({ bond }: IBondProps) {
     const isBondLoading = !bond.bondPrice ?? true;
 
     return (
         <Slide direction="up" in={true}>
-            <Paper className="bond-data-card">
+            <Paper onLoad={sdf} className="bond-data-card">
                 <div className="bond-pair">
-                    <BondLogo bond={bond} />
-                    <div className="bond-name">
-                        <p className="bond-name-title">{bond.displayName}</p>
-                        {bond.isLP && (
-                            <div>
-                                <Link href={bond.lpUrl} target="_blank">
-                                    <p className="bond-name-title">View Contract</p>
-                                </Link>
-                            </div>
-                        )}
+                    <div className="bond-name-title-block">
+                        <BondLogo bond={bond} />
+                        <div className="bond-name">
+                            <p className="bond-name-title">{bond.displayName}</p>
+                            {bond.isLP && (
+                                <div>
+                                    <Link href={bond.lpUrl} target="_blank">
+                                        {/* <p className="bond-name-title">View Contract</p> */}
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <div className="bond-apr">
+                        <p className="apr">53% APR</p>
                     </div>
                 </div>
 
@@ -59,11 +78,14 @@ export function BondDataCard({ bond }: IBondProps) {
                         )}
                     </p>
                 </div>
-                <Link component={NavLink} to={`/bonds/${bond.name}`}>
-                    <div className="bond-table-btn">
-                        <p>Bond {bond.displayName}</p>
-                    </div>
-                </Link>
+                <div className="bond-table-block-btn">
+                    <Link component={NavLink} to={`/bonds/${bond.name}`}>
+                        <div className="bond-table-btn">
+                            <p>Bond {bond.displayName}</p>
+                        </div>
+                    </Link>
+                    <div className="close-block-bond"></div>
+                </div>
             </Paper>
         </Slide>
     );

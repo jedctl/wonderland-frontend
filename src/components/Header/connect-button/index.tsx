@@ -44,7 +44,7 @@ function ConnectMenu() {
 
     return (
         <div className="connect-button" style={buttonStyle} onClick={clickFunc}>
-            <p>{buttonText}</p>
+            {buttonText}
             {pendingTransactions.length > 0 && (
                 <div className="connect-button-progress">
                     <CircularProgress size={15} color="inherit" />

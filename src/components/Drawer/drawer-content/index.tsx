@@ -1,23 +1,30 @@
 import { useCallback, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Social from "./social";
-import StakeIcon from "../../../assets/icons/stake.svg";
-import BondIcon from "../../../assets/icons/bond.svg";
-import WonderlandIcon from "../../../assets/icons/wonderland-nav-header.svg";
-import DashboardIcon from "../../../assets/icons/dashboard.svg";
 import { trim, shorten } from "../../../helpers";
 import { useAddress } from "../../../hooks";
 import useBonds from "../../../hooks/bonds";
 import { Link } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import "./drawer-content.scss";
-import DocsIcon from "../../../assets/icons/stake.svg";
-import BrowserIcon from "../../../assets/icons/browser.png";
 import classnames from "classnames";
+import { ReactComponent as WalletIcon } from "../../../assets/icons/wallet-drawer.svg";
+import { ReactComponent as SettingLangIcon } from "../../../assets/icons/iconlanguage.svg";
+import { ReactComponent as SetIcon } from "../../../assets/icons/iconset.svg";
+import SettingSunIcon from "../../../assets/icons/iconsun.svg";
+import SettingMoonIcon from "../../../assets/icons/iconMoon.svg";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme, GlobalStyles } from "./theme.js";
 
 function NavContent() {
+    const [theme, setTheme] = useState("light");
+
+    const switchTheme = () => {
+        theme === "light" ? setTheme("dark") : setTheme("light");
+    };
+
     const [isActive] = useState();
-    const address = useAddress();
+    // const address = useAddress();
     const { bonds } = useBonds();
 
     const checkPage = useCallback((location: any, page: string): boolean => {
@@ -35,84 +42,48 @@ function NavContent() {
     }, []);
 
     return (
-        <div className="dapp-sidebar">
-            <div className="branding-header">
-                <Link href="https://quasardao.finance" target="_blank">
-                    <img alt="" src={WonderlandIcon} />
-                </Link>
-
-                {address && (
-                    <div className="wallet-link">
-                        <Link href={`https://mumbai.polygonscan.com/address/${address}`} target="_blank">
-                            <p>{shorten(address)}</p>
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <div className="dapp-sidebar">
+                <div className="dapp-menu-links">
+                    <div className="dapp-nav">
+                        <Link
+                            component={NavLink}
+                            to="/dashboard"
+                            isActive={(match: any, location: any) => {
+                                return checkPage(location, "dashboard");
+                            }}
+                            className={classnames("button-dapp-menu", { active: isActive })}
+                        >
+                            Dashboard
                         </Link>
-                    </div>
-                )}
-            </div>
 
-            <div className="dapp-menu-links">
-                <div className="dapp-nav">
-                    <Link
-                        component={NavLink}
-                        to="/dashboard"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "dashboard");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={DashboardIcon} />
-                            <p>Dashboard</p>
-                        </div>
-                    </Link>
+                        <Link
+                            component={NavLink}
+                            to="/stake"
+                            isActive={(match: any, location: any) => {
+                                return checkPage(location, "stake");
+                            }}
+                            className={classnames("button-dapp-menu", { active: isActive })}
+                        >
+                            Stake
+                        </Link>
 
-                    <Link
-                        component={NavLink}
-                        to="/stake"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "stake");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={StakeIcon} />
-                            <p>Stake</p>
-                        </div>
-                    </Link>
+                        <Link
+                            component={NavLink}
+                            id="bond-nav"
+                            to="/bonds"
+                            isActive={(match: any, location: any) => {
+                                return checkPage(location, "bonds");
+                            }}
+                            className={classnames("button-dapp-menu", { active: isActive })}
+                        >
+                            Bond
+                        </Link>
 
-                    <Link
-                        component={NavLink}
-                        id="bond-nav"
-                        to="/bonds"
-                        isActive={(match: any, location: any) => {
-                            return checkPage(location, "bonds");
-                        }}
-                        className={classnames("button-dapp-menu", { active: isActive })}
-                    >
-                        <div className="dapp-menu-item">
-                            <img alt="" src={BondIcon} />
-                            <p>Bonds</p>
-                        </div>
-                    </Link>
-
-                    <div className="bond-discounts">
-                        {bonds
-                            .filter(bond => bond.isIDO)
-                            .map((bond, i) => (
-                                <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                                    <p>
-                                        {bond.displayName}
-                                        <span className="bond-pair-roi">1 QUAS = {bond.bondPrice}$</span>
-                                    </p>
-                                </Link>
-                            ))}
-                    </div>
-
-                    <div className="bond-discounts">
-                        <p>Bond discounts</p>
-                        {bonds
-                            .filter(bond => !bond.isIDO)
-                            .map((bond, i) => (
+                        <div className="bond-discounts">
+                            <p className="bond-discounts-title">Bond discounts</p>
+                            {bonds.map((bond, i) => (
                                 <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
                                     {!bond.bondDiscount ? (
                                         <Skeleton variant="text" width={"150px"} />
@@ -124,17 +95,39 @@ function NavContent() {
                                     )}
                                 </Link>
                             ))}
+                        </div>
+                        <div className="drawer-wallet-cs-score">
+                            <WalletIcon className="wallet-icon" />
+                            <span className="wallet-cs-score">24.4893 $QUAS</span>
+                            <div className="drawer__wallet-bye"></div>
+                        </div>
+                        <div className="drawer-setting">
+                            <SettingLangIcon className="draw-sitting" />
+                            <SetIcon className="draw-set" />
+                            <button className="button-theme" onClick={switchTheme}>
+                                <img className="sun" src={SettingSunIcon} alt="SunIcon" />
+                                <img className="moon" src={SettingMoonIcon} alt="MoonIcon" />
+                            </button>
+                        </div>
                     </div>
                 </div>
+                <div className="dapp-menu-doc-link">
+                    <Link href="https://wonderland.gitbook.io/wonderland/" target="_blank">
+                        <p>Documents</p>
+                    </Link>
+                    <Link href="https://legacy.wonderland.money/" target="_blank">
+                        <p>Website</p>
+                    </Link>
+                </div>
+                {/* <div className="dapp-sidebar__line">
+                    <div className="line-ab"></div>
+                </div> */}
+                <div className="dapp-sidebar__join-us">
+                    <p className="join-us-title">Join Us</p>
+                    <Social />
+                </div>
             </div>
-            <div className="dapp-menu-doc-link">
-                <Link href="https://docs.quasardao.finance/" target="_blank">
-                    <img alt="" src={DocsIcon} />
-                    <p>Docs</p>
-                </Link>
-            </div>
-            <Social />
-        </div>
+        </ThemeProvider>
     );
 }
 

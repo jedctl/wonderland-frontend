@@ -1,37 +1,32 @@
 .stake-view{
-  width: 89%;
-  max-width: 833px;
-  margin: auto;
-
+  margin-top: 42px;
+  border-radius: 10px;
+  margin-left: 230px;
+  transition: 0.3s ease;
   .stake-card{
     position: relative;
     z-index: 2;
-    
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      background: rgba(36, 39, 41, 0.1);
-      backdrop-filter: blur(40px);
-    }
-  
     /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
     @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
       background: #181B1C;
     }
-
     border-radius: 10px;
-    padding: 20px;
+    padding: 40px 110px 60px 110px;
     width: 100%;
 
     .stake-card-grid{
       margin: 0;
       width: 100%;
+      .stake-card-area{
+        margin: 32px 0 0 0;
+      }
     }
 
     .stake-card-header{
       .stake-card-header-title{
         font-family: Montserrat Bold;
         font-weight: bold;
-        font-size: 20px;
-        color: #FFFFFF;
+        font-size: 1.5rem;
         margin-bottom: 4px;
       }
     }
@@ -41,7 +36,7 @@
       width: 100%;
       padding: 0;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 70px;
       
       .stake-card-apy,
       .stake-card-tvl,
@@ -58,8 +53,7 @@
           font-family: Montserrat Medium;
           font-style: normal;
           font-weight: 500;
-          font-size: 20px;
-          color: rgba(255, 255, 255, 0.6);
+          font-size: 1.125rem;
           margin-bottom: 2px;
         }
         
@@ -69,7 +63,6 @@
           font-weight: bold;
           font-size: 24px;
           line-height: 29px;
-          color: #FFFFFF;
         }
       }
     }
@@ -82,24 +75,29 @@
           background: rgba(255, 255, 255, 0.2);
           box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
           border-radius: 10px;
-          padding: 14px 58px;
+          padding: 15px 50px;
           cursor: pointer;
           margin: auto;
           max-width: 280px;
           margin-top: 20px;
-        
-          p{
-            font-family: Montserrat SemiBold;
-            font-weight: 600;
-            font-size: 18px;
-            color: #FFFFFF;
+          display: inline-block;
+          
+          font-family: Montserrat SemiBold;
+          font-weight: 600;
+          font-size: 1.125rem;
+          color: #FFFFFF;
+          transition: 0.3s ease;
+          &:hover{
+            color: #7cc9bb;
+            // box-shadow: 4px 4px 8px #000000, -4px -4px 8px #383838, inset 4px 4px 3px #151515, inset -4px -4px 4px #474747;
           }
         }
+        
 
         .stake-card-wallet-desc-text{
-          font-family: Montserrat Light;
+          font-family: Roboto;
           font-weight: 300;
-          font-size: 14px;
+          font-size: 1.125rem;
           color: rgba(255, 255, 255, 0.6);
           margin-top: 10px;
           margin-bottom: 6px;
@@ -113,8 +111,6 @@
         .stake-card-action-stage-btns-wrap{
           display: flex;
           align-items: center;
-          justify-content: center;
-
           .stake-card-action-stage-btn{
             margin: 0px 30px;
             padding: 6px;
@@ -122,48 +118,43 @@
             transition: all .4s ease;
             
             p{
-              font-family: Montserrat SemiBold;
+              font-family: Roboto;
               font-style: normal;
-              font-weight: 600;
-              font-size: 18px;
-              color: rgba(255, 255, 255, 0.6);
+              font-weight: 500;
+              font-size: 0.875rem;
+              color: #9A9A9A;
             }
           }
-
           .stake-card-action-stage-btn.active{
-
             p{
-              color: #FFFFFF;
+              color: #E988EB;
             }
-
-            border-bottom: 1px solid #FFFFFF;;
           }
         }
-
         .stake-card-action-row{
           display: flex;
           align-items: center;
           margin-top: 20px;
+          justify-content: space-between;
 
           .stake-card-action-input{
             width: 100%;
-
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 680px;
             border-radius: 10px;
             outline: none;
-            
+            padding-right: 20px;
+            transition: 0.3s ease;
             .MuiOutlinedInput-input{
               font-family: Montserrat Medium;
               font-style: normal;
               font-weight: 500;
               font-size: 16px;
-              color: rgba(255, 255, 255, 0.6);
-              padding: 14px 20px;
+              color: #525252;
+              padding: 20px 20px;
             }
             
             .MuiOutlinedInput-notchedOutline{
-              border-color: rgba(255, 255, 255, 0.2) !important;
+              border: none;
             }
             
             .stake-card-action-input-btn{
@@ -172,56 +163,56 @@
               p{
                 font-family: Montserrat SemiBold;
                 font-weight: 600;
-                font-size: 18px;
-                color: #FFFFFF;
+                text-transform: uppercase;
+                font-size: 1.125rem;
+                color: #E988EB;
               }
             }
           } 
           
           .stake-card-tab-panel{
-            min-width: 215px;
             margin-left: 10px;
 
             .stake-card-tab-panel-btn{
-              background: rgba(255, 255, 255, 0.2);
-              box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
               border-radius: 10px;
-              padding: 14px 0px;
+              padding: 15px 50px;
               cursor: pointer;
               text-align: center;
-          
+              transition: 0.3s ease;
               p{
                 font-family: Montserrat SemiBold;
                 font-style: normal;
                 font-weight: 600;
                 font-size: 18px;
-                color: #FFFFFF;
+                color: #E988EB;
               }
             }
           }
         }
-
+        .stake-mobile-open{
+          display: none;
+        }
         .stake-card-action-help-text{
-          margin-top: 10px;
-          
+          margin-top: 24px;
           p{
-            font-family: Montserrat Light;
+            width: 100%;
+            max-width: 680px;
+            font-family: Roboto;
             font-style: normal;
             font-weight: 300;
-            font-size: 14px;
-            line-height: 17px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            line-height: 14px;
+            color: #565656;
           }
         }
       }
 
       .stake-user-data{
         justify-content: center;
-        margin: auto;
-        padding: 0 5px;
-        margin-top: 30px;
         
+        padding: 0 5px;
+        margin-top: 50px;
+        max-width: 330px;
         
       }
     }
@@ -229,8 +220,8 @@
 }
 
 .data-row{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin: 12px 0px;
 
   .data-row-name{
@@ -245,19 +236,132 @@
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
+    margin-left: 90px;
   }
 }
 
+@media(max-width:1550px){
+  .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+    padding: 0 !important;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-connect-btn{
+    padding: 12px 40px;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .stake-view .stake-card{
+    padding: 40px 60px 60px 60px;
+  }
+  .stake-view .stake-card .stake-card-header .stake-card-header-title{
+    font-size: 1.3rem;
+  }
+  .rebase-timer p{
+    font-size: 0.9rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-title{
+    font-size: 1rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
+    font-size: 1.2rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-desc-text{
+    font-size: 1rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input .MuiOutlinedInput-input{
+    padding: 15px 20px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn{
+    padding: 12px 30px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .stake-view .stake-card{
+    padding: 40px 40px 60px 40px;
+  }
+}
+@media(max-width:959px) {
+  .stake-view{
+    margin-left: 0;
+    margin-top: 25px;
+  }
+}
+@media(max-width:780px){
+  .stake-view{
+    display: block;
+  }
+  .MuiGrid-container{
+    flex-wrap: nowrap !important;
+  }
+  .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .stake-view .stake-card{
+    padding: 25px 36px 30px 36px;
+  }
+  .stake-view .stake-card .stake-card-metrics{
+    text-align: start;
+    margin-top: 28px;
+    position: relative;
+  }
+  .stake-view .stake-card .stake-card-metrics::after{
+    content: "";
+    position: absolute;
+    width: 102%;
+    display: inline-block;
+    height: 4px;
+    left: -1%;
+    bottom: -25px;
+    transition: 0.3s ease;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy, .stake-view .stake-card .stake-card-metrics .stake-card-tvl, .stake-view .stake-card .stake-card-metrics .stake-card-index{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px 0 0 0;
+  }
+}
+@media(max-width: 733px){
+  .stake-view .stake-card .stake-card-metrics::after{
+    width: 106%;
+    left: -3%;
+  }
+}
+@media(max-width:650px){
+  .stake-view .stake-card .stake-card-header .stake-card-header-title{
+    font-size: 0.875rem;
+  }
+  .rebase-timer p{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-title{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
+    font-size: 0.875rem;
+    margin: 0 0 0 12px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-desc-text{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-connect-btn{
+    padding: 8px 20px;
+  }
+}
 @media screen and (max-width: 600px) {
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-help-text{
+    display: none;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-mobile-open{
+    display: block;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-stage-btns-wrap{
+    justify-content: center;
+  }
   .stake-view{
     .stake-card{
       .stake-card-metrics{
-        .stake-card-apy,
-        .stake-card-tvl,
-        .stake-card-index {
-          align-items: flex-start;
-        }
-
         .stake-card {
           width: 50%;
           display: flex;
@@ -275,16 +379,25 @@
               margin-top: 20px;
               min-width: none;
               width: 100%;
+              text-align: center;
+              .stake-card-tab-panel-btn{
+                display: inline-block;
+                padding: 8px 28px;
+                p{
+                  font-size: 0.75rem;
+                }
+              }
             }
           }
         }
       }
     }
   }
-}
-
-@media screen and (max-width: 1240px) {
-  .stake-view{
-    width: 100%;
+  .data-row .data-row-name{
+    font-size: 12px;
+  }
+  .data-row .data-row-value{
+    margin-left: 40px;
+    font-size: 12px;
   }
 }
