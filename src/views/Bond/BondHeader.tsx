@@ -40,7 +40,14 @@ function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange
                 <IconButton onClick={handleOpen}>
                     <SvgIcon color="primary" component={SettingsIcon} />
                 </IconButton>
-                <AdvancedSettings open={open} handleClose={handleClose} slippage={slippage} onSlippageChange={onSlippageChange} />
+                <AdvancedSettings
+                    open={open}
+                    handleClose={handleClose}
+                    slippage={slippage}
+                    recipientAddress={recipientAddress}
+                    onRecipientAddressChange={onRecipientAddressChange}
+                    onSlippageChange={onSlippageChange}
+                />
             </div>
 
             {!bond.isIDO && (
