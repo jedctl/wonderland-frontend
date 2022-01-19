@@ -19,7 +19,7 @@ export const dai = new StableBond({
     bondIconSvg: MimIcon,
     networkAddrs: {
         [Networks.POLYGON]: {
-            principal: "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49",
+            principal: "0x6129B9bAc8735679c6b3f13f0671187880853A2B",
         },
     },
 });
