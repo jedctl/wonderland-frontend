@@ -15,9 +15,15 @@ import SettingSunIcon from "../../../assets/icons/iconsun.svg";
 import SettingMoonIcon from "../../../assets/icons/iconMoon.svg";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme, GlobalStyles } from "./theme.js";
+import { useSelector } from "react-redux";
+import { IReduxState } from "src/store/slices/state.interface";
 
 function NavContent() {
-    const [theme, setTheme] = useState("light");
+    const squasBalance = useSelector<IReduxState, string>(state => {
+        return state.account.balances.squas;
+    });
+
+    const [theme, setTheme] = useState("dark");
 
     const switchTheme = () => {
         theme === "light" ? setTheme("dark") : setTheme("light");
@@ -98,7 +104,7 @@ function NavContent() {
                         </div>
                         <div className="drawer-wallet-cs-score">
                             <WalletIcon className="wallet-icon" />
-                            <span className="wallet-cs-score">24.4893 $QUAS</span>
+                            <span className="wallet-cs-score">{squasBalance} $sQUAS</span>
                             <div className="drawer__wallet-bye"></div>
                         </div>
                         <div className="drawer-setting">

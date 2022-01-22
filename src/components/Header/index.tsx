@@ -9,6 +9,8 @@ import TimeMenu from "./time-menu";
 import ConnectButton from "./connect-button";
 import "./header.scss";
 import { DRAWER_WIDTH, TRANSITION_DURATION } from "../../constants/style";
+import { IReduxState } from "src/store/slices/state.interface";
+import { useSelector } from "react-redux";
 
 interface IHeader {
     handleDrawerToggle: () => void;
@@ -44,6 +46,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Header({ handleDrawerToggle, drawe }: IHeader) {
+    const marketPrice = useSelector<IReduxState, number>(state => {
+        return state.app.marketPrice;
+    });
+    const squasBalance = useSelector<IReduxState, string>(state => {
+        return state.account.balances.squas;
+    });
+
     const classes = useStyles();
     const isVerySmallScreen = useMediaQuery("(max-width: 400px)");
     const isWrapShow = useMediaQuery("(max-width: 480px)");
@@ -106,11 +115,11 @@ function Header({ handleDrawerToggle, drawe }: IHeader) {
                     <div className="wallet-and-token">
                         <div className="wallet-cs">
                             <img src={MenuWallet} alt="menu-wallet" />
-                            <span className="wallet-cs-score">24.4893 $QUAS</span>
+                            <span className="wallet-cs-score">{squasBalance} $sQUAS</span>
                         </div>
                         <div className="token-cs">
                             <MenuToken />
-                            <span className="token-cs-rate">$7.651</span>
+                            <span className="token-cs-rate">{marketPrice}$</span>
                         </div>
                     </div>
                     <div className="dapp-topbar-btns-wrap">

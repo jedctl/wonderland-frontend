@@ -28,16 +28,16 @@ function Stake() {
         return state.app.fiveDayRate;
     });
     const timeBalance = useSelector<IReduxState, string>(state => {
-        return state.account.balances && state.account.balances.time;
+        return state.account.balances && state.account.balances.quas;
     });
     const memoBalance = useSelector<IReduxState, string>(state => {
-        return state.account.balances && state.account.balances.memo;
+        return state.account.balances && state.account.balances.squas;
     });
     const stakeAllowance = useSelector<IReduxState, number>(state => {
-        return state.account.staking && state.account.staking.time;
+        return state.account.staking && state.account.staking.quas;
     });
     const unstakeAllowance = useSelector<IReduxState, number>(state => {
-        return state.account.staking && state.account.staking.memo;
+        return state.account.staking && state.account.staking.squas;
     });
     const stakingRebase = useSelector<IReduxState, number>(state => {
         return state.app.stakingRebase;
