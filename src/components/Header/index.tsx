@@ -11,6 +11,7 @@ import "./header.scss";
 import { DRAWER_WIDTH, TRANSITION_DURATION } from "../../constants/style";
 import { IReduxState } from "src/store/slices/state.interface";
 import { useSelector } from "react-redux";
+import { trim } from "src/helpers";
 
 interface IHeader {
     handleDrawerToggle: () => void;
@@ -46,12 +47,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Header({ handleDrawerToggle, drawe }: IHeader) {
-    const marketPrice = useSelector<IReduxState, number>(state => {
+    var marketPrice = useSelector<IReduxState, number>(state => {
         return state.app.marketPrice;
     });
-    const squasBalance = useSelector<IReduxState, string>(state => {
+    marketPrice = Number(trim(marketPrice, 2));
+    var squasBalance = useSelector<IReduxState, number>(state => {
         return state.account.balances.squas;
     });
+    squasBalance = Number(trim(squasBalance, 2));
 
     const classes = useStyles();
     const isVerySmallScreen = useMediaQuery("(max-width: 400px)");

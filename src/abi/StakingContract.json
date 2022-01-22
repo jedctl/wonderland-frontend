@@ -302,6 +302,11 @@
                 },
                 {
                     "internalType": "bool",
+                    "name": "_trigger",
+                    "type": "bool"
+                },
+                {
+                    "internalType": "bool",
                     "name": "_rebasing",
                     "type": "bool"
                 },

@@ -19,8 +19,8 @@ interface IGetBalances {
 
 interface IAccountBalances {
     balances: {
-        squas: string;
-        quas: string;
+        squas: number;
+        quas: number;
     };
 }
 
@@ -34,8 +34,8 @@ export const getBalances = createAsyncThunk("account/getBalances", async ({ addr
 
     return {
         balances: {
-            squas: ethers.utils.formatUnits(squasBalance, "gwei"),
-            quas: ethers.utils.formatUnits(quasBalance, "gwei"),
+            squas: Number(ethers.utils.formatUnits(squasBalance, "gwei")),
+            quas: Number(ethers.utils.formatUnits(quasBalance, "gwei")),
         },
     };
 });
@@ -48,8 +48,8 @@ interface ILoadAccountDetails {
 
 interface IUserAccountDetails {
     balances: {
-        squas: string;
-        quas: string;
+        squas: number;
+        quas: number;
     };
     staking: {
         squas: number;
@@ -72,15 +72,15 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
     }
 
     if (addresses.SQUAS_ADDRESS) {
-        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
-        squasBalance = await memoContract.balanceOf(address);
-        unstakeAllowance = await memoContract.allowance(address, addresses.STAKING_ADDRESS);
+        const squasContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
+        squasBalance = await squasContract.balanceOf(address);
+        unstakeAllowance = await squasContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     return {
         balances: {
-            quas: ethers.utils.formatUnits(squasBalance, "gwei"),
-            squas: ethers.utils.formatUnits(quasBalance, "gwei"),
+            quas: Number(ethers.utils.formatUnits(quasBalance, "gwei")),
+            squas: Number(ethers.utils.formatUnits(squasBalance, "gwei")),
         },
         staking: {
             quas: Number(stakeAllowance),
@@ -140,19 +140,6 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     const reserveContract = bond.getPrincipalContract(networkID, provider);
 
     const bondDetails = await bondTeller.bonderInfo(address, bond.bid);
-
-    // var lockedRewards = 0;
-    // var claimedRewards = 0;
-    // var lockedTotal = 0;
-    // if (bond.isIDO) {
-    //     claimedRewards = bondDetails.redeemedAmount / Math.pow(10, 9);
-    //     if (!bondDetails.redeemed && bondDetails.lastTime != 0) {
-    //         lockedRewards = bondDetails.payout / Math.pow(10, 9);
-    //         lockedTotal = await bondContract.vaultBalance(address);
-    //         lockedTotal = lockedTotal / Math.pow(10, 9);
-    //         lockedStakingRewards = lockedTotal - lockedRewards;
-    //     }
-    // }
 
     const bondMaturationTimestamp = Number(bondDetails.vested);
 
@@ -254,8 +241,8 @@ export const calculateUserTokenDetails = createAsyncThunk("account/calculateUser
 export interface IAccountSlice {
     bonds: { [key: string]: IUserBondDetails };
     balances: {
-        squas: string;
-        quas: string;
+        squas: number;
+        quas: number;
     };
     loading: boolean;
     staking: {
@@ -268,7 +255,7 @@ export interface IAccountSlice {
 const initialState: IAccountSlice = {
     loading: true,
     bonds: {},
-    balances: { squas: "", quas: "" },
+    balances: { squas: 0, quas: 0 },
     staking: { quas: 0, squas: 0 },
     tokens: {},
 };

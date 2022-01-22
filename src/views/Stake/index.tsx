@@ -27,10 +27,10 @@ function Stake() {
     const fiveDayRate = useSelector<IReduxState, number>(state => {
         return state.app.fiveDayRate;
     });
-    const timeBalance = useSelector<IReduxState, string>(state => {
+    const quasBalance = useSelector<IReduxState, number>(state => {
         return state.account.balances && state.account.balances.quas;
     });
-    const memoBalance = useSelector<IReduxState, string>(state => {
+    const squasBalance = useSelector<IReduxState, number>(state => {
         return state.account.balances && state.account.balances.squas;
     });
     const stakeAllowance = useSelector<IReduxState, number>(state => {
@@ -55,9 +55,9 @@ function Stake() {
 
     const setMax = () => {
         if (view === 0) {
-            setQuantity(timeBalance);
+            setQuantity(quasBalance == 0 ? "" : String(quasBalance));
         } else {
-            setQuantity(memoBalance);
+            setQuantity(squasBalance == 0 ? "" : String(squasBalance));
         }
     };
 
@@ -91,7 +91,7 @@ function Stake() {
         setQuantity("");
     };
 
-    const trimmedMemoBalance = trim(Number(memoBalance), 6);
+    const trimmedMemoBalance = trim(Number(squasBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
 
     let apy: string;
@@ -269,7 +269,7 @@ function Stake() {
                                     <div className="stake-user-data">
                                         <div className="data-row">
                                             <p className="data-row-name">Your Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(timeBalance), 4)} QUAS</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(quasBalance), 4)} QUAS</>}</p>
                                         </div>
 
                                         <div className="data-row">
