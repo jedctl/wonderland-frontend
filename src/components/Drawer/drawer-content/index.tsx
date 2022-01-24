@@ -92,7 +92,7 @@ function NavContent() {
                             <p className="bond-discounts-title">Bond discounts</p>
                             {bonds.map((bond, i) => (
                                 <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                                    {!bond.bondDiscount ? (
+                                    {!bond.bondDiscount && !bond.isIDO ? (
                                         <Skeleton variant="text" width={"150px"} />
                                     ) : (
                                         <p>

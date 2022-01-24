@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { getAddresses } from "../../constants";
 import { QuasTokenContract, SQuasTokenContract, MimTokenContract } from "../../abi";
 import { setAll } from "../../helpers";
@@ -139,7 +139,7 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     const bondTeller = bond.getTellerContract(networkID, provider);
     const reserveContract = bond.getPrincipalContract(networkID, provider);
 
-    const bondDetails = await bondTeller.bonderInfo(address, bond.bid);
+    const bondDetails = await bondTeller.bonderInfo(address, BigNumber.from(bond.bid));
 
     const bondMaturationTimestamp = Number(bondDetails.vested);
 

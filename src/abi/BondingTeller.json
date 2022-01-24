@@ -9,6 +9,11 @@
                 },
                 {
                     "internalType": "address",
+                    "name": "_idoDepository",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
                     "name": "_staking",
                     "type": "address"
                 },
