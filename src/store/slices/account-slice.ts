@@ -19,23 +19,23 @@ interface IGetBalances {
 
 interface IAccountBalances {
     balances: {
-        memo: string;
-        time: string;
+        squas: number;
+        quas: number;
     };
 }
 
 export const getBalances = createAsyncThunk("account/getBalances", async ({ address, networkID, provider }: IGetBalances): Promise<IAccountBalances> => {
     const addresses = getAddresses(networkID);
 
-    const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
-    const memoBalance = await memoContract.balanceOf(address);
-    const timeContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
-    const timeBalance = await timeContract.balanceOf(address);
+    const squasContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
+    const squasBalance = await squasContract.balanceOf(address);
+    const quasContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
+    const quasBalance = await quasContract.balanceOf(address);
 
     return {
         balances: {
-            memo: ethers.utils.formatUnits(memoBalance, "gwei"),
-            time: ethers.utils.formatUnits(timeBalance, "gwei"),
+            squas: Number(ethers.utils.formatUnits(squasBalance, "gwei")),
+            quas: Number(ethers.utils.formatUnits(quasBalance, "gwei")),
         },
     };
 });
@@ -48,18 +48,18 @@ interface ILoadAccountDetails {
 
 interface IUserAccountDetails {
     balances: {
-        time: string;
-        memo: string;
+        squas: number;
+        quas: number;
     };
     staking: {
-        time: number;
-        memo: number;
+        squas: number;
+        quas: number;
     };
 }
 
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
-    let timeBalance = 0;
-    let memoBalance = 0;
+    let quasBalance = 0;
+    let squasBalance = 0;
     let stakeAllowance = 0;
     let unstakeAllowance = 0;
 
@@ -67,24 +67,24 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
 
     if (addresses.QUAS_ADDRESS) {
         const quasContract = new ethers.Contract(addresses.QUAS_ADDRESS, QuasTokenContract, provider);
-        timeBalance = await quasContract.balanceOf(address);
+        quasBalance = await quasContract.balanceOf(address);
         stakeAllowance = await quasContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     if (addresses.SQUAS_ADDRESS) {
-        const memoContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
-        memoBalance = await memoContract.balanceOf(address);
-        unstakeAllowance = await memoContract.allowance(address, addresses.STAKING_ADDRESS);
+        const squasContract = new ethers.Contract(addresses.SQUAS_ADDRESS, SQuasTokenContract, provider);
+        squasBalance = await squasContract.balanceOf(address);
+        unstakeAllowance = await squasContract.allowance(address, addresses.STAKING_ADDRESS);
     }
 
     return {
         balances: {
-            memo: ethers.utils.formatUnits(memoBalance, "gwei"),
-            time: ethers.utils.formatUnits(timeBalance, "gwei"),
+            quas: Number(ethers.utils.formatUnits(quasBalance, "gwei")),
+            squas: Number(ethers.utils.formatUnits(squasBalance, "gwei")),
         },
         staking: {
-            time: Number(stakeAllowance),
-            memo: Number(unstakeAllowance),
+            quas: Number(stakeAllowance),
+            squas: Number(unstakeAllowance),
         },
     };
 });
@@ -140,19 +140,6 @@ export const calculateUserBondDetails = createAsyncThunk("account/calculateUserB
     const reserveContract = bond.getPrincipalContract(networkID, provider);
 
     const bondDetails = await bondTeller.bonderInfo(address, bond.bid);
-
-    // var lockedRewards = 0;
-    // var claimedRewards = 0;
-    // var lockedTotal = 0;
-    // if (bond.isIDO) {
-    //     claimedRewards = bondDetails.redeemedAmount / Math.pow(10, 9);
-    //     if (!bondDetails.redeemed && bondDetails.lastTime != 0) {
-    //         lockedRewards = bondDetails.payout / Math.pow(10, 9);
-    //         lockedTotal = await bondContract.vaultBalance(address);
-    //         lockedTotal = lockedTotal / Math.pow(10, 9);
-    //         lockedStakingRewards = lockedTotal - lockedRewards;
-    //     }
-    // }
 
     const bondMaturationTimestamp = Number(bondDetails.vested);
 
@@ -254,13 +241,13 @@ export const calculateUserTokenDetails = createAsyncThunk("account/calculateUser
 export interface IAccountSlice {
     bonds: { [key: string]: IUserBondDetails };
     balances: {
-        memo: string;
-        time: string;
+        squas: number;
+        quas: number;
     };
     loading: boolean;
     staking: {
-        time: number;
-        memo: number;
+        squas: number;
+        quas: number;
     };
     tokens: { [key: string]: IUserTokenDetails };
 }
@@ -268,8 +255,8 @@ export interface IAccountSlice {
 const initialState: IAccountSlice = {
     loading: true,
     bonds: {},
-    balances: { memo: "", time: "" },
-    staking: { time: 0, memo: 0 },
+    balances: { squas: 0, quas: 0 },
+    staking: { quas: 0, squas: 0 },
     tokens: {},
 };
 

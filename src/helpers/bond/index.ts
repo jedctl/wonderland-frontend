@@ -11,15 +11,28 @@ import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
 import bondSlice from "src/store/slices/bond-slice";
 import { Bond } from "./bond";
 
-export const dai = new StableBond({
-    bid: 0,
+// export const dai = new StableBond({
+//     bid: 0,
+//     name: "dai",
+//     displayName: "DAI",
+//     bondToken: "DAI",
+//     bondIconSvg: MimIcon,
+//     networkAddrs: {
+//         [Networks.POLYGON]: {
+//             principal: "0x4eD2BF1C1738f3320Cc3Fc36401a4083C4E25d0B",
+//         },
+//     },
+// });
+
+export const ido = new IDOBond({
+    bid: 9999,
     name: "dai",
     displayName: "DAI",
     bondToken: "DAI",
     bondIconSvg: MimIcon,
     networkAddrs: {
         [Networks.POLYGON]: {
-            principal: "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49",
+            principal: "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
         },
     },
 });
@@ -102,5 +115,5 @@ export const dai = new StableBond({
 //     lpUrl: "https://www.traderjoexyz.com/#/pool/AVAX/0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
 // });
 
-const bonds: Bond[] = [dai];
+const bonds: Bond[] = [ido];
 export default bonds;
