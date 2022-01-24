@@ -12,7 +12,7 @@ export const darkTheme = {
     // wallet-and-token
     tokenTextColor: "#DADADA",
     // dapp-topbar-btns-wrap
-    buttonStyle: "background: #232323; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e;",
+    buttonStyle: "background: #232323 !important; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e, inset 0px 0px 0px #1c1c1c, inset 0px 0px 0px #343434;",
     // .dapp-topbar::after line
     dappTopLine: "background: #4F4F4F; box-shadow: inset 2px 2px 2px #1e1e1e;",
     burgerStyle: "background: #B079F7; border: 1px solid #232323; box-shadow: -2px -2px 4px #3d3d3d, 2px 2px 4px #000000, inset -1px -1px 4px #c293ff, inset 1px 1px 4px #000000;",
@@ -29,7 +29,7 @@ export const darkTheme = {
     colorLineDrawerUD: " background: #4F4F4F; box-shadow: inset 2px 2px 2px #1e1e1e;",
 
     /* -------------------------------- makeStyles-content-2------------------------------- */
-    makeStylesContent2: "inset 6px 6px 4px #1c1c1c, inset -6px -6px 4px #343434;",
+    makeStylesContent2: "0px 0px 0px #111111, 0px 0px 0px #3f3e3e, inset 6px 6px 4px #1c1c1c, inset -6px -6px 4px #343434;",
     CardTitleColor: "#C4C4C4;",
     // stake --------
     stakeCardTitleColor: "#C4C4C4",
@@ -67,7 +67,7 @@ export const lightTheme = {
     // wallet-and-token
     tokenTextColor: "#343434",
     // dapp-topbar-btns-wrap
-    buttonStyle: "background: #EBEBEB; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF;",
+    buttonStyle: "background: #EBEBEB !important; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF, inset 0px 0px 0px #1c1c1c, inset 0px 0px 0px #343434;",
     buttonStyleBorderT: "border: 1px solid #FFAFF7;",
     buttonStyleBorderC: "border: 1px solid #70C6B6;",
     circleBgTime: "#F2F2F2",
@@ -94,7 +94,7 @@ export const lightTheme = {
     colorLineDrawerUD: "background: #F8F8F8; box-shadow: inset 2px 2px 2px #dbdbdb;",
 
     /* -------------------------------- makeStyles-content-2------------------------------- */
-    makeStylesContent2: "inset 6px 6px 4px #D1CBCB, inset -6px -6px 4px #FFFFFF;",
+    makeStylesContent2: "0px 0px 0px #111111, 0px 0px 0px #3f3e3e, inset 6px 6px 4px #D1CBCB, inset -6px -6px 4px #FFFFFF;",
     CardTitleColor: "#565656;",
     // stake ------------
     stakeCardTitleColor: "#565656",
@@ -388,7 +388,7 @@ export const GlobalStyles = createGlobalStyle`
     .footer-content p{
         color: ${props => props.theme.footerColorText};
     }
-
+    
     @media(max-width:959px){
         .MuiDrawer-root .MuiPaper-root{
             background: ${props => props.theme.body};
@@ -412,6 +412,12 @@ export const GlobalStyles = createGlobalStyle`
         }
         .choose-bond-view .close-block-bond::after, .choose-bond-view .close-block-bond::before{
             background: ${props => props.theme.textColorActive};
+        }
+        .choose-bond-view .choose-bond-view-card-container .bond-data-card {
+            ${props => props.theme.buttonStyle};
+        }
+        .choose-bond-view .choose-bond-view-card-container .bond-data-card.active{
+            box-shadow: ${props => props.theme.makeStylesContent2};
         }
     }
 `;

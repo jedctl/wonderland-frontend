@@ -4,6 +4,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #121415;
+    background-color: #000000;
     color: #FFFFFF;
+    &__image{
+        width: 400px;
+    }
+}
+@media(max-width:1500px){
+    .loader-wrap__image{
+        width: 300px;
+    }
+}
+@media(max-width:959px){
+    .loader-wrap__image{
+        width: 200px;
+    }
 }

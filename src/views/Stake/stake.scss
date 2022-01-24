@@ -6,10 +6,6 @@
   .stake-card{
     position: relative;
     z-index: 2;
-    /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: #181B1C;
-    }
     border-radius: 10px;
     padding: 40px 110px 60px 110px;
     width: 100%;
@@ -18,7 +14,7 @@
       margin: 0;
       width: 100%;
       .stake-card-area{
-        margin: 32px 0 0 0;
+        margin: 62px 0 0 0;
       }
     }
 
@@ -247,6 +243,9 @@
   .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-connect-btn{
     padding: 12px 40px;
     font-size: 1rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
+    font-size: 1.3rem;
   }
 }
 @media screen and (max-width: 1240px) {
