@@ -23,7 +23,6 @@ function NavContent() {
         return state.account.balances.squas;
     });
     squasBalance = Number(trim(squasBalance, 2));
-
     const [theme, setTheme] = useState("dark");
 
     const switchTheme = () => {

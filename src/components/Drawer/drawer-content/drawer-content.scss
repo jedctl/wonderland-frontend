@@ -233,23 +233,15 @@
   .MuiPaper-root{
     padding: 40px 0 0 0px;
     z-index: 7;
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      background: inherit;
-    }
-  
-    /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: inherit;
-    }
+    background: inherit;
   }
 }
-
-@media(max-width:959px){
-  .MuiBackdrop-root{
-    // background: rgba(35, 35, 35, 0.6);
-    // backdrop-filter: blur(4px);
+@media(max-width:1550px){
+  .dapp-sidebar .dapp-menu-links .dapp-nav a{
+    font-size: 1.3rem;
   }
+}
+@media(max-width:959px){
   .MuiDrawer-root .MuiDrawer-paper{
     height: 100% !important;
     overflow: auto !important;
@@ -260,6 +252,9 @@
   .MuiDrawer-root .MuiPaper-root{
     width: auto !important;
     transition: 0.3s ease !important;
+  }
+  .dapp-sidebar .dapp-menu-links .dapp-nav a{
+    font-size: 1.5rem;
   }
   .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts .bond .bond-pair-roi{
     margin-left: 0px;

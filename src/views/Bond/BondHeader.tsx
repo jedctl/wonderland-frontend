@@ -3,7 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import BondLogo from "../../components/BondLogo";
 import AdvancedSettings from "./AdvancedSettings";
 import { IconButton, SvgIcon, Link } from "@material-ui/core";
-import { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg";
+import { ReactComponent as SettingsIcon } from "../../assets/icons/iconset.svg";
 import { ReactComponent as XIcon } from "../../assets/icons/x.svg";
 import { useEscape } from "../../hooks";
 import { IAllBondData } from "../../hooks/bonds";
@@ -59,21 +59,7 @@ function BondHeader({ bond, slippage, recipientAddress, onRecipientAddressChange
                 </div>
             )}
 
-            {!bond.isIDO && (
-                <div className="bond-settings">
-                    <IconButton onClick={handleOpen}>
-                        <SvgIcon color="primary" component={SettingsIcon} />
-                    </IconButton>
-                    <AdvancedSettings
-                        open={open}
-                        handleClose={handleClose}
-                        slippage={slippage}
-                        recipientAddress={recipientAddress}
-                        onRecipientAddressChange={onRecipientAddressChange}
-                        onSlippageChange={onSlippageChange}
-                    />
-                </div>
-            )}
+            <Link component={NavLink} to="/bonds" className="cancel-bond"></Link>
         </div>
     );
 }

@@ -43,7 +43,7 @@ function ConnectMenu() {
     }, [web3, connected]);
 
     return (
-        <div className="connect-button" style={buttonStyle} onClick={clickFunc}>
+        <div className="connect-button" onClick={clickFunc}>
             {buttonText}
             {pendingTransactions.length > 0 && (
                 <div className="connect-button-progress">
