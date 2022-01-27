@@ -17,7 +17,7 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme, GlobalStyles } from "./theme.js";
 
 function NavContent() {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
 
     const switchTheme = () => {
         theme === "light" ? setTheme("dark") : setTheme("light");

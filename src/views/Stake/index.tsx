@@ -86,10 +86,10 @@ function Stake() {
         [stakeAllowance],
     );
 
-    const changeView = (newView: number) => () => {
-        setView(newView);
-        setQuantity("");
-    };
+    // const changeView = (newView: number) => () => {
+    //     setView(newView);
+    //     setQuantity("");
+    // };
 
     const trimmedMemoBalance = trim(Number(memoBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
@@ -117,6 +117,19 @@ function Stake() {
         fiveDayRateValue = "No data";
     } else {
         fiveDayRateValue = trim(Number(fiveDayRate) * 100, 4) + "%";
+    }
+
+    function checkBB() {
+        let checkBBCl = document.querySelector(".checkboxF");
+        function changeView(newView: number) {
+            setView(newView);
+            setQuantity("");
+        }
+        changeView(0);
+        checkBBCl?.classList.toggle("active");
+        if (checkBBCl?.classList.contains("active")) {
+            changeView(1);
+        }
     }
 
     return (
@@ -178,10 +191,19 @@ function Stake() {
                                 <div>
                                     <div className="stake-card-action-area">
                                         <div className="stake-card-action-stage-btns-wrap">
-                                            <div onClick={changeView(0)} className={classnames("stake-card-action-stage-btn stakeDD", { active: !view })}>
+                                            <div className={classnames("stake-card-action-stage-btn stakeDD", { active: !view })}>
                                                 <p>Stake</p>
                                             </div>
-                                            <div onClick={changeView(1)} className={classnames("stake-card-action-stage-btn unStakeDD", { active: view })}>
+                                            <div className="checkboxF">
+                                                <div className="toggle-button-cover">
+                                                    <div className="button r" id="button-1">
+                                                        <input onClick={checkBB} type="checkbox" className="checkbox" />
+                                                        <div className="knobs"></div>
+                                                        <div className="layer"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className={classnames("stake-card-action-stage-btn unStakeDD", { active: view })}>
                                                 <p>Unstake</p>
                                             </div>
                                         </div>

@@ -12,7 +12,7 @@ export const darkTheme = {
     // wallet-and-token
     tokenTextColor: "#DADADA",
     // dapp-topbar-btns-wrap
-    buttonStyle: "background: #232323; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e;",
+    buttonStyle: "background: #232323 !important; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e, inset 0px 0px 0px #151515, inset 0px 0px 0px #474747;",
     // .dapp-topbar::after line
     dappTopLine: "background: #4F4F4F; box-shadow: inset 2px 2px 2px #1e1e1e;",
     burgerStyle: "background: #B079F7; border: 1px solid #232323; box-shadow: -2px -2px 4px #3d3d3d, 2px 2px 4px #000000, inset -1px -1px 4px #c293ff, inset 1px 1px 4px #000000;",
@@ -29,13 +29,16 @@ export const darkTheme = {
     colorLineDrawerUD: " background: #4F4F4F; box-shadow: inset 2px 2px 2px #1e1e1e;",
 
     /* -------------------------------- makeStyles-content-2------------------------------- */
-    makeStylesContent2: "inset 6px 6px 4px #1c1c1c, inset -6px -6px 4px #343434;",
+    makeStylesContent2: "0px 0px 0px #111111, 0px 0px 0px #3f3e3e, inset 6px 6px 4px #1c1c1c, inset -6px -6px 4px #343434;",
     CardTitleColor: "#C4C4C4;",
     // stake --------
     stakeCardTitleColor: "#C4C4C4",
     rebaseTimerColor: "color: #C4C4C4;",
     CardStakeDesColor: "#6B6B6B",
     // stake input
+    stakeRadioButtonS:
+        "background: #232323; border: 1px solid #232323; box-shadow: 3px 3px 4px #161616, -2px -1px 4px #3E3E3E, inset 3px 3px 4px #101010, inset -4px -4px 4px #343434;",
+    stakeRadioInsBut: "border: 6px solid #232323; box-shadow: 3px 3px 4px #161616, -2px -1px 4px #3e3e3e;",
     stakeCardInputBg: " 0px 4px 4px rgb(0 0 0 / 25%), inset 5px 5px 4px #1c1c1c, inset -5px -5px 4px #343434;",
     colorHelpStakeText: "#565656",
     stakeUserDataColor: "#969696",
@@ -44,13 +47,18 @@ export const darkTheme = {
     bondNameTitleMobile: "#969696",
     bondTokenNameTitleMobile: "#DADADA",
     // bond input popup
-    bondPopupBgStyle: "background: rgba(28, 28, 28, 0.9); box-shadow: -4px -4px 4px #2c2c2c, 4px 4px 4px #090909;",
+    bondPopupBgStyle: "background: rgba(28, 28, 28, 0.96); box-shadow: -4px -4px 4px #2c2c2c, 4px 4px 4px #090909;",
     bondInputPopupStyle: "box-shadow: inset 6px 6px 4px #0D0D0D, inset -6px -6px 4px #222222;",
     bondInformPopupColor: "#969696",
     // bond setting popup
     bondHelpSettingPopup: "#565656",
     /* --------------------------------- footer --------------------------------- */
     footerColorText: "#565656",
+
+    /* -------------------------------- massages -------------------------------- */
+    massageBgColor: "background:rgba(28, 28, 28, 0.97); box-shadow: 4px 4px 4px #090909, -4px -4px 4px #2C2C2C;",
+    successIconM: "#92EADA",
+    collapseTextInfo: "box-shadow: inset 6px 6px 4px #0d0d0d, inset -6px -6px 4px #222222; color: #565656;",
 };
 
 // lightTheme-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +75,7 @@ export const lightTheme = {
     // wallet-and-token
     tokenTextColor: "#343434",
     // dapp-topbar-btns-wrap
-    buttonStyle: "background: #EBEBEB; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF;",
+    buttonStyle: "background: #EBEBEB !important; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF, inset 0px 0px 0px #FFFFFF, inset 0px 0px 0px #C9C9C9;",
     buttonStyleBorderT: "border: 1px solid #FFAFF7;",
     buttonStyleBorderC: "border: 1px solid #70C6B6;",
     circleBgTime: "#F2F2F2",
@@ -94,13 +102,16 @@ export const lightTheme = {
     colorLineDrawerUD: "background: #F8F8F8; box-shadow: inset 2px 2px 2px #dbdbdb;",
 
     /* -------------------------------- makeStyles-content-2------------------------------- */
-    makeStylesContent2: "inset 6px 6px 4px #D1CBCB, inset -6px -6px 4px #FFFFFF;",
+    makeStylesContent2: "0px 0px 0px #111111, 0px 0px 0px #3f3e3e, inset 6px 6px 4px #D1CBCB, inset -6px -6px 4px #FFFFFF;",
     CardTitleColor: "#565656;",
     // stake ------------
     stakeCardTitleColor: "#565656",
     rebaseTimerColor: "color: #969696;",
     CardStakeDesColor: "#565656",
     // stake input
+    stakeRadioButtonS:
+        "background: #EBEBEB; border: 1px solid #EBEBEB; box-shadow: 3px 3px 4px #ACACAC, -2px -1px 4px #FFFFFF, inset 3px 3px 4px #CDCDCD, inset -4px -4px 4px #FFFFFF;",
+    stakeRadioInsBut: "border: 6px solid #EBEBEB; box-shadow: 3px 3px 4px #CDCDCD, -2px -1px 4px #FFFFFF;",
     stakeCardInputBg: "0px 0px 0px rgb(0 0 0 / 0%),  inset 5px 5px 4px #C7C7C7, inset -5px -5px 4px #FAFAFA;",
     colorHelpStakeText: "#B9B9B9",
     stakeUserDataColor: "#969696",
@@ -117,6 +128,11 @@ export const lightTheme = {
     bondHelpSettingPopup: "#9A9A9A",
     /* --------------------------------- footer --------------------------------- */
     footerColorText: "#C4C4C4",
+
+    /* -------------------------------- massages -------------------------------- */
+    massageBgColor: "background:rgba(235, 235, 235, 0.96); box-shadow: 4px 4px 4px #9D9D9D, -4px -4px 4px #FFFFFF;",
+    successIconM: "#70C6B6",
+    collapseTextInfo: "box-shadow: inset 6px 6px 4px #CCCCCC, inset -6px -6px 4px #FFFFFF; color: #969696;",
 };
 
 // create -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,6 +313,13 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     // stake input
+    .button.r, .button.r .layer{
+        ${props => props.theme.stakeRadioButtonS};
+    }
+    #button-1 .knobs:before{
+        ${props => props.theme.stakeRadioInsBut};
+    }
+
     .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input{
         box-shadow: ${props => props.theme.stakeCardInputBg};
     }
@@ -388,6 +411,28 @@ export const GlobalStyles = createGlobalStyle`
     .footer-content p{
         color: ${props => props.theme.footerColorText};
     }
+    
+    /* -------------------------------- messages -------------------------------- */
+    .massageBgC{
+        ${props => props.theme.massageBgColor};
+    }
+    .massage-close-icon::before, .massage-close-icon::after{
+        background: ${props => props.theme.textColorActive};
+    }
+    .massages-text{
+        color: ${props => props.theme.textColor};
+    }
+    .success-icon path{
+        fill: ${props => props.theme.successIconM};
+    }
+    .copy-and-text-err p{
+        ${props => props.theme.colorTitleDis};
+    }
+    .collapse-text-info{
+        ${props => props.theme.collapseTextInfo};
+    }
+
+
 
     @media(max-width:959px){
         .MuiDrawer-root .MuiPaper-root{
@@ -412,6 +457,12 @@ export const GlobalStyles = createGlobalStyle`
         }
         .choose-bond-view .close-block-bond::after, .choose-bond-view .close-block-bond::before{
             background: ${props => props.theme.textColorActive};
+        }
+        .choose-bond-view .choose-bond-view-card-container .bond-data-card {
+            ${props => props.theme.buttonStyle};
+        }
+        .choose-bond-view .choose-bond-view-card-container .bond-data-card.active{
+            box-shadow: ${props => props.theme.makeStylesContent2};
         }
     }
 `;

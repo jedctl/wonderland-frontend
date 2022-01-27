@@ -13,41 +13,40 @@ import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { Message } from "../../store/slices/messages-slice";
-import WarningIcon from "@material-ui/icons/Warning";
-import ErrorIcon from "@material-ui/icons/Error";
-import InfoIcon from "@material-ui/icons/Info";
-import SuccessIcon from "@material-ui/icons/CheckCircle";
 import { Color } from "@material-ui/lab/Alert";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { ReactComponent as WarningIconI } from "../../assets/icons/vosIcon.svg";
+import { ReactComponent as CopyClickBoard } from "../../assets/icons/copyMassage.svg";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        [theme.breakpoints.up("sm")]: {
-            minWidth: "344px !important",
-        },
+        [theme.breakpoints.up("sm")]: {},
         maxWidth: 500,
     },
     card: {
         width: "100%",
     },
     error: {
-        backgroundColor: "#d32f2f",
+        backgroundColor: "inherit",
+        border: "1px solid rgba(192, 86, 86, 0.25)",
     },
     info: {
-        backgroundColor: "#2979ff",
+        backgroundColor: "inherit",
     },
     warning: {
-        backgroundColor: "#ffa000",
+        backgroundColor: "inherit",
+        border: "1px solid rgba(192, 86, 86, 0.25)",
     },
     success: {
-        backgroundColor: "#43a047",
+        backgroundColor: "inherit",
+        border: "1px solid rgba(112, 198, 182, 0.25)",
     },
     typography: {
         color: "#FFFFFF",
         fontFamily: "Montserrat SemiBold",
     },
     actionRoot: {
-        padding: "8px 8px 8px 16px",
+        padding: "8px 8px 8px 8px",
         justifyContent: "space-between",
         color: "#FFFFFF",
     },
@@ -110,48 +109,49 @@ const SnackMessage = forwardRef<HTMLDivElement, { id: string | number; message: 
     const getIcon = (severity: Color) => {
         switch (severity) {
             case "error":
-                return <ErrorIcon color="inherit" />;
+                return <WarningIconI />;
             case "info":
-                return <InfoIcon color="inherit" />;
+                return <WarningIconI />;
             case "success":
-                return <SuccessIcon color="inherit" />;
+                return <WarningIconI className="success-icon" />;
             case "warning":
-                return <WarningIcon color="inherit" />;
+                return <WarningIconI />;
             default:
                 return <div />;
         }
     };
 
     return (
-        <SnackbarContent ref={ref} className={classes.root}>
+        <SnackbarContent ref={ref} className={classes.root + " massageBgC"}>
             <Card className={classnames(classes.card, classes[props.message.severity])}>
                 <CardActions classes={{ root: classes.actionRoot }}>
                     {getIcon(props.message.severity)}
                     <Typography variant="subtitle2" className={classes.typography}>
-                        {props.message.text}
+                        <div className="massages-text">{props.message.text}</div>
                     </Typography>
-                    <div className={classes.icons}>
+                    <div className={classes.icons + " massageCloseShow"}>
                         {props.message.error && (
                             <IconButton aria-label="Show more" className={classnames(classes.expand, { [classes.expandOpen]: expanded })} onClick={handleExpandClick}>
-                                <ExpandMoreIcon color="inherit" />
+                                <ExpandMoreIcon className="show-more-icon-style" color="inherit" />
                             </IconButton>
                         )}
                         <IconButton className={classes.expand} onClick={handleDismiss}>
-                            <CloseIcon color="inherit" />
+                            <div className="massage-close-icon"></div>
                         </IconButton>
                     </div>
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <Paper className={classes.collapse}>
-                        <CopyToClipboard text={JSON.stringify(props.message.error)} onCopy={() => setIsCopy(true)}>
-                            <Button size="small" className={classes.button}>
-                                <CheckCircleIcon className={classnames(classes.checkIcon, { [classes.checkIconCopy]: isCopy })} />
-                                Copy to clipboard
-                            </Button>
-                        </CopyToClipboard>
-                        <div className={classes.errorWrap}>
+                    <Paper className={classes.collapse + " collapse-container"}>
+                        <div className="copy-and-text-err">
                             <Typography>Error message: </Typography>
-                            <Typography className={classes.errorText}>{JSON.stringify(props.message.error, null, 2)}</Typography>
+                            <CopyToClipboard text={JSON.stringify(props.message.error)} onCopy={() => setIsCopy(true)}>
+                                <Button size="small" className={classes.button}>
+                                    <CopyClickBoard />
+                                </Button>
+                            </CopyToClipboard>
+                        </div>
+                        <div className={classes.errorWrap}>
+                            <Typography className={(classes.errorText, "collapse-text-info")}>{JSON.stringify(props.message.error, null, 2)}</Typography>
                         </div>
                     </Paper>
                 </Collapse>

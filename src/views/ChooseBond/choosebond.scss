@@ -15,40 +15,36 @@
     width: 100%;
     position: relative;
     z-index: 2;
-  
-    /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: #181B1C;
-    }
 
     .choose-bond-view-card-header{
       .choose-bond-view-card-title{
-        font-family: Montserrat Bold;
+        font-family: Roboto, sans-serif;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 1.5rem;
         color: #FFFFFF;
       }
     }
 
     .choose-bond-view-card-metrics{
-      margin: 30px 0;
+      margin: 80px 0 60px 0;
       
       .choose-bond-view-card-metrics-title{
-        font-family: Montserrat Medium;
+        font-family: Roboto, sans-serif;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 1.125rem;
         line-height: 24px;
         color: rgba(255, 255, 255, 0.6);
       }
     
       .choose-bond-view-card-metrics-value{
-        font-family: Montserrat Bold;
+        font-family: Montserrat, sans-serif;
         font-weight: bold;
         font-size: 24px;
         line-height: 29px;
         color: #FFFFFF;
         display: flex;
         flex-direction: column;
+        margin-top: 20px;
       }
     }
 
@@ -136,11 +132,13 @@
     transition: 0.3s ease;
     text-decoration: none;
     
-      font-family: Montserrat Semibold;
+      font-family: Montserrat;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
-      color: #E988EB;
+    p{
+      color: #E988EB !important;
+    }
     
   }
   .MuiTable-root {
@@ -215,10 +213,6 @@
       justify-content: center;
       text-align: left;
       align-items: flex-start;
-      p {
-        margin-bottom: unset !important;
-        line-height: 140% !important;
-      }
       svg {
         margin-left: 3px !important;
         font-size: 1.2em !important;
@@ -230,6 +224,21 @@
   .choose-bond-view .MuiTableCell-root{
     padding: 16px;
   }
+}
+@media(max-width:1550px){
+  .choose-bond-view .MuiTableCell-root{
+    padding: 12px;
+  }
+  .choose-bond-view .choose-bond-view-card .choose-bond-view-card-header .choose-bond-view-card-title{
+    font-size: 1.25rem;
+  }
+  .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics .choose-bond-view-card-metrics-value{
+    font-size: 1.3rem;
+  }
+  .choose-bond-view .bond-table-btn{
+    padding: 6px 30px;
+  }
+  
 }
 @media(max-width:1340px){
   .choose-bond-view .MuiTableCell-root{
@@ -399,6 +408,9 @@
   .bond-view .MuiBackdrop-root {
     padding: 20px 46px;
   }
+  .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics .choose-bond-view-card-metrics-value{
+    margin-top: 0;
+  }
 }
 @media(max-width: 650px){
   .bond-view .MuiBackdrop-root {
@@ -436,5 +448,10 @@
 @media(max-width:350px){
   .choose-bond-view .bond-name-title{
     width: 30px;
+  }
+  .choose-bond-view .close-block-bond{
+    position: relative;
+    right: 0px;
+    left: 20px;
   }
 }

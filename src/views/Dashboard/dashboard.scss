@@ -19,6 +19,8 @@
     .MuiGrid-container{
       justify-content: center;
       padding: 60px;
+      margin: 0;
+      width: auto;
     }
     .MuiGrid-item{
       max-width: 350px;
@@ -30,16 +32,11 @@
       flex-direction: column;
       position: relative;
       z-index: 2;
-      /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-      @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-        background: #141616;
-      }
-
       border-radius: 10px;
       padding: 13px 0;
 
       .card-title {
-        font-family: Montserrat Medium;
+        font-family: Montserrat, sans-serif;
         font-weight: 500;
         font-size: 1.125rem;
       }
@@ -50,11 +47,16 @@
         font-size: 24px;
         font-weight: bold;
         color: #92EADA;
+        margin-top: 18px;
       }
     }
   }
 }
-
+@media(max-width:1550px){
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    font-size: 1.3rem;
+  }
+}
 @media(max-width:1240px){
   .dashboard-view .dashboard-infos-wrap .dashboard-card .card-title{
     font-size: 1rem;
@@ -86,6 +88,9 @@
   .dashboard-view .dashboard-infos-wrap .dashboard-card{
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
+    margin-top: 0;
   }
 }
 @media(max-width:650px){

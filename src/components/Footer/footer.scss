@@ -1,25 +1,9 @@
 
-// .view-base-root{
-//     display: flex;
-//     flex-direction: column;
-//     height: 100%;
-// }
-// .dapp-topbar{
-//     flex: 0 0 auto;
-// }
 body iframe{
     display: none !important;
 }
-.makeStyles-drawer-1{
-    // flex: 1 0 auto;
-}
-.makeStyles-content-2{
-    // flex: 1 0 auto;
-    // height: auto !important;
-}
 .footer-content{
     position: relative;
-    // flex: 0 0 auto;
     padding-bottom: 40px;
     margin: 80px 0 0 230px;
     p{
@@ -35,5 +19,13 @@ body iframe{
 @media(max-width:960px){
     .footer-content{
         margin: 80px 0 0 0;
+    }
+}
+
+@media(max-width:500px){
+    .footer-content{
+        p{
+            font-size: 0.5rem;
+        }
     }
 }

@@ -44,7 +44,7 @@
       align-items: center;
       
       .wallet-cs-score{
-        font-size: 1rem;
+        font-size: 0.875rem;
         margin: 0 0 0 10px;
         font-family: var(--montserrat);
       }
@@ -54,7 +54,7 @@
       align-items: center;
       margin-left: 80px;
       .token-cs-rate{
-        font-size: 1rem;
+        font-size: 0.875rem;
         margin: 0 0 0 10px;
         font-family: var(--montserrat);
       }
@@ -90,7 +90,7 @@
     top: 40%;
     width: 100%;
     height: 5px;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
   }
 }
 .burger::before{
@@ -109,7 +109,7 @@
 }
 .burger.active{
   .burger-center-line{
-    top: 13%;
+    top: 62%;
     width: 95%;
     z-index: 1;
     transform: rotate(-45deg);
@@ -120,14 +120,21 @@
 }
 .burger.active::before{
   transform: rotate(-45deg);
+  top: 50%;
 }
 .burger.active::after{
   transform: rotate(45deg);
-  bottom: 80%;
+  bottom: 30%;
 }
 
-
-
+@media(max-width:1550px){
+  .dapp-topbar .wallet-and-token .token-cs {
+    margin-left: 50px;
+  }
+  .dapp-topbar .logo svg{
+    width: 140px;
+  }
+}
 @media screen and (max-width: 1350px) {
   .dapp-topbar .wallet-and-token .token-cs{
     margin-left: 50px;
@@ -171,10 +178,23 @@
   .dapp-topbar .container{
     padding: 18px 0;
   }
+  .dapp-topbar .dapp-topbar-btns-wrap{
+    margin: 0 20px 0 85px;
+  }
   .time-menu-root .time-menu-btn p{
     display: none;
   }
   .time-menu-root .time-menu-btn .img-token{
     display: block;
+  }
+}
+@media(max-width:415px){
+  .dapp-topbar .dapp-topbar-btns-wrap{
+    margin: 0 20px 0 70px;
+  }
+}
+@media(max-width:400px){
+  .dapp-topbar .dapp-topbar-btns-wrap{
+    margin: 0 auto;
   }
 }

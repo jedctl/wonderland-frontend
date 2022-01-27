@@ -6,10 +6,6 @@
   .stake-card{
     position: relative;
     z-index: 2;
-    /* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
-    @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: #181B1C;
-    }
     border-radius: 10px;
     padding: 40px 110px 60px 110px;
     width: 100%;
@@ -18,7 +14,7 @@
       margin: 0;
       width: 100%;
       .stake-card-area{
-        margin: 32px 0 0 0;
+        margin: 62px 0 0 0;
       }
     }
 
@@ -63,6 +59,7 @@
           font-weight: bold;
           font-size: 24px;
           line-height: 29px;
+          margin-top: 18px;
         }
       }
     }
@@ -112,9 +109,9 @@
           display: flex;
           align-items: center;
           .stake-card-action-stage-btn{
-            margin: 0px 30px;
+            margin: 0px 24px;
             padding: 6px;
-            cursor: pointer;
+            // cursor: pointer;
             transition: all .4s ease;
             
             p{
@@ -248,6 +245,9 @@
     padding: 12px 40px;
     font-size: 1rem;
   }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
+    font-size: 1.3rem;
+  }
 }
 @media screen and (max-width: 1240px) {
   .stake-view .stake-card{
@@ -316,12 +316,93 @@
     bottom: -25px;
     transition: 0.3s ease;
   }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
+    margin-top: 0;
+  }
   .stake-view .stake-card .stake-card-metrics .stake-card-apy, .stake-view .stake-card .stake-card-metrics .stake-card-tvl, .stake-view .stake-card .stake-card-metrics .stake-card-index{
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 20px 0 0 0;
   }
 }
+
+
+// radio button -----
+.toggle-button-cover {
+  position: relative;
+}
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.button {
+  position: relative;
+  top: 50%;
+  width: 52px;
+  height: 24px;
+  overflow: hidden;
+}
+.button.r,
+.button.r .layer {
+  border-radius: 33px;
+  transition: 0.3s ease;
+}
+.button.b2 {
+  border-radius: 2px;
+}
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.knobs {
+  z-index: 2;
+}
+.layer {
+  width: 100%;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+/* Button 1 */
+#button-1 .knobs:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 3px;
+  height: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px;
+  background-color: #E988EB;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+#button-1 .checkbox:checked + .knobs:before {
+  content: "";
+  left: 28px;
+  background-color: #E988EB;
+}
+#button-1 .checkbox:checked ~ .layer {
+}
+#button-1 .knobs,
+#button-1 .knobs:before,
+#button-1 .layer {
+  transition: 0.3s ease all;
+}
+
+
+
 @media(max-width: 733px){
   .stake-view .stake-card .stake-card-metrics::after{
     width: 106%;
