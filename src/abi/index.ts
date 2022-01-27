@@ -1,4 +1,5 @@
 export { abi as BondingDepository } from "./BondingDepository.json";
+export { abi as IDOBondingDepository } from "./IDOBondingDepository.json";
 export { abi as BondingTeller } from "./BondingTeller.json";
 
 export { abi as StableReserveContract } from "./reserves/StableContract.json";

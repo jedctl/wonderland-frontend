@@ -1,9 +1,9 @@
-import { ethers, constants } from "ethers";
+import { ethers, constants, Contract, BigNumber } from "ethers";
 import { getMarketPrice, getTokenPrice } from "../../helpers";
 import { calculateUserBondDetails, getBalances } from "./account-slice";
 import { getAddresses } from "../../constants";
 import { fetchPendingTxns, clearPendingTxn } from "./pending-txns-slice";
-import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createSelector, createAsyncThunk, ThunkDispatch, AnyAction } from "@reduxjs/toolkit";
 import { JsonRpcProvider, StaticJsonRpcProvider } from "@ethersproject/providers";
 import { fetchAccountSuccess } from "./account-slice";
 import { Bond } from "../../helpers/bond/bond";
@@ -15,6 +15,7 @@ import { messages } from "../../constants/messages";
 import { getGasPrice } from "../../helpers/get-gas-price";
 import { metamaskErrorWrap } from "../../helpers/metamask-error-wrap";
 import { sleep } from "../../helpers";
+import { IDOBond } from "src/helpers/bond/ido-bond";
 
 interface IChangeApproval {
     bond: Bond;
@@ -107,6 +108,10 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     const bondContract = bond.getBondContract(networkID, provider);
     const bondCalcContract = getBondCalculator(networkID, provider);
 
+    if (bond.isIDO) {
+        return await calcIdoBondDetails(provider, networkID, bond, bondContract, amountInWei, dispatch);
+    }
+
     const bondInfo = await bondContract.bonds(bond.bid);
     const terms = await bondInfo.terms;
 
@@ -184,6 +189,47 @@ export const calcBondDetails = createAsyncThunk("bonding/calcBondDetails", async
     };
 });
 
+async function calcIdoBondDetails(
+    provider: StaticJsonRpcProvider | JsonRpcProvider,
+    networkID: Networks,
+    bond: Bond,
+    bondContract: Contract,
+    amountInWei: BigNumber,
+    dispatch: ThunkDispatch<unknown, unknown, AnyAction>,
+): Promise<IBondDetails> {
+    let depositor = ethers.constants.AddressZero;
+    try {
+        depositor = await provider.getSigner().getAddress();
+    } catch (error) {}
+
+    const addresses = getAddresses(networkID);
+    const reserveToken = bond.getPrincipalContract(networkID, provider);
+    const bondStruct = await bondContract.bond();
+
+    const maxBondPrice = (await bondContract.maxPayout(depositor)) / Math.pow(10, 9);
+    const bondPrice = (await bondContract.bondPriceInUSD()) / Math.pow(10, 18);
+    let bondQuote = (await bondContract.payoutFor(amountInWei)) / Math.pow(10, 18);
+    bondQuote = Number(bondQuote.toFixed(8));
+    const purchased = (await reserveToken.balanceOf(addresses.TREASURY_ADDRESS)) / Math.pow(10, 18);
+    const vestingTerm = bondStruct.vestingTerm;
+
+    if (!!amountInWei && bondQuote > maxBondPrice) {
+        dispatch(error({ text: messages.try_mint_more(maxBondPrice.toFixed(2).toString()) }));
+    }
+
+    return {
+        bond: bond.name,
+        bondDiscount: 0,
+        bondQuote: bondQuote,
+        purchased: purchased,
+        vestingTerm: vestingTerm,
+        maxBondPrice: maxBondPrice,
+        bondPrice: bondPrice,
+        marketPrice: 0,
+        maxBondPriceToken: 1000,
+    };
+}
+
 interface IBondAsset {
     value: string;
     address: string;
@@ -200,7 +246,13 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
     const signer = provider.getSigner();
     const bondContract = bond.getBondContract(networkID, signer);
 
-    const calculatePremium = await bondContract.bondPrice(bond.bid);
+    let calculatePremium;
+    if (bond.isIDO) {
+        calculatePremium = await bondContract.bondPrice();
+    } else {
+        calculatePremium = await bondContract.bondPrice(bond.bid);
+    }
+
     const maxPremium = Math.round(calculatePremium * (1 + acceptedSlippage));
 
     const addresses = getAddresses(networkID);
@@ -210,7 +262,7 @@ export const bondAsset = createAsyncThunk("bonding/bondAsset", async ({ value, a
         const gasPrice = await getGasPrice(provider);
 
         if (bond.isIDO) {
-            bondTx = await bondContract.deposit(valueInWei, depositorAddress, { gasPrice });
+            bondTx = await bondContract.deposit(valueInWei, depositorAddress, addresses.DAO_ADDRESS, { gasPrice });
         } else if (useAvax) {
             bondTx = await bondContract.deposit(valueInWei, maxPremium, depositorAddress, bond.bid, addresses.DAO_ADDRESS, { value: valueInWei, gasPrice });
         } else {

@@ -65,8 +65,8 @@ function Bond({ bond }: IBondProps) {
                                     </p>
                                 </div>
                                 <div className="bond-price-data">
-                                    <p className="bond-price-data-title">QUAS Price</p>
-                                    <p className="bond-price-data-value">{isBondLoading ? <Skeleton /> : `$${trim(bond.marketPrice, 2)}`}</p>
+                                    <p className="bond-price-data-title">${bond.isIDO ? "QUAS Listing Price" : "QUAS Price"}</p>
+                                    <p className="bond-price-data-value">{isBondLoading ? <Skeleton /> : `$${bond.isIDO ? 200 : trim(bond.marketPrice, 2)}`}</p>
                                 </div>
                             </Box>
 

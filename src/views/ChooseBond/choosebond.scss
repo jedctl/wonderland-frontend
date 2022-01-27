@@ -29,7 +29,7 @@
       margin: 80px 0 60px 0;
       
       .choose-bond-view-card-metrics-title{
-        font-family: Roboto, sans-serif;
+        font-family: Montserrat, sans-serif;
         font-weight: 500;
         font-size: 1.125rem;
         line-height: 24px;
@@ -271,9 +271,6 @@
   }
 }
 @media(max-width: 780px){
-  .choose-bond-view .choose-bond-view-card-container{
-
-  }
   .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics{
     position: relative;
     .MuiGrid-item{

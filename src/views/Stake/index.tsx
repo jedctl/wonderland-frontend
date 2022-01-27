@@ -27,17 +27,17 @@ function Stake() {
     const fiveDayRate = useSelector<IReduxState, number>(state => {
         return state.app.fiveDayRate;
     });
-    const timeBalance = useSelector<IReduxState, string>(state => {
-        return state.account.balances && state.account.balances.time;
+    const quasBalance = useSelector<IReduxState, number>(state => {
+        return state.account.balances && state.account.balances.quas;
     });
-    const memoBalance = useSelector<IReduxState, string>(state => {
-        return state.account.balances && state.account.balances.memo;
+    const squasBalance = useSelector<IReduxState, number>(state => {
+        return state.account.balances && state.account.balances.squas;
     });
     const stakeAllowance = useSelector<IReduxState, number>(state => {
-        return state.account.staking && state.account.staking.time;
+        return state.account.staking && state.account.staking.quas;
     });
     const unstakeAllowance = useSelector<IReduxState, number>(state => {
-        return state.account.staking && state.account.staking.memo;
+        return state.account.staking && state.account.staking.squas;
     });
     const stakingRebase = useSelector<IReduxState, number>(state => {
         return state.app.stakingRebase;
@@ -55,9 +55,9 @@ function Stake() {
 
     const setMax = () => {
         if (view === 0) {
-            setQuantity(timeBalance);
+            setQuantity(quasBalance == 0 ? "" : String(quasBalance));
         } else {
-            setQuantity(memoBalance);
+            setQuantity(squasBalance == 0 ? "" : String(squasBalance));
         }
     };
 
@@ -91,7 +91,7 @@ function Stake() {
     //     setQuantity("");
     // };
 
-    const trimmedMemoBalance = trim(Number(memoBalance), 6);
+    const trimmedMemoBalance = trim(Number(squasBalance), 6);
     const trimmedStakingAPY = trim(stakingAPY * 100, 1);
 
     let apy: string;
@@ -291,7 +291,7 @@ function Stake() {
                                     <div className="stake-user-data">
                                         <div className="data-row">
                                             <p className="data-row-name">Your Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(timeBalance), 4)} QUAS</>}</p>
+                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(quasBalance), 4)} QUAS</>}</p>
                                         </div>
 
                                         <div className="data-row">
