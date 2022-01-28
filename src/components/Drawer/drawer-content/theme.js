@@ -12,7 +12,6 @@ export const darkTheme = {
     // wallet-and-token
     tokenTextColor: "#DADADA",
     // dapp-topbar-btns-wrap
-    buttonStyle: "background: #232323 !important; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e, inset 0px 0px 0px #151515, inset 0px 0px 0px #474747;",
     buttonStyle: "background: #232323 !important; box-shadow: 4px 4px 4px #111111, -3px -3px 4px #3f3e3e, inset 0px 0px 0px #1c1c1c, inset 0px 0px 0px #343434;",
     // .dapp-topbar::after line
     dappTopLine: "background: #4F4F4F; box-shadow: inset 2px 2px 2px #1e1e1e;",
@@ -77,7 +76,6 @@ export const lightTheme = {
     tokenTextColor: "#343434",
     // dapp-topbar-btns-wrap
     buttonStyle: "background: #EBEBEB !important; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF, inset 0px 0px 0px #FFFFFF, inset 0px 0px 0px #C9C9C9;",
-    buttonStyle: "background: #EBEBEB !important; box-shadow: 4px 4px 4px #B3B3B3, -3px -3px 4px #FFFFFF, inset 0px 0px 0px #1c1c1c, inset 0px 0px 0px #343434;",
     buttonStyleBorderT: "border: 1px solid #FFAFF7;",
     buttonStyleBorderC: "border: 1px solid #70C6B6;",
     circleBgTime: "#F2F2F2",
