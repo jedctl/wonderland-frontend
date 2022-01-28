@@ -371,11 +371,12 @@ p{
     padding: 0px 30px 36px 30px;
     box-shadow: none;
   }
-.MuiCollapse-root .MuiPaper-root{
-  background: inherit;
-}
-.MuiCollapse-root .MuiCardActions-root{
-  background: rgba(28, 28, 28, 0.9);
-  border: 1px solid rgba(192, 86, 86, 0.25);
-  backdrop-filter: blur(2px);
+  .MuiCollapse-root .MuiPaper-root{
+    background: inherit;
+  }
+  .MuiCollapse-root .MuiCardActions-root{
+    background: rgba(28, 28, 28, 0.9);
+    border: 1px solid rgba(192, 86, 86, 0.25);
+    backdrop-filter: blur(2px);
+  }
 }
