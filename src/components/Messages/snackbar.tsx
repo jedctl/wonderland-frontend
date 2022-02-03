@@ -122,14 +122,14 @@ const SnackMessage = forwardRef<HTMLDivElement, { id: string | number; message: 
     };
 
     return (
-        <SnackbarContent ref={ref} className={classes.root + " massageBgC"}>
+        <SnackbarContent ref={ref} className={classes.root + " " + "massageBgC"}>
             <Card className={classnames(classes.card, classes[props.message.severity])}>
                 <CardActions classes={{ root: classes.actionRoot }}>
                     {getIcon(props.message.severity)}
                     <Typography variant="subtitle2" className={classes.typography}>
                         <div className="massages-text">{props.message.text}</div>
                     </Typography>
-                    <div className={classes.icons + " massageCloseShow"}>
+                    <div className={classes.icons + " " + "massageCloseShow"}>
                         {props.message.error && (
                             <IconButton aria-label="Show more" className={classnames(classes.expand, { [classes.expandOpen]: expanded })} onClick={handleExpandClick}>
                                 <ExpandMoreIcon className="show-more-icon-style" color="inherit" />

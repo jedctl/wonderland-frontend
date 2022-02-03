@@ -4,7 +4,7 @@
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-  margin-left: 230px;
+  margin-left: 220px;
   margin-top: 42px;
   transition: 0.3s ease;
   border-radius: 10px;
@@ -220,6 +220,28 @@
     }
   }
 }
+
+.choose-bond-view .choose-bond-view-card .last-bonds{
+  margin: 20px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .last-bonds__title{
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  .last-bonds__blocks{
+    display: flex;
+    align-items:center;
+    flex-wrap: wrap;
+    margin: 32.5px -7.5px -7.5px -7.5px;
+    justify-content: center;
+  }
+}
 @media(max-width:1680px){
   .choose-bond-view .MuiTableCell-root{
     padding: 16px;
@@ -268,6 +290,10 @@
   }
   .choose-bond-view .bond-table-btn{
     padding: 7px 30px;
+  }
+
+  .choose-bond-view .choose-bond-view-card .last-bonds{
+    display: none;
   }
 }
 @media(max-width: 780px){

@@ -19,7 +19,6 @@ import { useSelector } from "react-redux";
 import { IReduxState } from "src/store/slices/state.interface";
 
 function NavContent() {
-
     var squasBalance = useSelector<IReduxState, number>(state => {
         return state.account.balances.squas;
     });

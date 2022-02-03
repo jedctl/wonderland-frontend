@@ -1,0 +1,85 @@
+.last-bonds__block{
+    min-width: 210px;
+    padding: 40px 20px 24px 20px;
+    max-width: 210px;
+    min-height: 325px;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    margin: 7.5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    // justify-content: center;
+    .last-bonds__block-title{
+        font-family: Roboto, sans-serif;
+        font-size: 1.125rem;
+        text-align: center;
+    }
+    .last-bonds__block-tvl{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        box-sizing: border-box;
+        transition: 0.3s ease;
+        margin: 50px 0 0 0;
+        .block-tvl-num{
+            font-family: Roboto, sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.125rem;
+        }
+        .block-tvl-text{
+            font-family: Roboto, sans-serif;
+            font-size: 0.75rem;
+            color: #969696;
+        }
+    }
+    .last-bonds__block-roi{
+        margin: 40px 0 0 0;
+        font-family: Roboto, sans-serif;
+        font-size: 1.125rem;
+    }
+    .last-bonds__block-footerT{
+        font-family: Roboto, sans-serif;
+        font-size: 0.75rem;
+        color: #969696;
+    }
+}
+@media(max-width:1890px){
+    .last-bonds__block{
+        min-width: 180px;
+    }
+}
+@media(max-width:1740px){
+    .last-bonds__block{
+        min-width: 160px;
+        min-height: 265px;
+        padding: 30px 20px 24px 20px;
+        .last-bonds__block-title{
+            font-family: Roboto, sans-serif;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .last-bonds__block-tvl{
+            margin: 30px 0 0 0;
+            width: 90px;
+            height: 90px;
+            .block-tvl-num{
+                font-size: 1rem;
+            }
+        }
+        .last-bonds__block-roi{
+            font-size: 1rem;
+            margin: 20px 0 0 0;
+        }
+    }
+}
+@media(max-width:1550px){
+    .choose-bond-view .choose-bond-view-card .last-bonds .last-bonds__title{
+        font-size: 1.25rem;
+    }
+}
