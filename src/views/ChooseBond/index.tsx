@@ -67,11 +67,11 @@ function ChooseBond() {
                     <div className="last-bonds">
                         <p className="last-bonds__title">Last bonds</p>
                         <div className="last-bonds__blocks">
-                            <LastBond blockTitleBond="ETH" LastBondAllColor="#C05656" blockTVLNum="$404.2M" blockROIProc="9%" />
-                            <LastBond blockTitleBond="USDC" LastBondAllColor="#E988EB" blockTVLNum="$243.2M" blockROIProc="14%" />
-                            <LastBond blockTitleBond="QUAS" LastBondAllColor="#92EADA" blockTVLNum="$227.2M" blockROIProc="53%" />
-                            <LastBond blockTitleBond="QUAS SUSHI LP" LastBondAllColor="#43DDFF" blockTVLNum="$190.2M" blockROIProc="172%" />
-                            <LastBond blockTitleBond="QUAS UNI LP" LastBondAllColor="#B079F7" blockTVLNum="$173.2M" blockROIProc="189%" />
+                            <LastBond classDeactivate="" blockTitleBond="IDO" LastBondAllColor="#C05656" blockTVLNum="0" blockROIProc="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#E988EB" blockTVLNum="" blockROIProc="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#92EADA" blockTVLNum="" blockROIProc="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#43DDFF" blockTVLNum="" blockROIProc="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#B079F7" blockTVLNum="" blockROIProc="" />
                         </div>
                     </div>
 

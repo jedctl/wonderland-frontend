@@ -61,6 +61,14 @@
     .MuiTableBody-root .MuiTableRow-root{
       transition: 0.3s ease;
       border-radius: 10px;
+      .bond-name-title{
+        transition: 0.3s ease;
+      }
+      &:hover{
+        .bond-name-title{
+          color: #E888EA;
+        }
+      }
     }
   }
 
@@ -138,8 +146,13 @@
       font-size: 16px;
     p{
       color: #E988EB !important;
+      transition: 0.3s ease;
     }
-    
+    &:hover{
+      p{
+        color: #CA76CC !important;
+      }
+    }
   }
   .MuiTable-root {
     margin: 10px 0px;

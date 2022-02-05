@@ -47,7 +47,9 @@ export const darkTheme = {
     bondNameTitleMobile: "#969696",
     bondTokenNameTitleMobile: "#DADADA",
     // lastBondCircle
-    lastBondCircle: "box-shadow: -4px -4px 4px #353535, 4px 4px 4px #0d0d0d;",
+    lastBondCircle: "box-shadow: -4px -4px 4px #353535, 4px 4px 4px #0d0d0d, inset 0px 0px 0px #343434, inset 0px 0px 0px rgba(0, 0, 0, 0.25);",
+    lastBondCircleHover: "box-shadow: -2px -2px 4px #353535, 2px 2px 4px #0D0D0D, inset -4px -4px 4px #343434, inset 4px 4px 4px rgba(0, 0, 0, 0.25);",
+    lastBondCirHoverDop: "background: rgba(0,0,0,0.2);",
     // bond input popup
     bondPopupBgStyle: "background: rgba(28, 28, 28, 0.96); box-shadow: -4px -4px 4px #2c2c2c, 4px 4px 4px #090909;",
     bondInputPopupStyle: "box-shadow: inset 6px 6px 4px #0D0D0D, inset -6px -6px 4px #222222;",
@@ -122,7 +124,9 @@ export const lightTheme = {
     bondNameTitleMobile: "#565656",
     bondTokenNameTitleMobile: "#565656",
     // lastBondCircle
-    lastBondCircle: "box-shadow: -4px -4px 4px #FFFFFF, 4px 4px 4px #AEAEAE;",
+    lastBondCircle: "box-shadow: -4px -4px 4px #FFFFFF, 4px 4px 4px #AEAEAE, inset 0px 0px 0px #FFFFFF, inset 0px 0px 0px #C9C9C9;",
+    lastBondCircleHover: "box-shadow: -2px -2px 4px #FFFFFF, 2px 2px 4px #AEAEAE, inset -4px 0px 4px #FFFFFF, inset 4px 4px 4px #C9C9C9;",
+    lastBondCirHoverDop: "background: rgba(180, 179, 179, 0.2);",
     // bond input popup
     bondPopupBgStyle: "background: #EBEBEB; box-shadow: 4px 4px 4px #9D9D9D, -4px -4px 4px #FFFFFF;",
     bondInputPopupStyle: "box-shadow: inset 6px 6px 4px #CCCCCC, inset -6px -6px 4px #FFFFFF;",
@@ -359,9 +363,16 @@ export const GlobalStyles = createGlobalStyle`
     .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics::after,  .stake-view .stake-card .stake-card-metrics::after{
         ${props => props.theme.colorLineDrawerUD};
     }
+
     // last bond
     .last-bonds__block .last-bonds__block-tvl{
         ${props => props.theme.lastBondCircle};
+    }
+    .last-bonds__block .last-bonds__block-tvl:hover{
+        ${props => props.theme.lastBondCircleHover};
+    }
+    .last-bonds__block .last-bonds__block-tvl:hover::after{
+        ${props => props.theme.lastBondCirHoverDop};
     }
 
     // table
