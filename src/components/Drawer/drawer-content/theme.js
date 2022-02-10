@@ -291,7 +291,7 @@ export const GlobalStyles = createGlobalStyle`
 
 
     /* -------------------------------- makeStyles-content-2 (dashboard..------------------------------- */
-    .dashboard-view, .stake-view, .choose-bond-view, .choose-bond-view .choose-bond-view-card .MuiTableBody-root .MuiTableRow-root, .choose-bond-view .choose-bond-view-card-container .bond-data-card, .choose-bond-view .choose-bond-view-card .last-bonds .last-bonds__blocks .last-bonds__block {
+    .dashboard-view, .stake-view, .choose-bond-view, .choose-bond-view .choose-bond-view-card .MuiTableBody-root .MuiTableRow-root, .choose-bond-view .choose-bond-view-card-container .bond-data-card, .choose-bond-view .choose-bond-view-card .last-bonds .last-bonds__blocks .last-bonds__block, .choose-bond-view .choose-bond-view-card .last-bonds .last-bonds__blocks .last-bonds-soon__block, .MuiTable-root .MuiTableBody-root .bond-row-soon {
         box-shadow: ${props => props.theme.makeStylesContent2};
     }
     // dashboard ------------
@@ -365,7 +365,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     // last bond
-    .last-bonds__block .last-bonds__block-tvl{
+    .last-bonds__block .last-bonds__block-tvl, .last-bonds-soon__block .last-bonds__block-tvl{
         ${props => props.theme.lastBondCircle};
     }
     .last-bonds__block .last-bonds__block-tvl:hover{

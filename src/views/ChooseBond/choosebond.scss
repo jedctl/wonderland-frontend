@@ -135,15 +135,14 @@
   .bond-table-btn{
     display: inline-block;
     border-radius: 10px;
-    padding: 10px 40px;
+    padding: 8px 40px;
     text-align: center;
     transition: 0.3s ease;
     text-decoration: none;
-    
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
     p{
       color: #E988EB !important;
       transition: 0.3s ease;
@@ -250,9 +249,11 @@
   .last-bonds__blocks{
     display: flex;
     align-items:center;
-    flex-wrap: wrap;
     margin: 32.5px -7.5px -7.5px -7.5px;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 0 20px 0;
   }
 }
 @media(max-width:1680px){
@@ -261,19 +262,30 @@
   }
 }
 @media(max-width:1550px){
+  .choose-bond-view{
+    padding: 30px 45px 45px 45px;
+    margin-left: 185px;
+  }
   .choose-bond-view .MuiTableCell-root{
     padding: 12px;
   }
   .choose-bond-view .choose-bond-view-card .choose-bond-view-card-header .choose-bond-view-card-title{
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+  }
+  .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics .choose-bond-view-card-metrics-title{
+    font-size: 0.875rem;
   }
   .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics .choose-bond-view-card-metrics-value{
-    font-size: 1.3rem;
+    font-size:1.125rem;
+    margin-top: 13px;
+  }
+  .choose-bond-view .choose-bond-view-card .last-bonds .last-bonds__title{
+    font-size:1.125rem;
   }
   .choose-bond-view .bond-table-btn{
-    padding: 6px 30px;
+    padding: 7.5px 30px;
+    font-size: 0.687rem;
   }
-  
 }
 @media(max-width:1340px){
   .choose-bond-view .MuiTableCell-root{
@@ -350,10 +362,10 @@
     transition: 0.3s ease !important;
     display: flex;
     flex-direction: column;
-    padding: 16px 30px 24px 30px;
-    height: 52px;
-    overflow: hidden;
+    padding: 10px 30px 24px 30px;
+    max-height: 52px;
     transition: 0.3s ease;
+    overflow: hidden;
     .bond-pair{
       .bond-name-title-block{
         display: flex;
@@ -364,7 +376,7 @@
       }
       .MuiBox-root{
         width: auto;
-        height: 20px;
+        height:auto;
       }
       .bond-apr{
         text-align: right;
@@ -386,7 +398,7 @@
     }
   }
   .choose-bond-view .choose-bond-view-card-container .bond-data-card.active{
-    height: 282px;
+    max-height: 282px;
     overflow: auto;
   }
   .choose-bond-view {
@@ -457,6 +469,13 @@
   }
   .choose-bond-view .choose-bond-view-card .choose-bond-view-card-metrics .choose-bond-view-card-metrics-value{
     font-size: 0.875rem;
+  }
+}
+@media(max-width:500px){
+  .choose-bond-view .close-block-bond{
+    position: relative;
+    right: 0;
+    left: 20px;
   }
 }
 @media(max-width:420px){

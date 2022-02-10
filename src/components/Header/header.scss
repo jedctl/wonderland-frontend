@@ -128,11 +128,26 @@
 }
 
 @media(max-width:1550px){
+  .dapp-topbar .container{
+    padding: 35px 0px;
+  }
   .dapp-topbar .wallet-and-token .token-cs {
     margin-left: 50px;
   }
+  .dapp-topbar .wallet-and-token .wallet-cs img{
+    width: 16px;
+  }
+  .dapp-topbar .wallet-and-token .wallet-cs .wallet-cs-score{
+    font-size: 0.687rem;
+  }
+  .dapp-topbar .wallet-and-token .token-cs svg{
+    width: 24px;
+  }
+  .dapp-topbar .wallet-and-token .token-cs .token-cs-rate{
+    font-size: 0.687rem;
+  }
   .dapp-topbar .logo svg{
-    width: 140px;
+    width: 111px;
   }
 }
 @media screen and (max-width: 1350px) {

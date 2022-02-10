@@ -8,6 +8,9 @@ import "./choosebond.scss";
 import { Skeleton } from "@material-ui/lab";
 import { IReduxState } from "../../store/slices/state.interface";
 import LastBond from "./LastBond";
+import LastBondSoon from "./LastBondSoon";
+import BondRowSoon from "./BondRowSoon";
+import BondRowSoonMob from "./BondRowSoonMob";
 
 function ChooseBond() {
     const { bonds } = useBonds();
@@ -67,11 +70,11 @@ function ChooseBond() {
                     <div className="last-bonds">
                         <p className="last-bonds__title">Last bonds</p>
                         <div className="last-bonds__blocks">
-                            <LastBond classDeactivate="" blockTitleBond="IDO" LastBondAllColor="#C05656" blockTVLNum="0" blockROIProc="" />
-                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#E988EB" blockTVLNum="" blockROIProc="" />
-                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#92EADA" blockTVLNum="" blockROIProc="" />
-                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#43DDFF" blockTVLNum="" blockROIProc="" />
-                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#B079F7" blockTVLNum="" blockROIProc="" />
+                            <LastBond classDeactivate="" blockTitleBond="IDO" LastBondAllColor="#C05656" blockTVLNum="0" blockROIProc="" blockTitleVal="ETH" />
+                            <LastBondSoon blockTitleBond="USDT/USDC LP" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#92EADA" blockTVLNum="" blockROIProc="" blockTitleVal="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#43DDFF" blockTVLNum="" blockROIProc="" blockTitleVal="" />
+                            <LastBond classDeactivate="deactivate" blockTitleBond="" LastBondAllColor="#B079F7" blockTVLNum="" blockROIProc="" blockTitleVal="" />
                         </div>
                     </div>
 
@@ -100,6 +103,7 @@ function ChooseBond() {
                                         {bonds.map(bond => (
                                             <BondTableData key={bond.name} bond={bond} />
                                         ))}
+                                        <BondRowSoon />
                                     </TableBody>
                                 </Table>
                             </TableContainer>
@@ -116,6 +120,9 @@ function ChooseBond() {
                                 <BondDataCard key={bond.name} bond={bond} />
                             </Grid>
                         ))}
+                        <Grid item xs={12}>
+                            <BondRowSoonMob />
+                        </Grid>
                     </Grid>
                 </div>
             )}

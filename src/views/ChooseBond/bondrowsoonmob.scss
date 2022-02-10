@@ -1,0 +1,18 @@
+.Bond-Row-Soon-Mob{
+    pointer-events: none;
+    .bond-pair{
+        .bond-name-title-block{
+            .bond-name{
+                .bond-name-title{
+                    color: #555555;
+                }
+            }
+        }
+        .bond-apr p{
+            color: #555555 !important;
+        }
+    }
+}
+.choose-bond-view .choose-bond-view-card-container .bond-data-card .bond-pair .MuiBox-root svg{
+    height: auto;
+}

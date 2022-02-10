@@ -15,7 +15,14 @@ body iframe{
     }
 }
 
-
+@media(max-width:1550px){
+    .footer-content{
+        margin: 54px 0 0 185px;
+    }
+    .footer-content p{
+        font-size: 0.562rem;
+    }
+}
 @media(max-width:960px){
     .footer-content{
         margin: 80px 0 0 0;

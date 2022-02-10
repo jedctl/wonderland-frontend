@@ -1,0 +1,116 @@
+.last-bonds-soon__block{
+    position: relative;
+    width: 100%;
+    min-width: 150px;
+    padding: 40px 20px 24px 20px;
+    max-width: 210px;
+    min-height: 325px;
+    height: 325px;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    margin: 7.5px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
+    &-title{
+        font-family: Roboto, sans-serif;
+        font-size: 1.125rem;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 54px;
+        overflow: hidden;
+        overflow-x: auto;
+        white-space: pre;
+        max-width: 125px;
+        color: #555555;
+    }
+    .last-bonds__block-tvl{
+        position: relative;
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        box-sizing: border-box;
+        transition: 0.3s ease;
+        border: 1px solid #555555 !important;
+        padding: 20px;
+        .block-deactivate-text{
+            display: block;
+            font-family: Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 1.125rem;
+            text-align: center;
+            color: #555555;
+            line-height: 21px;
+        }
+    }
+}
+
+
+@media(max-width:1890px){
+    .last-bonds-soon__block{
+        min-width: 130px;
+        max-width: 200px;
+    }
+}
+@media(max-width:1740px){
+    .last-bonds-soon__block{
+        min-width: 140px;
+        max-width: 160px;
+        min-height: 265px;
+        height: 265px;
+        padding: 30px 20px 24px 20px;
+        &-title{
+            font-size: 1rem;
+            margin-bottom: 42px;
+            max-width: 115px;
+        }
+        .last-bonds__block-tvl{
+            width: 90px;
+            height: 90px;
+            padding: 15px;
+            .block-deactivate-text{
+                font-size: 1rem;
+                line-height: 15px;
+            }
+        }
+    }
+}
+@media(max-width:1550px){
+    .last-bonds-soon__block{
+        min-width: 120px;
+        max-width: 158px;
+        min-height: 244px;
+        overflow: hidden;
+        height: 205px;
+        overflow-y: auto;
+        padding: 22px 20px 22px 20px;
+        &-title{
+            font-size: 0.875rem;
+            max-width: 105px;
+            margin-bottom: 43px;
+        }
+        .last-bonds__block-tvl{
+            width: 80px;
+            height: 80px;
+            min-height: 80px;
+            .block-deactivate-text{
+                font-size: 0.75rem;
+                line-height: 13px;
+            }
+        }
+    }
+}
+@media(max-width:1350px){
+    .last-bonds-soon__block{
+        min-height: 204px;
+        &-title{
+            margin-bottom: 25px;
+        }
+    }
+}

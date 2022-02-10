@@ -53,8 +53,26 @@
   }
 }
 @media(max-width:1550px){
+  .dashboard-view{
+    margin-left: 185px;
+  }
+  .dashboard-view .dashboard-infos-wrap .MuiGrid-container{
+    justify-content: space-between;
+  }
+  .dashboard-view .dashboard-infos-wrap .MuiGrid-item {
+    max-width: 260px;
+  }
+  .dashboard-view .dashboard-infos-wrap .dashboard-card .card-title{
+    font-size: 0.875rem;
+  }
   .dashboard-view .dashboard-infos-wrap .dashboard-card .card-value{
-    font-size: 1.3rem;
+    font-size: 1.125rem;
+  }
+  
+}
+@media(max-width:1405px){
+  .dashboard-view .dashboard-infos-wrap .MuiGrid-item {
+    max-width: 210px;
   }
 }
 @media(max-width:1240px){

@@ -13,7 +13,7 @@ function LastBond(props: any) {
             <div className="last-bonds__block-roi" style={{ color: props.LastBondAllColor }}>
                 <span>{props.blockROIProc}</span>
             </div>
-            <div className="last-bonds__block-footerT">{props.blockTitleBond}</div>
+            <div className="last-bonds__block-footerT">{props.blockTitleVal}</div>
         </div>
     );
 }

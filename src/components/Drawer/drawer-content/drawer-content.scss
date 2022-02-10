@@ -147,7 +147,7 @@
 
   .dapp-menu-doc-link{
     position: relative;
-    margin: 60px 0 0 0;
+    margin: 60px 0 18px 0;
     a {
       display: flex;
       width: 100%;
@@ -156,7 +156,7 @@
       p{
         font-family: Roboto, sans-serif;
         font-style: normal;
-        font-weight: normal;
+        font-weight: 400 !important;
         font-size: 0.875rem;
         line-height: 20px;
         color: #969696;
@@ -171,6 +171,7 @@
     height: 4px;
     background: #4F4F4F;
     right: 0px;
+    bottom: -18px;
     box-shadow: inset 2px 2px 2px #1e1e1e;
     transition: 0.3s ease;
   }
@@ -236,12 +237,78 @@
     background: inherit;
   }
 }
-@media(max-width:1550px){
+@media(max-width:1550px) and (min-width: 960px){
+  .dapp-sidebar{
+    padding: 0 30px 0 0;
+  }
   .dapp-sidebar .dapp-menu-links .dapp-nav a{
-    font-size: 1.3rem;
+    font-size: 1.125rem;
     padding: 10px 0;
   }
-  
+  .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts .bond-discounts-title{
+    font-size: 0.687rem;
+    margin-bottom: 22px;
+  }
+  .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts p{
+    font-size: 0.687rem;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score{
+    margin: 45px 0 0 0;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score svg{
+    width: 17px;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score .wallet-cs-score{
+    font-size: 0.687rem;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score .drawer__wallet-bye{
+    width: 15px;
+    height: 15px;
+    padding: 5px 5px;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score .drawer__wallet-bye::before{
+    width: 1px;
+    height: 7.5px;
+  }
+  .dapp-sidebar .drawer-wallet-cs-score .drawer__wallet-bye::after{
+    width: 7.5px;
+    height: 1px;
+  }
+  .dapp-sidebar .drawer-setting{
+    margin: 45px 0 0 0;
+  }
+  .dapp-sidebar .drawer-setting svg{
+    width: 15px;
+    height: 15px;
+  }
+  .dapp-sidebar .drawer-setting .button-theme img{
+    width: 15px;
+  }
+  .dapp-sidebar .dapp-menu-doc-link{
+    margin: 45px 0 10px 0;
+  }
+  .dapp-sidebar .dapp-menu-doc-link a p{
+    font-size: 0.687rem;
+  }
+  .dapp-sidebar .dapp-menu-doc-link::after{
+    bottom: -10px;
+  }
+  .dapp-sidebar__join-us{
+    margin: 45px 0 45px 0;
+  }
+  .dapp-sidebar__join-us .join-us-title{
+    font-size: 0.875rem;
+  }
+  .dapp-sidebar__join-us .social-row{
+    margin: 36px 0 0 0;
+  }
+  .dapp-sidebar__join-us .social-row a{
+    font-size: 0.687rem;
+  }
+  .dapp-sidebar__join-us .social-row a svg{
+    width: 20px;
+    height: auto;
+  }
 }
 @media(max-width:959px){
   .MuiDrawer-root .MuiDrawer-paper{
@@ -261,7 +328,18 @@
   .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts .bond .bond-pair-roi{
     margin-left: 0px;
   }
-  
+  .dapp-sidebar .drawer-wallet-cs-score{
+    margin: 40px 0 0 0;
+  }
+  .dapp-sidebar .dapp-menu-doc-link{
+    margin: 60px 0 30px 0;
+  }
+  .dapp-sidebar .dapp-menu-doc-link::after{
+    bottom: -33px;
+  }
+  .dapp-sidebar__join-us{
+    margin: 46px 0 46px 0;
+  }
 }
 @media(max-width:600px){
   .dapp-sidebar {

@@ -1,0 +1,62 @@
+.bond-row-soon{
+    transition: 0.3s ease;
+    border-radius: 10px;
+    pointer-events: none;
+    &__left{
+        display: flex;
+        text-align: right;
+        padding: 12px 20px 12px 40px;
+        justify-content: space-between;
+        .MuiBox-root{
+            display: flex;
+            justify-content: center;
+            width: 64px;
+        }
+        .bond-name{
+            width: 60%;
+            margin-left: 8px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+            align-items: flex-start;
+        }
+        .bond-name-title{
+            font-family: Roboto, sans-serif;
+            color: #555555;
+        }
+    }
+    .MuiTableCell-root .bond-name-title{
+        color: #555555;
+    }
+    .bond-table-btn-soon{
+        display: inline-block;
+        border-radius: 10px;
+        padding: 8px 40px;
+        text-align: center;
+        transition: 0.3s ease;
+        text-decoration: none;
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        border: 1px solid #555555;
+        box-sizing: border-box;
+        border-radius: 10px;
+        p{
+            color: #4F4F4F !important;
+        }
+    }
+}
+
+@media (max-width: 1680px){
+    .choose-bond-view .bond-row-soon__left {
+        padding: 12px;
+    }
+}
+@media (max-width: 1550px){
+    .bond-row-soon .bond-table-btn-soon {
+        padding: 7.5px 30px;
+        font-size: 0.687rem;
+    }
+}

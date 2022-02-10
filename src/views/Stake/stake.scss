@@ -237,16 +237,70 @@
   }
 }
 
-@media(max-width:1550px){
+@media(max-width:1550px) and (min-width: 960px){
+  .stake-view{
+    margin-left: 185px;
+  }
+  .stake-view .stake-card{
+    padding: 30px 90px 45px 90px;
+  }
   .MuiGrid-spacing-xs-2 > .MuiGrid-item{
     padding: 0 !important;
+  }
+  .stake-view .stake-card .stake-card-header .stake-card-header-title{
+    font-size: 1.125rem;
+  }
+  .rebase-timer p{
+    font-size: 0.75rem;
+  }
+  .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-title, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-title{
+    font-size: 0.875rem;
   }
   .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-connect-btn{
     padding: 12px 40px;
     font-size: 1rem;
   }
   .stake-view .stake-card .stake-card-metrics .stake-card-apy .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-tvl .stake-card-metrics-value, .stake-view .stake-card .stake-card-metrics .stake-card-index .stake-card-metrics-value{
-    font-size: 1.3rem;
+    font-size: 1.125rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-desc-text{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-wallet-notification .stake-card-wallet-connect-btn{
+    font-size: 0.875rem;
+    padding: 11px 36px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row{
+    justify-content: flex-start;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input{
+    max-width: 510px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input .MuiOutlinedInput-input{
+    padding: 15px 30px;
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input .stake-card-action-input-btn p{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel{
+    margin-left: 45px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn{
+    padding: 11px 37px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn p{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-help-text p{
+    font-size: 0.562rem;
+    max-width: 510px;
+  }
+  .stake-view .stake-card .stake-card-area .stake-user-data{
+    margin-top: 37px;
+  }
+  .data-row .data-row-name, .data-row .data-row-value{
+    font-size: 0.75rem;
   }
 }
 @media screen and (max-width: 1240px) {
@@ -285,6 +339,15 @@
     margin-left: 0;
     margin-top: 25px;
   }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input .MuiOutlinedInput-input{
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input .stake-card-action-input-btn p {
+    font-size: 0.875rem;
+  }
+  .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn p{
+    font-size: 0.875rem;
+  }
 }
 @media(max-width:780px){
   .stake-view{
@@ -303,7 +366,7 @@
   }
   .stake-view .stake-card .stake-card-metrics{
     text-align: start;
-    margin-top: 28px;
+    margin-top: 13px;
     position: relative;
   }
   .stake-view .stake-card .stake-card-metrics::after{
@@ -322,7 +385,7 @@
   .stake-view .stake-card .stake-card-metrics .stake-card-apy, .stake-view .stake-card .stake-card-metrics .stake-card-tvl, .stake-view .stake-card .stake-card-metrics .stake-card-index{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 20px 0 0 0;
+    margin: 8px 0 0 0;
   }
 }
 
