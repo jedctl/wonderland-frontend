@@ -3,7 +3,7 @@ import { LPBond, CustomLPBond } from "./lp-bond";
 import { StableBond, CustomBond } from "./stable-bond";
 import { IDOBond } from "./ido-bond";
 
-import MimIcon from "../../assets/tokens/MIM.svg";
+import MimIcon from "../../assets/tokens/dai-dai-logo.svg";
 import AvaxIcon from "../../assets/tokens/AVAX.svg";
 import MimTimeIcon from "../../assets/tokens/TIME-MIM.svg";
 import AvaxTimeIcon from "../../assets/tokens/TIME-AVAX.svg";
