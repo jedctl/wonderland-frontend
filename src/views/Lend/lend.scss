@@ -1,0 +1,543 @@
+.lend-view{
+  margin-top: 42px;
+  border-radius: 10px;
+  margin-left: 230px;
+  transition: 0.3s ease;
+  .lend-card{
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    padding: 40px 110px 60px 110px;
+    width: 100%;
+
+    .lend-card-grid{
+      margin: 0;
+      width: 100%;
+      .lend-card-area{
+        margin: 62px 0 0 0;
+      }
+    }
+
+    .lend-card-header{
+      .lend-card-header-title{
+        font-family: Montserrat Bold;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+      }
+    }
+
+    .lend-card-metrics {
+      display: flex;
+      width: 100%;
+      padding: 0;
+      text-align: center;
+      margin-top: 16px;
+      
+      .lend-card-apy,
+      .lend-card-tvl,
+      .lend-card-index {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: 70px 0 0 0;
+        .lend-card-metrics-title{
+          font-family: Montserrat Medium;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 1.125rem;
+          margin-bottom: 2px;
+        }
+        
+        .lend-card-metrics-value{
+          font-family: Montserrat Bold;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 29px;
+          margin-top: 18px;
+        }
+      }
+    }
+
+    .lend-card-area {
+      .lend-card-wallet-notification{
+        text-align: center;
+
+        .lend-card-wallet-connect-btn{
+          box-shadow: 0px 0px 10px rgba(44, 39, 109, 0.1);
+          border-radius: 10px;
+          padding: 15px 50px;
+          cursor: pointer;
+          margin: auto;
+          max-width: 280px;
+          margin-top: 20px;
+          display: inline-block;
+          
+          font-family: Montserrat SemiBold;
+          font-weight: 600;
+          font-size: 1.125rem;
+          color: #FFFFFF;
+          transition: 0.3s ease;
+          &:hover{
+            color: #7cc9bb;
+            // box-shadow: 4px 4px 8px #000000, -4px -4px 8px #383838, inset 4px 4px 3px #151515, inset -4px -4px 4px #474747;
+          }
+        }
+        
+
+        .lend-card-wallet-desc-text{
+          font-family: Roboto;
+          font-weight: 300;
+          font-size: .875rem;
+          color: rgba(255, 255, 255, 0.6);
+          margin-top: 10px;
+          margin-bottom: 6px;
+        }
+      }
+
+      .lend-card-action-area{
+        width: 100%;
+        margin-top: 25px;
+
+        .lend-card-action-stage-btns-wrap{
+          display: flex;
+          align-items: center;
+          .lend-card-action-stage-btn{
+            margin: 0px 24px;
+            padding: 6px;
+            // cursor: pointer;
+            transition: all .4s ease;
+            
+            p{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 0.875rem;
+              color: #9A9A9A;
+            }
+          }
+          .lend-card-action-stage-btn.active{
+            p{
+              color: #E988EB;
+            }
+          }
+        }
+        .lend-card-action-row{
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+          justify-content: space-between;
+
+          .lend-card-action-input{
+            width: 100%;
+            max-width: 680px;
+            border-radius: 10px;
+            outline: none;
+            padding-right: 20px;
+            transition: 0.3s ease;
+            .MuiOutlinedInput-input{
+              font-family: Montserrat Medium;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              color: #525252;
+              padding: 20px 20px;
+            }
+            
+            .MuiOutlinedInput-notchedOutline{
+              border: none;
+            }
+            
+            .lend-card-action-input-btn{
+              cursor: pointer;
+                
+              p{
+                font-family: Montserrat SemiBold;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 1.125rem;
+                color: #E988EB;
+              }
+            }
+          } 
+          
+          .lend-card-tab-panel{
+            margin-left: 10px;
+
+            .lend-card-tab-panel-btn{
+              border-radius: 10px;
+              padding: 15px 50px;
+              cursor: pointer;
+              text-align: center;
+              transition: 0.3s ease;
+              p{
+                font-family: Montserrat SemiBold;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 18px;
+                color: #E988EB;
+              }
+            }
+          }
+        }
+        .lend-mobile-open{
+          display: none;
+        }
+        .lend-card-action-help-text{
+          margin-top: 24px;
+          p{
+            width: 100%;
+            max-width: 680px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 0.75rem;
+            line-height: 14px;
+            color: #565656;
+          }
+        }
+      }
+
+      .lend-user-data{
+        justify-content: center;
+        
+        padding: 0 5px;
+        margin-top: 50px;
+        max-width: 330px;
+        
+      }
+    }
+  }
+}
+
+.data-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 12px 0px;
+
+  .data-row-name{
+    font-family: Montserrat Medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+  }
+  .data-row-value{
+    font-family: Montserrat;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-left: 90px;
+  }
+}
+
+@media(max-width:1550px) and (min-width: 960px){
+  .lend-view{
+    margin-left: 185px;
+  }
+  .lend-view .lend-card{
+    padding: 30px 90px 45px 90px;
+  }
+  .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+    padding: 0 !important;
+  }
+  .lend-view .lend-card .lend-card-header .lend-card-header-title{
+    font-size: 1.125rem;
+  }
+  .rebase-timer p{
+    font-size: 0.75rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-title{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-wallet-notification .lend-card-wallet-connect-btn{
+    padding: 12px 40px;
+    font-size: 1rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-value{
+    font-size: 1.125rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-wallet-notification .lend-card-wallet-desc-text{
+    font-size: .562rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-wallet-notification .lend-card-wallet-connect-btn{
+    font-size: 0.875rem;
+    padding: 11px 36px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row{
+    justify-content: flex-start;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input{
+    max-width: 510px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input .MuiOutlinedInput-input{
+    padding: 15px 30px;
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input .lend-card-action-input-btn p{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel{
+    margin-left: 45px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn{
+    padding: 11px 37px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn p{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-help-text p{
+    font-size: 0.562rem;
+    max-width: 510px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-user-data{
+    margin-top: 37px;
+  }
+  .data-row .data-row-name, .data-row .data-row-value{
+    font-size: 0.75rem;
+  }
+}
+@media screen and (max-width: 1240px) {
+  .lend-view .lend-card .lend-card-area .lend-card-wallet-notification .lend-card-wallet-desc-text{
+    font-size: .562rem;
+  }
+  .lend-view .lend-card{
+    padding: 40px 60px 60px 60px;
+  }
+  .lend-view .lend-card .lend-card-header .lend-card-header-title{
+    font-size: 1.3rem;
+  }
+  .rebase-timer p{
+    font-size: 0.9rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-title{
+    font-size: 1rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-value{
+    font-size: 1.2rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input .MuiOutlinedInput-input{
+    padding: 15px 20px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn{
+    padding: 12px 30px;
+  }
+}
+@media screen and (max-width: 1080px) {
+  .lend-view .lend-card{
+    padding: 40px 40px 60px 40px;
+  }
+}
+@media(max-width:959px) {
+  .lend-view{
+    margin-left: 0;
+    margin-top: 25px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input .MuiOutlinedInput-input{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input .lend-card-action-input-btn p {
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn p{
+    font-size: 0.875rem;
+  }
+}
+@media(max-width:780px){
+  .lend-view{
+    display: block;
+  }
+  .MuiGrid-container{
+    flex-wrap: nowrap !important;
+  }
+  .MuiGrid-spacing-xs-2 > .MuiGrid-item{
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .lend-view .lend-card{
+    padding: 25px 36px 30px 36px;
+  }
+  .lend-view .lend-card .lend-card-metrics{
+    text-align: start;
+    margin-top: 13px;
+    position: relative;
+  }
+  .lend-view .lend-card .lend-card-metrics::after{
+    content: "";
+    position: absolute;
+    width: 102%;
+    display: inline-block;
+    height: 4px;
+    left: -1%;
+    bottom: -25px;
+    transition: 0.3s ease;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-value{
+    margin-top: 0;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy, .lend-view .lend-card .lend-card-metrics .lend-card-tvl, .lend-view .lend-card .lend-card-metrics .lend-card-index{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 8px 0 0 0;
+  }
+}
+
+
+// radio button -----
+.toggle-button-cover {
+  position: relative;
+}
+.knobs,
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.button {
+  position: relative;
+  top: 50%;
+  width: 52px;
+  height: 24px;
+  overflow: hidden;
+}
+.button.r,
+.button.r .layer {
+  border-radius: 33px;
+  transition: 0.3s ease;
+}
+.button.b2 {
+  border-radius: 2px;
+}
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.knobs {
+  z-index: 2;
+}
+.layer {
+  width: 100%;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+/* Button 1 */
+#button-1 .knobs:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 3px;
+  height: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px;
+  background-color: #E988EB;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+#button-1 .checkbox:checked + .knobs:before {
+  content: "";
+  left: 28px;
+  background-color: #E988EB;
+}
+#button-1 .checkbox:checked ~ .layer {
+}
+#button-1 .knobs,
+#button-1 .knobs:before,
+#button-1 .layer {
+  transition: 0.3s ease all;
+}
+
+
+
+@media(max-width: 733px){
+  .lend-view .lend-card .lend-card-metrics::after{
+    width: 106%;
+    left: -3%;
+  }
+}
+@media(max-width:650px){
+  .lend-view .lend-card .lend-card-header .lend-card-header-title{
+    font-size: 0.875rem;
+  }
+  .rebase-timer p{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-title, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-title{
+    font-size: 0.875rem;
+  }
+  .lend-view .lend-card .lend-card-metrics .lend-card-apy .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-tvl .lend-card-metrics-value, .lend-view .lend-card .lend-card-metrics .lend-card-index .lend-card-metrics-value{
+    font-size: 0.875rem;
+    margin: 0 0 0 12px;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-wallet-notification .lend-card-wallet-connect-btn{
+    padding: 8px 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-help-text{
+    display: none;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-mobile-open{
+    display: block;
+  }
+  .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-stage-btns-wrap{
+    justify-content: center;
+  }
+  .lend-view{
+    .lend-card{
+      .lend-card-metrics{
+        .lend-card {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      .lend-card-area{
+        .lend-card-action-area{
+          .lend-card-action-row{
+            flex-direction: column;
+            .lend-card-tab-panel{
+              margin-left: 0;
+              margin-top: 20px;
+              min-width: none;
+              width: 100%;
+              text-align: center;
+              .lend-card-tab-panel-btn{
+                display: inline-block;
+                padding: 8px 28px;
+                p{
+                  font-size: 0.75rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .data-row .data-row-name{
+    font-size: 12px;
+  }
+  .data-row .data-row-value{
+    margin-left: 40px;
+    font-size: 12px;
+  }
+}

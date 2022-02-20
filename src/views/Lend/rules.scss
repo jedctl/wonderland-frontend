@@ -1,0 +1,138 @@
+#rules {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 32px;
+    .ohm-popover {
+      max-width: 848px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(5px);
+      padding: 30px;
+      border-radius: 8px;
+  
+      h3 {
+        align-self: center;
+        justify-self: center;
+        width: 75%;
+        text-align: center;
+      }
+      label {
+        margin: 60px 10px 4px 10px;
+      }
+      .help-text {
+        margin: 10px;
+      }
+    }
+    .mobile .ohm-popover {
+      max-width: 400px;
+    }
+    .header-setting{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rules-title{
+      font-family: Roboto;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0 0 0 15px;
+      top: 48px;
+        position: relative;
+      font-weight: 500;
+    }
+  
+    .cross-wrap{
+      position: relative;
+      width: 15px;
+      height: 15px;
+      align-self: flex-end;
+      cursor: pointer;
+      bottom: 10px;
+      &::before, &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        left: 0;
+      }
+      &::before{
+        transform: rotate(45deg);
+      }
+      &::after{
+        transform: rotate(-45deg);
+      }
+    }
+  
+    .card-content{
+      margin: 82px 30px;
+      width: auto;
+        p{
+            font-family: Roboto, sans-serif;
+            font-style: normal;
+            font-size: 0.875rem;
+        }
+      .input-lable{
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #FFFFFF;
+      }
+  
+      .percent{
+        font-family: Montserrat SemiBold;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+      }
+  
+      .help-text{
+        margin: 5px 0;
+  
+        .text-bond-desc{
+          font-family: Montserrat Light;
+          font-weight: 300;
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }    
+    }
+  
+    .bond-input{
+      border-radius: 10px;
+      outline: none;
+      margin-bottom: 20px;
+      margin-top: 15px;
+      .MuiOutlinedInput-input{
+        font-family: Montserrat Medium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+      }
+    
+      .MuiOutlinedInput-notchedOutline{
+        border: none;
+      }
+    }
+  }
+  @media(max-width:1550px){
+    #rules .rules-title{
+        font-size: 0.875rem;
+    }
+    #rules .card-content p{
+        font-size: 0.75rem;
+    }
+  }
+  @media(max-width:780px){
+    #rules .rules-title{
+      top: 0;
+    }
+  }
+  @media(max-width:650px){
+    #rules .card-content{
+      margin: 30px 12px;
+    }
+  }
+  

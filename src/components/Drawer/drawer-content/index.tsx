@@ -44,6 +44,9 @@ function NavContent() {
         if (currentPath.indexOf("bonds") >= 0 && page === "bonds") {
             return true;
         }
+        if (currentPath.indexOf("lend") >= 0 && page === "lend") {
+            return true;
+        }
         return false;
     }, []);
 
@@ -85,6 +88,17 @@ function NavContent() {
                             className={classnames("button-dapp-menu", { active: isActive })}
                         >
                             Bond
+                        </Link>
+
+                        <Link
+                            component={NavLink}
+                            to="/lend"
+                            isActive={(match: any, location: any) => {
+                                return checkPage(location, "lend");
+                            }}
+                            className={classnames("button-dapp-menu", { active: isActive })}
+                        >
+                            Lend
                         </Link>
 
                         <div className="bond-discounts">
