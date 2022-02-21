@@ -156,7 +156,7 @@ function Lend() {
                         </Grid>
 
                         <div className="lend-card-area">
-                            {!address && (
+                            {/* {!address && (
                                 <div className="lend-card-wallet-notification">
                                     <p className="lend-card-wallet-desc-text">
                                         You need to repay the loan taken before the expiration date. Otherwise, your $QUAS will be burned and you will not receive a staking reward.
@@ -165,7 +165,7 @@ function Lend() {
                                         Pay Back
                                     </div>
                                 </div>
-                            )}
+                            )} */}
                             <div>
                                 <div className="lend-card-action-area">
                                     <div className="lend-card-action-row">
@@ -187,7 +187,7 @@ function Lend() {
 
                                         <div className="lend-card-tab-panel">
                                             <div onClick={continueOpen} className="lend-card-tab-panel-btn">
-                                                <p>Lend</p>
+                                                <p>Borrow</p>
                                             </div>
                                             <Continue openC={openC} continueClose={continueClose} />
                                         </div>
