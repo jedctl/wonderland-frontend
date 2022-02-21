@@ -13,9 +13,18 @@ import { messages } from "../../constants/messages";
 import classnames from "classnames";
 import { warning } from "../../store/slices/messages-slice";
 import Rules from "./Rules";
+import Continue from "./Continue";
 
 function Lend() {
+    const [openC, setOpenC] = useState(false);
     const [open, setOpen] = useState(false);
+    const continueOpen = () => {
+        setOpenC(true);
+    };
+
+    const continueClose = () => {
+        setOpenC(false);
+    };
 
     const handleOpen = () => {
         setOpen(true);
@@ -51,12 +60,6 @@ function Lend() {
     });
     const stakingRebase = useSelector<IReduxState, number>(state => {
         return state.app.stakingRebase;
-    });
-    const stakingAPY = useSelector<IReduxState, number>(state => {
-        return state.app.stakingAPY;
-    });
-    const stakingTVL = useSelector<IReduxState, number>(state => {
-        return state.app.stakingTVL;
     });
 
     const pendingTransactions = useSelector<IReduxState, IPendingTxn[]>(state => {
@@ -163,86 +166,75 @@ function Lend() {
                                     </div>
                                 </div>
                             )}
-                            {address && (
-                                <div>
-                                    <div className="lend-card-action-area">
-                                        <div className="lend-card-action-row">
-                                            <OutlinedInput
-                                                type="number"
-                                                placeholder="Amount"
-                                                className="lend-card-action-input"
-                                                value={quantity}
-                                                onChange={e => setQuantity(e.target.value)}
-                                                labelWidth={0}
-                                                endAdornment={
-                                                    <InputAdornment position="end">
-                                                        <div onClick={setMax} className="lend-card-action-input-btn">
-                                                            <p>Max</p>
-                                                        </div>
-                                                    </InputAdornment>
-                                                }
-                                            />
-
-                                            {view === 0 && (
-                                                <div className="lend-card-tab-panel">
-                                                    <div className="lend-card-tab-panel-btn">
-                                                        <p>Lend</p>
+                            <div>
+                                <div className="lend-card-action-area">
+                                    <div className="lend-card-action-row">
+                                        <OutlinedInput
+                                            type="number"
+                                            placeholder="Amount"
+                                            className="lend-card-action-input"
+                                            value={quantity}
+                                            onChange={e => setQuantity(e.target.value)}
+                                            labelWidth={0}
+                                            endAdornment={
+                                                <InputAdornment position="end">
+                                                    <div onClick={setMax} className="lend-card-action-input-btn">
+                                                        <p>Max</p>
                                                     </div>
-                                                </div>
-                                            )}
+                                                </InputAdornment>
+                                            }
+                                        />
 
-                                            {view === 1 && (
-                                                <div className="lend-card-tab-panel">
-                                                    <div className="lend-card-tab-panel-btn">
-                                                        <p>Lend</p>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <div className="lend-card-action-help-text">
-                                            {address && ((!hasAllowance("time") && view === 0) || (!hasAllowance("memo") && view === 1)) && (
-                                                <p>
-                                                    After clicking on the Lend button, your $sQuas will be locked, but staking will continue to accrue on the full amount. The loan
-                                                    repayment period is 30 days. In case of non-return, your $QUAS will be burned. By clicking on the button, you confirm that you
-                                                    have read and agree with this{" "}
-                                                    <span onClick={handleOpen} className="green-rules">
-                                                        Rules.
-                                                    </span>
-                                                    <Rules open={open} handleClose={handleClose} />
-                                                </p>
-                                            )}
+                                        <div className="lend-card-tab-panel">
+                                            <div onClick={continueOpen} className="lend-card-tab-panel-btn">
+                                                <p>Lend</p>
+                                            </div>
+                                            <Continue openC={openC} continueClose={continueClose} />
                                         </div>
                                     </div>
 
-                                    <div className="lend-user-data">
-                                        <div className="data-row">
-                                            <p className="data-row-name">Your Balance</p>
-                                            <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(quasBalance), 4)} QUAS</>}</p>
-                                        </div>
-
-                                        <div className="data-row">
-                                            <p className="data-row-name">Your Staked Balance</p>
-                                            <p className="data-row-value">890</p>
-                                        </div>
-
-                                        <div className="data-row">
-                                            <p className="data-row-name">Next Reward Amount</p>
-                                            <p className="data-row-value">890</p>
-                                        </div>
-
-                                        <div className="data-row">
-                                            <p className="data-row-name">Next Reward Yield</p>
-                                            <p className="data-row-value">890</p>
-                                        </div>
-
-                                        <div className="data-row">
-                                            <p className="data-row-name">ROI (5-Day Rate)</p>
-                                            <p className="data-row-value">900</p>
-                                        </div>
+                                    <div className="lend-card-action-help-text">
+                                        {address && ((!hasAllowance("time") && view === 0) || (!hasAllowance("memo") && view === 1)) && (
+                                            <p>
+                                                After clicking on the Lend button, your $sQuas will be locked, but staking will continue to accrue on the full amount. The loan
+                                                repayment period is 30 days. In case of non-return, your $QUAS will be burned. By clicking on the button, you confirm that you have
+                                                read and agree with this{" "}
+                                                <span onClick={handleOpen} className="green-rules">
+                                                    Rules.
+                                                </span>
+                                                <Rules open={open} handleClose={handleClose} />
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
-                            )}
+
+                                <div className="lend-user-data">
+                                    <div className="data-row">
+                                        <p className="data-row-name">Your Balance</p>
+                                        <p className="data-row-value">{isAppLoading ? <Skeleton width="80px" /> : <>{trim(Number(quasBalance), 4)} QUAS</>}</p>
+                                    </div>
+
+                                    <div className="data-row">
+                                        <p className="data-row-name">Your Collateral</p>
+                                        <p className="data-row-value">10 $sQUAS</p>
+                                    </div>
+
+                                    <div className="data-row">
+                                        <p className="data-row-name">You Receive</p>
+                                        <p className="data-row-value">300 DAI</p>
+                                    </div>
+
+                                    <div className="data-row">
+                                        <p className="data-row-name">Debt</p>
+                                        <p className="data-row-value">310 DAI</p>
+                                    </div>
+
+                                    <div className="data-row">
+                                        <p className="data-row-name">Expiration Date</p>
+                                        <p className="data-row-value">30.02.2022</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </Grid>
                 </div>

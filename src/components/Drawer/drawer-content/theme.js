@@ -249,7 +249,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.headingColor};
     }
     // bond-discounts-title
-    .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts .bond-discounts-title, #rules .rules-title{
+    .dapp-sidebar .dapp-menu-links .dapp-nav .bond-discounts .bond-discounts-title, #rules .rules-title, #continue .continue-title, #continue .card-content p{
         ${props => props.theme.colorTitleDis};
     }
     // iconWallet
@@ -331,10 +331,10 @@ export const GlobalStyles = createGlobalStyle`
     .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-action-input, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-action-input{
         box-shadow: ${props => props.theme.stakeCardInputBg};
     }
-    .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn{
+    .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn, #continue .card-content .continue__buttons .con-but{
         ${props => props.theme.buttonStyle};
     }
-    .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn:hover, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn:hover{
+    .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-row .stake-card-tab-panel .stake-card-tab-panel-btn:hover, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-row .lend-card-tab-panel .lend-card-tab-panel-btn:hover, #continue .card-content .continue__buttons .con-but:hover{
         ${props => props.theme.buttonHoverColor};
     }
     .stake-view .stake-card .stake-card-area .stake-card-action-area .stake-card-action-help-text p, .lend-view .lend-card .lend-card-area .lend-card-action-area .lend-card-action-help-text p{
@@ -384,7 +384,7 @@ export const GlobalStyles = createGlobalStyle`
     .bond-view .bond-header .bond-header-logo .bond-header-name, .bond-view .bond-price-data .bond-price-data-title, .bond-view .bond-price-data .bond-price-data-value{
         color: ${props => props.theme.bondTableColor};
     }
-    .bond-view .bond-header .cancel-bond::before, .bond-view .bond-header .cancel-bond::after, #hades .cross-wrap::before, #hades .cross-wrap::after, #rules .cross-wrap::before, #rules .cross-wrap::after{
+    .bond-view .bond-header .cancel-bond::before, .bond-view .bond-header .cancel-bond::after, #hades .cross-wrap::before, #hades .cross-wrap::after, #rules .cross-wrap::before, #rules .cross-wrap::after, #continue .cross-wrap::before, #continue .cross-wrap::after{
         background: ${props => props.theme.textColorActive};
     }
     .bond-view .bond-one-table .bond-one-table-btn.active p{
@@ -414,7 +414,7 @@ export const GlobalStyles = createGlobalStyle`
         color: ${props => props.theme.textColorActive};
     }
     // setting
-    #hades .ohm-popover, #rules .ohm-popover{
+    #hades .ohm-popover, #rules .ohm-popover, #continue .ohm-popover{
         ${props => props.theme.bondPopupBgStyle};
     }
     #hades .hades-title, #hades .card-content .input-lable{
