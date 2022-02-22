@@ -8,26 +8,26 @@ import { ReactComponent as Mail } from "../../../assets/icons/mail.svg";
 export default function Social() {
     return (
         <div className="social-row">
-            <Link href="https://github.com/Wonderland-Money/wonderland-frontend" target="_blank">
+            <Link href="https://t.me/quasdao" target="_blank">
                 <SvgIcon color="primary" component={Telegram} />
                 Telegram Channel
             </Link>
 
-            <Link href="https://twitter.com/wonderland_fi?s=21" target="_blank">
+            <Link href="https://t.me/quasardao" target="_blank">
                 <SvgIcon color="primary" component={Telegram} />
                 Telegram Chat (EN)
             </Link>
 
-            <Link href="https://t.me/joinchat/6UybL5rJMEhjN2Y5" target="_blank">
+            <Link href="https://twitter.com/QuasarFinance" target="_blank">
                 <SvgIcon color="primary" component={Twitter} />
                 Twitter
             </Link>
 
-            <Link href="https://discord.gg/thDHseaHUt" target="_blank">
+            <Link href="https://discord.gg/NP9RhakCJn" target="_blank">
                 <SvgIcon color="primary" component={Discord} />
                 Discord
             </Link>
-            <Link href="https://discord.gg/thDHseaHUt" target="_blank">
+            <Link href="contact@quasardao.finance" target="_blank">
                 <SvgIcon color="primary" component={Mail} />
                 Mail
             </Link>

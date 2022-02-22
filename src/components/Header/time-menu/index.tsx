@@ -60,24 +60,18 @@ function TimeMenu() {
                 {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={200}>
                         <div className="tooltip">
-                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
-                                <p>Buy QUAS on Uniswap</p>
-                            </Link>
-                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
-                                <p>Buy QUAS on Sushiswap</p>
-                            </Link>
-                            <Link className="tooltip-item" href={`https://www.traderjoexyz.com/#/trade?inputCurrency=&outputCurrency=${QUAS_ADDRESS}`} target="_blank">
-                                <p>Wrap sQUAS</p>
+                            <Link className="tooltip-item" href={`https://quickswap.exchange/`} target="_blank">
+                                <p>Buy QUAS on Quickswap</p>
                             </Link>
 
                             {isEthereumAPIAvailable && (
                                 <div className="add-tokens">
                                     <div className="divider" />
-                                    <div className="tooltip-item" onClick={addTokenToWallet("TIME", QUAS_ADDRESS)}>
-                                        <p>TIME</p>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("QUAS", QUAS_ADDRESS)}>
+                                        <p>QUAS</p>
                                     </div>
-                                    <div className="tooltip-item" onClick={addTokenToWallet("MEMO", SQUAS_ADDRESS)}>
-                                        <p>MEMO</p>
+                                    <div className="tooltip-item" onClick={addTokenToWallet("sQUAs", SQUAS_ADDRESS)}>
+                                        <p>sQUAS</p>
                                     </div>
                                 </div>
                             )}
