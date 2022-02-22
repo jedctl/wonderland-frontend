@@ -99,8 +99,6 @@ function Lend() {
         [stakeAllowance],
     );
 
-    dispatch(info({ text: "whats up!" }));
-
     return (
         <div className="lend-view">
             <Zoom in={true}>
