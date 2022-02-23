@@ -39,7 +39,7 @@ export const darkTheme = {
     stakeRadioButtonS:
         "background: #232323; border: 1px solid #232323; box-shadow: 3px 3px 4px #161616, -2px -1px 4px #3E3E3E, inset 3px 3px 4px #101010, inset -4px -4px 4px #343434;",
     stakeRadioInsBut: "border: 6px solid #232323; box-shadow: 3px 3px 4px #161616, -2px -1px 4px #3e3e3e;",
-    stakeCardInputBg: " 0px 4px 4px rgb(0 0 0 / 25%), inset 5px 5px 4px #1c1c1c, inset -5px -5px 4px #343434;",
+    stakeCardInputBg: " inset 5px 5px 4px #1C1C1C, inset -5px -5px 4px #343434",
     colorHelpStakeText: "#565656",
     stakeUserDataColor: "#969696",
     // bond --------------
@@ -116,7 +116,7 @@ export const lightTheme = {
     stakeRadioButtonS:
         "background: #EBEBEB; border: 1px solid #EBEBEB; box-shadow: 3px 3px 4px #ACACAC, -2px -1px 4px #FFFFFF, inset 3px 3px 4px #CDCDCD, inset -4px -4px 4px #FFFFFF;",
     stakeRadioInsBut: "border: 6px solid #EBEBEB; box-shadow: 3px 3px 4px #CDCDCD, -2px -1px 4px #FFFFFF;",
-    stakeCardInputBg: "0px 0px 0px rgb(0 0 0 / 0%),  inset 5px 5px 4px #C7C7C7, inset -5px -5px 4px #FAFAFA;",
+    stakeCardInputBg: "inset 5px 5px 4px #C7C7C7, inset -5px -5px 4px #FAFAFA;",
     colorHelpStakeText: "#B9B9B9",
     stakeUserDataColor: "#969696",
     // bond --------------

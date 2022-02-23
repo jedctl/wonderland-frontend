@@ -146,8 +146,11 @@
               font-style: normal;
               font-weight: 500;
               font-size: 16px;
-              color: #525252;
+              color: #E988EB;
               padding: 20px 20px;
+              &::-webkit-input-placeholder{
+                color: #525252;
+              }
             }
             
             .MuiOutlinedInput-notchedOutline{

@@ -49,7 +49,7 @@
       p{
           font-family: Roboto, sans-serif;
           font-style: normal;
-          font-weight: 600;
+          font-weight: normal;
           font-size: 1.125rem;
           line-height: 20px;
           transition: 0.4s ease;
@@ -91,26 +91,29 @@
   .time-menu-root .time-menu-btn{
     padding: 8px 30px;
   }
+  .time-menu-popper .tooltip{
+    width: 315px;
+    .tooltip-item{
+      padding: 7.5px 10px;
+      p{
+        font-size: .875rem;
+      }
+    }
+  }
 }
 @media(max-width:1350px){
-  .time-menu-popper .tooltip{
-    width: 350px;
-  }
   .time-menu-root{
     margin-right: 50px;
   }
 }
 @media(max-width:1240px){
   .time-menu-popper .tooltip .tooltip-item p{
-    font-size: 1rem;
+    font-size: .75rem;
   }
 }
 @media(max-width:780px){
   .time-menu-popper .tooltip .tooltip-item {
-    padding: 8px 20px;
-  }
-  .time-menu-popper .tooltip .tooltip-item p{
-    font-size: 0.875rem;
+    padding: 7px 10px;
   }
   .time-menu-popper .tooltip{
     width: 300px;
