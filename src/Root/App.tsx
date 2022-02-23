@@ -12,6 +12,7 @@ import ViewBase from "../components/ViewBase";
 import { Stake, ChooseBond, Bond, Dashboard, NotFound, Lend } from "../views";
 import "./style.scss";
 import useTokens from "../hooks/tokens";
+import { info } from "../store/slices/messages-slice";
 
 function App() {
     const dispatch = useDispatch();
@@ -63,6 +64,7 @@ function App() {
             tokens.map(token => {
                 dispatch(calculateUserTokenDetails({ address: "", token, provider, networkID: chainID }));
             });
+            dispatch(info({ text: "The protocol is not yet live on mainnet. The app is using testnet contracts for demo purposes. " }));
         },
         [connected],
     );

@@ -11,7 +11,7 @@ import { Skeleton } from "@material-ui/lab";
 import { IReduxState } from "../../store/slices/state.interface";
 import { messages } from "../../constants/messages";
 import classnames from "classnames";
-import { warning } from "../../store/slices/messages-slice";
+import { warning, info } from "../../store/slices/messages-slice";
 import Rules from "./Rules";
 import Continue from "./Continue";
 
